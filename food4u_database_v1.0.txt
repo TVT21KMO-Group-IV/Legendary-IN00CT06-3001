@@ -11,6 +11,9 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema food4u
 -- -----------------------------------------------------
+CREATE user IF NOT EXISTS 'fooduser'@'localhost' IDENTIFIED BY 'foodpass';
+GRANT ALL PRIVILEGES ON * . * TO 'fooduser'@'localhost';
+FLUSH PRIVILEGES;
 CREATE SCHEMA IF NOT EXISTS `food4u` DEFAULT CHARACTER SET utf8 ;
 USE `food4u` ;
 
