@@ -1,13 +1,121 @@
-create database food4u;
-use food4u;
-CREATE user 'fooduser'@'localhost' IDENTIFIED BY 'foodpass';
-GRANT ALL PRIVILEGES ON * . * TO 'fooduser'@'localhost';
-FLUSH PRIVILEGES;
-create table user (userid INT NOT NULL AUTO_INCREMENT PRIMARY KEY, username VARCHAR(20) NOT NULL, 
-password VARCHAR(255) NOT NULL, fname VARCHAR(20) NOT NULL, lname VARCHAR(30) NOT NULL, address VARCHAR(30) NOT NULL, img VARCHAR(255));
-create table owner (ownerid INT NOT NULL AUTO_INCREMENT PRIMARY KEY, ownername VARCHAR(20) NOT NULL, 
-password VARCHAR(255) NOT NULL, restaurant VARCHAR(30) NOT NULL, address VARCHAR(30) NOT NULL, img VARCHAR(255));
-create table restaurant (restaurantid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(255) NOT NULL, type VARCHAR(30) NOT NULL, pricerange VARCHAR(5) NOT NULL, ownerid int NOT NULL);
-create table menu (menuid INT NOT NULL AUTO_INCREMENT PRIMARY KEY, dish int(5) NOT NULL, name VARCHAR(30) NOT NULL,
-description VARCHAR(255) NOT NULL, price float  NOT NULL, img VARCHAR(255), restaurantid int NOT NULL);
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema food4u
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema food4u
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `food4u` DEFAULT CHARACTER SET utf8 ;
+USE `food4u` ;
+
+-- -----------------------------------------------------
+-- Table `food4u`.`User`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `food4u`.`User` (
+  `idUser` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `fname` VARCHAR(45) NOT NULL,
+  `lname` VARCHAR(45) NOT NULL,
+  `address` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idUser`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `food4u`.`Owner`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `food4u`.`Owner` (
+  `idOwner` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `fname` VARCHAR(45) NOT NULL,
+  `lname` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idOwner`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `food4u`.`Restaurant`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `food4u`.`Restaurant` (
+  `idRestaurant` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `type` VARCHAR(45) NOT NULL,
+  `pricerange` VARCHAR(5) NOT NULL,
+  `address` VARCHAR(45) NOT NULL,
+  `openingHours` VARCHAR(45) NOT NULL,
+  `restaurantImg` VARCHAR(255) NULL,
+  `idOwner` INT NOT NULL,
+  PRIMARY KEY (`idRestaurant`, `idOwner`),
+  INDEX `fk_Restaurant_Owner1_idx` (`idOwner` ASC) VISIBLE,
+  CONSTRAINT `fk_Restaurant_Owner1`
+    FOREIGN KEY (`idOwner`)
+    REFERENCES `food4u`.`Owner` (`idOwner`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `food4u`.`MenuItem`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `food4u`.`MenuItem` (
+  `idMenuItem` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `dish` TINYINT(5) NOT NULL,
+  `desc` VARCHAR(255) NOT NULL,
+  `price` FLOAT NOT NULL,
+  `menuItemImg` VARCHAR(255) NULL,
+  `idRestaurant` INT NOT NULL,
+  PRIMARY KEY (`idMenuItem`),
+  INDEX `fk_Menu_Restaurant1_idx` (`idRestaurant` ASC) VISIBLE,
+  CONSTRAINT `fk_Menu_Restaurant1`
+    FOREIGN KEY (`idRestaurant`)
+    REFERENCES `food4u`.`Restaurant` (`idRestaurant`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `food4u`.`Orderhistory`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `food4u`.`Orderhistory` (
+  `idOrder` INT NOT NULL AUTO_INCREMENT,
+  `orderDate` DATETIME NOT NULL,
+  `orderPrice` FLOAT NOT NULL,
+  `idRestaurant` INT NOT NULL,
+  `idMenuItem` INT NOT NULL,
+  `idUser` INT NOT NULL,
+  PRIMARY KEY (`idOrder`),
+  INDEX `fk_Orderhistory_Restaurant1_idx` (`idRestaurant` ASC) VISIBLE,
+  INDEX `fk_Orderhistory_Menu1_idx` (`idMenuItem` ASC) VISIBLE,
+  INDEX `fk_Orderhistory_User1_idx` (`idUser` ASC) VISIBLE,
+  CONSTRAINT `fk_Orderhistory_Restaurant1`
+    FOREIGN KEY (`idRestaurant`)
+    REFERENCES `food4u`.`Restaurant` (`idRestaurant`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Orderhistory_Menu1`
+    FOREIGN KEY (`idMenuItem`)
+    REFERENCES `food4u`.`MenuItem` (`idMenuItem`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Orderhistory_User1`
+    FOREIGN KEY (`idUser`)
+    REFERENCES `food4u`.`User` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
