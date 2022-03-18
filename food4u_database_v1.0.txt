@@ -27,20 +27,8 @@ CREATE TABLE IF NOT EXISTS `food4u`.`User` (
   `fname` VARCHAR(45) NOT NULL,
   `lname` VARCHAR(45) NOT NULL,
   `address` VARCHAR(45) NOT NULL,
+  `owner` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idUser`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `food4u`.`Owner`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `food4u`.`Owner` (
-  `idOwner` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(255) NOT NULL,
-  `fname` VARCHAR(45) NOT NULL,
-  `lname` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idOwner`))
 ENGINE = InnoDB;
 
 
@@ -55,14 +43,7 @@ CREATE TABLE IF NOT EXISTS `food4u`.`Restaurant` (
   `address` VARCHAR(45) NOT NULL,
   `openingHours` VARCHAR(45) NOT NULL,
   `restaurantImg` VARCHAR(255) NULL,
-  `idOwner` INT NOT NULL,
-  PRIMARY KEY (`idRestaurant`, `idOwner`),
-  INDEX `fk_Restaurant_Owner1_idx` (`idOwner` ASC) VISIBLE,
-  CONSTRAINT `fk_Restaurant_Owner1`
-    FOREIGN KEY (`idOwner`)
-    REFERENCES `food4u`.`Owner` (`idOwner`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`idRestaurant`))
 ENGINE = InnoDB;
 
 
@@ -71,8 +52,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food4u`.`MenuItem` (
   `idMenuItem` INT NOT NULL AUTO_INCREMENT,
+  `dish` VARCHAR(255) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
-  `dish` TINYINT(5) NOT NULL,
   `desc` VARCHAR(255) NOT NULL,
   `price` FLOAT NOT NULL,
   `menuItemImg` VARCHAR(255) NULL,
@@ -114,6 +95,32 @@ CREATE TABLE IF NOT EXISTS `food4u`.`Orderhistory` (
   CONSTRAINT `fk_Orderhistory_User1`
     FOREIGN KEY (`idUser`)
     REFERENCES `food4u`.`User` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `food4u`.`OrderContent`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `food4u`.`OrderContent` (
+  `idOrderContent` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `amount` INT NULL,
+  `price` FLOAT NULL,
+  `idOrder` INT NOT NULL,
+  `idMenuItem` INT NOT NULL,
+  PRIMARY KEY (`idOrderContent`),
+  INDEX `fk_OrderContent_Orderhistory1_idx` (`idOrder` ASC) VISIBLE,
+  INDEX `fk_OrderContent_MenuItem1_idx` (`idMenuItem` ASC) VISIBLE,
+  CONSTRAINT `fk_OrderContent_Orderhistory1`
+    FOREIGN KEY (`idOrder`)
+    REFERENCES `food4u`.`Orderhistory` (`idOrder`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_OrderContent_MenuItem1`
+    FOREIGN KEY (`idMenuItem`)
+    REFERENCES `food4u`.`MenuItem` (`idMenuItem`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
