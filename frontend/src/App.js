@@ -5,9 +5,12 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import RestaurantView from './components/RestaurantView';
+import Restaurantss from './components/Restaurantss';
 
 
 function App() {
+
+
 
   // const [restaurants, setRestaurants] = useState([]);
 
@@ -29,7 +32,7 @@ function App() {
       <h1>Food4U</h1>
       <Routes>
         <Route path="/" element={ <Login/> } />
-        
+        <Route path="/restaurant" element={ <Restaurantss/> } />
         <Route path="RegisterView" element={ <RegisterView /> } />
 
       </Routes>
