@@ -28,11 +28,11 @@ function App() {
      
   
     <BrowserRouter>
-    <div className="App">
-      <h1>Food4U</h1>
+    <div>
+      <h1 className="food4uTopic">Food4U</h1>
       <Routes>
-        <Route path="/" element={ <Login/> } />
-        <Route path="/restaurant" element={ <Restaurantss/> } />
+        <Route path="/Login" element={ <Login/> } />
+        <Route path="/" element={ <Restaurantss/> } />
         <Route path="RegisterView" element={ <RegisterView /> } />
 
       </Routes>
