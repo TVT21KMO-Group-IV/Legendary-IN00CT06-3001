@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(240, 236, 230);
+}
+
 .App {
   background-color: rgb(240, 236, 230);
 }
@@ -6,6 +10,10 @@
   text-align: center;
   font-size: 70px;
   border-bottom: thick;
+
+}
+.topicButton {
+  text-align: right;
 }
 
 .restaurantImg {
@@ -20,6 +28,8 @@
   margin-left: 10%;
   margin-right: 10%;
   border-bottom: 4px solid rgb(190, 187, 187);
+  padding-bottom: 1%;
+  padding-top: 1%;
 }
 .restaurantHomeText {
   display: flex;

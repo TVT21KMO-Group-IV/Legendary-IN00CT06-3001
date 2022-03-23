@@ -6,30 +6,23 @@ import {useState, useEffect} from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import RestaurantView from './components/RestaurantView';
 import Restaurantss from './components/Restaurantss';
+import Search from './components/Search';
 
 
 function App() {
 
 
 
-  // const [restaurants, setRestaurants] = useState([]);
 
-  // useEffect(async() => {
-  //   const allrestaurants = await fetch('http://localhost:5000/restaurant').then((res)=>
-  //   res.json()
-  //   )
-  //   setRestaurants(allrestaurants)
-  //   console.log(allrestaurants)
-  // },[])
 
-  // let output = <RestaurantView restaurants = { restaurants } />;  //tän pitäs hakee ravintolat outputtiin, ei toimi
-  // { output } pitäs tulostaa
-  return (<div>
+
+  return (<div className=''>
      
   
     <BrowserRouter>
     <div>
-      <h1 className="food4uTopic">Food4U</h1>
+      <h1 className="food4uTopic">Food4U<button className='topicButton'>test</button></h1>
+      <Search />
       <Routes>
         <Route path="/Login" element={ <Login/> } />
         <Route path="/" element={ <Restaurantss/> } />
