@@ -24,7 +24,7 @@ const [restaurants, setRestaurants] =useState([]);
     <div className="">
         { restaurants.map ( rafla => <div className='restaurantHome'> <img src={ rafla.restaurantImg} className='restaurantImg'/>
         <div className='restaurantHomeText' > { rafla.name } { rafla.address } </div>
-        <div><button>Avaa menu</button></div></div>)}
+        <div className='homeMenuButton' ><button>Avaa menu</button></div></div>)}
         
     </div>);   
 }
