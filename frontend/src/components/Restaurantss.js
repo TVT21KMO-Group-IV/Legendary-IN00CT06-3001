@@ -24,28 +24,29 @@ const [restaurants, setRestaurants] =useState([]);
     console.log("testi");
     setRest(keyw);
   };
-  let filteredRestaurants = restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(rest.toLowerCase()))
+  let filteredRestaurants = restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(rest.toLowerCase()) || restaurant.type.toLowerCase().includes(rest.toLowerCase()))
 
 
       return (
-        <div className="">
+        <div >
+          <div className="paddingBottom">
         <input
           type="search"
           value={rest}
           onChange={filter}
           className="searchBar"
-          placeholder="Etsi ravintolaa nimellä"
-        />
+          placeholder="Etsi ravintolaa nimellä tai ravintolatyypillä"
+        /></div>
       
-  
-      <div className="">
+      <div className="marginTop">
+      <div className="paddingTop">
           { filteredRestaurants.length ? filteredRestaurants.map((restaurants) => (
             <div key={restaurants.idRestaurant} className='restaurantHome'><img src={ restaurants.restaurantImg} className='restaurantImg'/>
             <div className='restaurantHomeText' >{restaurants.name} {restaurants.address}
-            <div className='homeMenuButton' ><button>Avaa menu</button></div></div></div>
+            <div><button className='homeMenuButton' >Avaa ravintolan ruokalista</button></div></div></div>
           )):<div><h1>Hakuehdoillasi ei löydy ravintolaa</h1></div>}
 
-          
+</div>
           </div>
       </div>);   
   }

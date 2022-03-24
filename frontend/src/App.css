@@ -23,7 +23,7 @@ body {
 .searchBar {
   margin-left: 10%;
   height: 50px;
-  width: 300px;
+  width: 400px;
   font-size: 19px;
   text-align: center;
 }
@@ -32,6 +32,11 @@ body {
   width: 150px;
   height: 150px;
 }
+
+.line {
+  border-bottom: 4px solid rgb(190, 187, 187);
+}
+
 .restaurantHome {
   display: flex;
   flex-direction: row;
@@ -47,17 +52,33 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 800px;
+  width: 75%;
+  margin-top: 3%;
 }
-.hideLabel {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+.homeMenuButton {
+  height: 70px;
+  width: 150px;
+  font-size: 16px;
+}
+.paddingTop {
+  border-top: 4px solid rgb(235, 73, 73);
+  padding-top : 1%;
+}
+.marginTop {
+  margin-top: 2%;
+}
+.alignCenter {
+  text-align: center;
+}
+.loginInsertBox {
+  height: 40px;
+  width: 180px;
+  font-size: 16px;
+  padding-left: 10px;
 }
 .padding {
-  padding: 10px;
+  padding: 1%;
+}
+.padding5 {
+  padding: 5%;
 }
