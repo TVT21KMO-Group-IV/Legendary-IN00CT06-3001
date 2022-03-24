@@ -32,16 +32,18 @@ app.get('/restaurant', function (req, res) {
 });
 
 
-// router.get('/', function(req, res) {
-//     dbConn.query('SELECT * FROM restaurant ORDER BY idRestaurant', function(err, rows) {
-//         if(err) {
-//             req.flash('error', err);
-//             res.render('restaurant', {data:''});
-//         } else {
-//             res.render('restaurant', {data:rows});
-//         }
-//     });   
-// });
+app.get('/restaurant:$idRestaurant', function(req, res) {
+  dbConn.getConnection(function (err, connection) {
+    dbConn.query('SELECT * FROM restaurant ORDER BY idRestaurant', function(err, rows) {
+        if(err) {
+            req.flash('error', err);
+            res.render('restaurant', {data:''});
+        } else {
+            res.render('restaurant', {data:rows});
+        }
+      });
+    });   
+});
 
  app.listen(5000, () => {
      console.log('check http://localhost:5000/restaurant to see the data.');

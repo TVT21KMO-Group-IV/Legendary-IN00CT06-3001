@@ -7,13 +7,25 @@ body {
 }
 
 .food4uTopic {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30%;
+  justify-content: space-between;
   text-align: center;
   font-size: 70px;
   border-bottom: thick;
 
 }
 .topicButton {
-  text-align: right;
+ margin-left: 10%;
+}
+
+.searchBar {
+  margin-left: 10%;
+  height: 50px;
+  width: 300px;
+  font-size: 19px;
+  text-align: center;
 }
 
 .restaurantImg {
@@ -33,6 +45,19 @@ body {
 }
 .restaurantHomeText {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   width: 800px;
+}
+.hideLabel {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+.padding {
+  padding: 10px;
 }
