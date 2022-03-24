@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import RestaurantView from './components/RestaurantView';
 import Restaurantss from './components/Restaurantss';
 import Search from './components/Search';
-
+import Menu from './components/Menu';
 
 function App ()  {
 
@@ -38,6 +38,7 @@ const [searchRestaurant, setSearchRestaurant] = useState("");
         <Route path="/Login" element={ <Login/> } />
         <Route path="/" element={ <Restaurantss/> } />
         <Route path="RegisterView" element={ <RegisterView /> } />
+        <Route path="/Menuitem" element={ <Menu /> } />
 
       </Routes>
       
