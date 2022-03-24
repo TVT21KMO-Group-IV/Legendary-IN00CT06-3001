@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import RestaurantView from './components/RestaurantView';
 import Restaurantss from './components/Restaurantss';
 import Search from './components/Search';
+import NavBar from './components/NavBar';
+
 
 
 function App ()  {
@@ -30,8 +32,8 @@ const [searchRestaurant, setSearchRestaurant] = useState("");
      
   
     <BrowserRouter>
-    <div>
-      <h1 className="food4uTopic">Food4U<Link to="/Login" className='topicButton'><button>Login</button></Link></h1>
+      <NavBar />
+      
  
       <Routes>
       
@@ -40,8 +42,6 @@ const [searchRestaurant, setSearchRestaurant] = useState("");
         <Route path="RegisterView" element={ <RegisterView /> } />
 
       </Routes>
-      
-    </div>
     </BrowserRouter>
     
     </div>
