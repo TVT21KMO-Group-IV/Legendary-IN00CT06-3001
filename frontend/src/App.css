@@ -33,6 +33,14 @@ body {
   height: 150px;
 }
 
+.menuItemImg {
+  width: 150px;
+  height: 150px;
+
+}
+
+
+
 .line {
   border-bottom: 4px solid rgb(190, 187, 187);
 }
