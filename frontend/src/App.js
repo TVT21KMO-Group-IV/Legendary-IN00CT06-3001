@@ -42,7 +42,7 @@ const [searchRestaurant, setSearchRestaurant] = useState("");
           <Route path="/Menuitem" element={ <Menu /> } />
         </Routes>
 
-    </div>
+    
     </BrowserRouter>
     
     </div>

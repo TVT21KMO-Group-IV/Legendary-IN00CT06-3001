@@ -1,15 +1,12 @@
 body {
   background-color: rgb(250, 214, 160);
 }
-
 .App {
-  
 }
-
 .searchBar {
   margin-left: 41%;
-  margin-top: 1%;
-  margin-bottom: 1%;
+  margin-top: 20px;
+  margin-bottom: 20px;
   height: 50px;
   width: 400px;
   font-size: 19px;
@@ -26,11 +23,7 @@ body {
 .menuItemImg {
   width: 150px;
   height: 150px;
-
 }
-
-
-
 .line {
   border-bottom: 4px solid rgb(190, 187, 187);
 }
@@ -87,6 +80,9 @@ body {
 .padding5 {
   padding: 5%;
 }
+.paddingBottom {
+  margin-left: auto;
+}
 
 .barBackground{
   background-color: rgb(116, 0, 0);
@@ -97,15 +93,12 @@ body {
 
 .barElements{
   display: flex;
-  width: 500px;
-  margin-right: auto;
+  flex-direction: row;
+  justify-content: space-between;
   margin-left: 10%;
-  margin-top: 0.5%;
-  
+  margin-top: 5px;
 }
-
 .logo{
-  
   margin-right: auto;
   font-family: cursive;
   font-size: 70px;
@@ -115,16 +108,11 @@ body {
   text-decoration-color: transparent;
 }
 
-
 .barButtons{
-  margin-left: 320%;
+  margin-right: 10%;
   display: flex;
-  margin-top: 5%;
-  margin-bottom: auto;
-  font-size: 20px;
-  margin-right: auto;
-  
-  
+  margin-top: 30px;
+  font-size: 20px;   
 }
 
 .kirjBut{
