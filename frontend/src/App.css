@@ -1,37 +1,27 @@
 body {
-  background-color: rgb(240, 236, 230);
+  background-color: rgb(250, 214, 160);
 }
 
 .App {
-  background-color: rgb(240, 236, 230);
-}
-
-.food4uTopic {
-  display: flex;
-  flex-direction: row;
-  margin-left: 30%;
-  justify-content: space-between;
-  text-align: center;
-  font-size: 70px;
-  border-bottom: thick;
-
-}
-.topicButton {
- margin-left: 10%;
+  
 }
 
 .searchBar {
-  margin-left: 10%;
+  margin-left: 41%;
+  margin-top: 1%;
+  margin-bottom: 1%;
   height: 50px;
   width: 400px;
   font-size: 19px;
   text-align: center;
+  border: solid 2px rgb(116, 0, 0);
 }
 
 .restaurantImg {
   width: 150px;
   height: 150px;
-}
+  border: solid 2px rgb(116, 0, 0);
+  }
 
 .menuItemImg {
   width: 150px;
@@ -52,10 +42,11 @@ body {
   font-size: 40px;
   margin-left: 10%;
   margin-right: 10%;
-  border-bottom: 4px solid rgb(190, 187, 187);
+  border-bottom: 4px solid rgb(116, 0, 0);
   padding-bottom: 1%;
   padding-top: 1%;
 }
+
 .restaurantHomeText {
   display: flex;
   flex-direction: row;
@@ -63,18 +54,14 @@ body {
   width: 75%;
   margin-top: 3%;
 }
+
 .homeMenuButton {
   height: 70px;
   width: 150px;
   font-size: 16px;
+  border: solid 2px rgb(116, 0, 0);
 }
-.paddingTop {
-  border-top: 4px solid rgb(235, 73, 73);
-  padding-top : 1%;
-}
-.marginTop {
-  margin-top: 2%;
-}
+
 .alignCenter {
   text-align: center;
 }
@@ -83,10 +70,72 @@ body {
   width: 180px;
   font-size: 16px;
   padding-left: 10px;
+  margin-top: 1%;
 }
+
+.loginButton{
+  margin-top: 25px;
+  width: 197px;
+  height: 45px;
+  font-size: 20px;
+}
+
 .padding {
   padding: 1%;
 }
+
 .padding5 {
   padding: 5%;
+}
+
+.barBackground{
+  background-color: rgb(116, 0, 0);
+  color: white;
+  height: 130px;
+  border: 5px solid rgb(65, 0, 0);
+}
+
+.barElements{
+  display: flex;
+  width: 500px;
+  margin-right: auto;
+  margin-left: 10%;
+  margin-top: 0.5%;
+  
+}
+
+.logo{
+  
+  margin-right: auto;
+  font-family: cursive;
+  font-size: 70px;
+  margin-top: auto;
+  color: white;
+  margin-bottom: auto;
+  text-decoration-color: transparent;
+}
+
+
+.barButtons{
+  margin-left: 320%;
+  display: flex;
+  margin-top: 5%;
+  margin-bottom: auto;
+  font-size: 20px;
+  margin-right: auto;
+  
+  
+}
+
+.kirjBut{
+  font-size: 15px;
+  padding: 15px 17px;
+  cursor: pointer;
+}
+
+.rekBut{
+  font-size: 15px;
+  padding: 15px 3px;
+  margin-left: 5%;
+  cursor: pointer;
 }
