@@ -8,7 +8,7 @@ export default function NavBar() {
             <Link to ="/"><h1 className='logo'>Food4U</h1></Link>
                 <div className='barButtons'>
                     <Link to ="/Login"><button className='kirjBut'>Kirjaudu</button></Link>
-                    <Link to ="/Login"><button className='rekBut'>Rekisteröidy</button></Link>
+                    <Link to ="/Register"><button className='rekBut'>Rekisteröidy</button></Link>
                 </div>
          </div>   
     </div>

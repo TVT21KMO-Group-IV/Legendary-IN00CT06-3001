@@ -24,8 +24,6 @@ body {
   
 }
 
-
-
 .restaurantHome {
   display: flex;
   flex-direction: row;
@@ -37,6 +35,7 @@ body {
   padding-bottom: 1%;
   padding-top: 1%;
 }
+
 .restaurantHomeText {
   display: flex;
   flex-direction: row;
@@ -44,12 +43,12 @@ body {
   width: 75%;
   margin-top: 3%;
 }
+
 .homeMenuButton {
   height: 70px;
   width: 150px;
   font-size: 16px;
   border: solid 2px rgb(116, 0, 0);
-
 }
 
 .alignCenter {
@@ -60,10 +59,20 @@ body {
   width: 180px;
   font-size: 16px;
   padding-left: 10px;
+  margin-top: 1%;
 }
+
+.loginButton{
+  margin-top: 25px;
+  width: 197px;
+  height: 45px;
+  font-size: 20px;
+}
+
 .padding {
   padding: 1%;
 }
+
 .padding5 {
   padding: 5%;
 }
@@ -81,7 +90,7 @@ body {
   margin-right: auto;
   margin-left: 10%;
   margin-top: 0.5%;
- 
+  
 }
 
 .logo{
@@ -92,7 +101,9 @@ body {
   margin-top: auto;
   color: white;
   margin-bottom: auto;
+  text-decoration-color: transparent;
 }
+
 
 .barButtons{
   margin-left: 320%;
@@ -102,16 +113,18 @@ body {
   font-size: 20px;
   margin-right: auto;
   
+  
 }
 
 .kirjBut{
   font-size: 15px;
   padding: 15px 17px;
-  
+  cursor: pointer;
 }
 
 .rekBut{
   font-size: 15px;
   padding: 15px 3px;
   margin-left: 5%;
+  cursor: pointer;
 }
