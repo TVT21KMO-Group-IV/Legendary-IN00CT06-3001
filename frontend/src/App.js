@@ -9,6 +9,7 @@ import Restaurantss from './components/Restaurantss';
 import Search from './components/Search';
 import NavBar from './components/NavBar';
 import Register from './components/Register';
+import Menu from './components/Menu';
 
 
 function App ()  {
@@ -32,12 +33,16 @@ const [searchRestaurant, setSearchRestaurant] = useState("");
      
   
     <BrowserRouter>
+
       <NavBar />
         <Routes>
           <Route path="/Login" element={ <Login/> } />
           <Route path="/Register" element={ <Register/>} />
           <Route path="/" element={ <Restaurantss/> } />
+          <Route path="/Menuitem" element={ <Menu /> } />
         </Routes>
+
+    </div>
     </BrowserRouter>
     
     </div>

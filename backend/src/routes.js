@@ -45,6 +45,17 @@ app.get('/restaurant:$idRestaurant', function(req, res) {
     });   
 });
 
+app.get('/menuitem/:idRestaurant', function(req, res) {
+  dbConn.getConnection(function (err, connection) {
+    dbConn.query('SELECT * FROM menuitem where idRestaurant=?',[req.params.idRestaurant] function(error, result) {
+     // dbConn.query('SELECT * FROM menuitem', function(error, result) {
+        if (error) throw error;
+        console.log(error);
+        res.send(result)  
+      });
+    });   
+});
+
  app.listen(5000, () => {
      console.log('check http://localhost:5000/restaurant to see the data.');
    });
