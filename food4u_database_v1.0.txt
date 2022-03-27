@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `food4u`.`MenuItem` (
   `idMenuItem` INT NOT NULL AUTO_INCREMENT,
   `dish` VARCHAR(255) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
-  `desc` VARCHAR(255) NOT NULL,
+  `description` VARCHAR(255) NOT NULL,
   `price` FLOAT NOT NULL,
   `menuItemImg` VARCHAR(255) NULL,
   `idRestaurant` INT NOT NULL,
