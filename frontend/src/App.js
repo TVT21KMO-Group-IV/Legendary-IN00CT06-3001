@@ -9,24 +9,13 @@ import Restaurantss from './components/Restaurantss';
 import Search from './components/Search';
 import NavBar from './components/NavBar';
 import Register from './components/Register';
-import Menu from './components/Menu';
+import GetMenu from './components/GetMenu';
+
 
 
 function App ()  {
 
 
-
-   //=> {
-//     if (!query) {
-//         return Restaurantss;
-//     }
-
-//     return restaurant.filter((restaurant) => {
-//         const restaurantName = restaurant.name.toLowerCase();
-//         return restaurantName.includes(query);
-//     });
-// };
-const [searchRestaurant, setSearchRestaurant] = useState("");
 
 
   return (<div className=''>
@@ -39,7 +28,7 @@ const [searchRestaurant, setSearchRestaurant] = useState("");
           <Route path="/Login" element={ <Login/> } />
           <Route path="/Register" element={ <Register/>} />
           <Route path="/" element={ <Restaurantss/> } />
-          <Route path="/Menuitem" element={ <Menu /> } />
+          <Route path="/menuitem/:idmenu" element={ <GetMenu /> } />
         </Routes>
 
     
