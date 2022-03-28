@@ -6,6 +6,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
+
 //src kansiosta node routes.js lähtee käyntiin http://localhost:5000/restaurant näkee hard koodatut ravintolat
 
 const dbConn = mysql.createPool({
@@ -31,10 +32,20 @@ app.get('/restaurant', function (req, res) {
   });
 });
 
-
-app.get('/restaurant:$idRestaurant', function(req, res) {
+app.get('/menuitem', function (req, res) {
   dbConn.getConnection(function (err, connection) {
-    dbConn.query('SELECT * FROM restaurant ORDER BY idRestaurant', function(err, rows) {
+      dbConn.query('SELECT * FROM menuitem', function (error, results) {
+    if (error) throw error;
+    console.log(error);
+    res.send(results)
+  });
+});
+});
+
+
+app.get(`/restaurant/:idRestaurant`, function(req, res) {
+  dbConn.getConnection(function (err, connection) {
+    dbConn.query('SELECT * FROM restaurant where idRestaurant=?',[req.params.idRestaurant], function(err, rows) {
         if(err) {
             req.flash('error', err);
             res.render('restaurant', {data:''});
@@ -45,7 +56,7 @@ app.get('/restaurant:$idRestaurant', function(req, res) {
     });   
 });
 
-app.get('/menuitem/:idRestaurant', function(req, res) {
+app.get(`/menuitem/:idRestaurant`, function(req, res) {
   dbConn.getConnection(function (err, connection) {
     dbConn.query('SELECT * FROM menuitem where idRestaurant=?',[req.params.idRestaurant], function(error, result) {
      // dbConn.query('SELECT * FROM menuitem', function(error, result) {
