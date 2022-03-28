@@ -1,8 +1,10 @@
 body {
-  background-color: rgb(250, 214, 160);
+  
 }
 .App {
 }
+
+
 .searchBar {
   margin-left: 41%;
   margin-top: 20px;
@@ -85,10 +87,10 @@ body {
 }
 
 .barBackground{
-  background-color: rgb(116, 0, 0);
+  background-color: #e32934;
   color: white;
   height: 130px;
-  border: 5px solid rgb(65, 0, 0);
+  box-shadow: 0 4px 2px -2px gray
 }
 
 .barElements{
@@ -96,7 +98,6 @@ body {
   flex-direction: row;
   justify-content: space-between;
   margin-left: 10%;
-  margin-top: 5px;
 }
 .logo{
   margin-right: auto;
@@ -111,13 +112,24 @@ body {
 .barButtons{
   margin-right: 10%;
   display: flex;
-  margin-top: 30px;
-  font-size: 20px;   
+  font-size: 20px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.barButtons .button {
+  padding: 30px;
+  color: #f0f0f0;
+}
+
+.barButtons .button:hover {
+  background-color: #d5242e;
+  
 }
 
 .kirjBut{
   font-size: 15px;
-  padding: 15px 17px;
+  padding: 30px;
   cursor: pointer;
 }
 
@@ -134,12 +146,23 @@ body {
   justify-content: space-around;
 }
 
+.restaurantMainImg {
+  width: 960px;
+  height: 350px;
+}
+
 .restaurantDetails {
   padding: 20px 0px;
 }
 
+.restaurantDetails .restaurantName {
+  color: #221F1F;
+}
+
 .restaurantDetails div i {
   padding: 5px 10px;
+  color: #E32934;
+  /*color: #330202;*/
 }
 
 .restaurantMenuFunctions {
@@ -156,6 +179,12 @@ body {
   border: solid 2px rgb(116, 0, 0);
 }
 
+.menuListDishes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
 
 .restaurantMenuFunctions div {
   padding: 5px 10px;
@@ -168,6 +197,14 @@ body {
 .menuDishItems {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 10px
+}
+
+.menuDishItems .itemWrapper {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.menuDishItems .itemWrapper:hover {
+  background-color: #f8f8f8;
 }
 
 .dishItem {
@@ -175,8 +212,12 @@ body {
   width: 300px;
 }
 
+.dishImg {
+  padding: 5px;
+}
+
 .dishDetails {
-  padding-left: 10px;
+  padding: 10px 0px 0px 10px;
   min-width: 200px;
 }
 
@@ -185,4 +226,18 @@ body {
   display: flex;
   justify-content: center;
   font-size: 30px;
+  color: #d09326;
 }
+
+.footerWrapper {
+  margin-top: 100px;
+  padding-bottom: 40px;
+  background-color: #221f1f;
+  color: #f5f5f5;
+  font-size: 12px;
+  min-width: 1000px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+

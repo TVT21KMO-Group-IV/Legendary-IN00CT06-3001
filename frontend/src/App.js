@@ -13,6 +13,7 @@ import Search from './components/Search';
 import NavBar from './components/NavBar';
 import Register from './components/Register';
 import Menu from './components/Menu';
+import Footer from './components/Footer';
 
 
 function App ()  {
@@ -45,8 +46,8 @@ const [searchRestaurant, setSearchRestaurant] = useState("");
           <Route path="/Restaurant" element={ <Restaurant/> } />
           <Route path="/Menuitem" element={ <Menu /> } />
         </Routes>
-
-    
+      <Footer />
+          
     </BrowserRouter>
     
     </div>

@@ -19,14 +19,12 @@ export default function Restaurants(props) {
 
     return (
 
-
-
         <div className="restaurantWrapper">
             {restaurants.map(rafla =>
                 <div>
-                    <div className='restaurantMainImg'> <img src={rafla.restaurantImg} /></div>
+                    <div className='restaurantMainImg' style={{backgroundImage: `url(${rafla.restaurantImg})` }}> </div>
                     <div className='restaurantDetails'>
-                        <div><h1>{rafla.name}</h1></div>
+                        <div><h1 className='restaurantName'>{rafla.name}</h1></div>
                         <div><i class="fas fa-money-bill-alt"></i>{rafla.pricerange} <i class="fas fa-tags"></i>{rafla.type}</div>
                         <div><i class="fas fa-map-marked" />{rafla.address} <i class="fas fa-clock"></i>{rafla.openingHours}</div>
                     </div>
@@ -38,39 +36,48 @@ export default function Restaurants(props) {
                         <div className="dish">
                             <h2 className="dishTitle">Pääruoka</h2>
                             <div className="menuDishItems">
-                                <div className="dishItem">
-                                    <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
-                                    <div className="dishDetails">
-                                        <strong>Annos 1</strong>
-                                        <p>10 €</p>
+                                <div className="itemWrapper">
+                                    <div className="dishItem">
+                                        <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
+                                        <div className="dishDetails">
+                                            <strong>Annos 1</strong>
+                                            <p>10 €</p>
+                                        </div>
+                                        <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
                                     </div>
-                                    <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
                                 </div>
-                                <div className="dishItem">
-                                    <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
-                                    <div className="dishDetails">
-                                        <strong>Annos 2 jolla on pidempi nimi</strong>
-                                        <p>10 €</p>
+                                <div className="itemWrapper">
+                                    <div className="dishItem">
+                                        <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
+                                        <div className="dishDetails">
+                                            <strong>Annos 2 jolla on pitkä nimi</strong>
+                                            <p>30 €</p>
+                                        </div>
+                                        <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
                                     </div>
-                                    <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
                                 </div>
-                                <div className="dishItem">
-                                    <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
-                                    <div className="dishDetails">
-                                        <strong>Annos 3</strong>
-                                        <p>10 €</p>
+                                <div className="itemWrapper">
+                                    <div className="dishItem">
+                                        <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
+                                        <div className="dishDetails">
+                                            <strong>Annos 3, myös laktoositon</strong>
+                                            <p>5 €</p>
+                                        </div>
+                                        <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
                                     </div>
-                                    <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
                                 </div>
-                                <div className="dishItem">
-                                    <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
-                                    <div className="dishDetails">
-                                        <strong>Annos 4</strong>
-                                        <p>10 €</p>
+                                <div className="itemWrapper">
+                                    <div className="dishItem">
+                                        <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
+                                        <div className="dishDetails">
+                                            <strong>Annos 4</strong>
+                                            <p>10 €</p>
+                                        </div>
+                                        <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
                                     </div>
-                                    <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
                                 </div>
-                            </div></div>
+                            </div>
+                        </div>
 
                         <div className="menuDish">
                             <h2 className="dishTitle">Jälkiruoka</h2>
