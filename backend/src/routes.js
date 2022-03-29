@@ -6,6 +6,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
+
 //src kansiosta node routes.js lähtee käyntiin http://localhost:5000/restaurant näkee hard koodatut ravintolat
 
 const dbConn = mysql.createPool({
@@ -32,10 +33,11 @@ app.get('/restaurant', function (req, res) {
   });
 });
 
-// Get one restaurant from the database - hardcoded for idRestaurant = 2
-app.get('/single-restaurant', function (req, res) {
+
+app.get('/menuitem', function (req, res) {
   dbConn.getConnection(function (err, connection) {
-      dbConn.query('SELECT * FROM restaurant where idRestaurant=2', function (error, results) {
+      dbConn.query('SELECT * FROM menuitem', function (error, results) {
+
     if (error) throw error;
     console.log(error);
     res.send(results)
@@ -43,20 +45,18 @@ app.get('/single-restaurant', function (req, res) {
 });
 });
 
-app.get('/restaurant:$idRestaurant', function(req, res) {
+
+app.get(`/restaurant/:idRestaurant/restaurant`, function(req, res) {
   dbConn.getConnection(function (err, connection) {
-    dbConn.query('SELECT * FROM restaurant ORDER BY idRestaurant', function(err, rows) {
-        if(err) {
-            req.flash('error', err);
-            res.render('restaurant', {data:''});
-        } else {
-            res.render('restaurant', {data:rows});
-        }
-      });
-    });   
+    dbConn.query('SELECT * FROM restaurant WHERE idRestaurant=?',[req.params.idRestaurant], function(error, result) {
+      if (error) throw error;
+      console.log(error);
+      res.send(result)  
+    });
+  });   
 });
 
-app.get('/menuitem/:idRestaurant', function(req, res) {
+app.get(`/restaurant/:idRestaurant/menu`, function(req, res) {
   dbConn.getConnection(function (err, connection) {
     dbConn.query('SELECT * FROM menuitem where idRestaurant=?',[req.params.idRestaurant], function(error, result) {
      // dbConn.query('SELECT * FROM menuitem', function(error, result) {

@@ -14,23 +14,14 @@ import NavBar from './components/NavBar';
 import Register from './components/Register';
 import Menu from './components/Menu';
 import Footer from './components/Footer';
+import GetMenu from './components/GetMenu';
+
+
 
 
 function App ()  {
 
 
-
-   //=> {
-//     if (!query) {
-//         return Restaurantss;
-//     }
-
-//     return restaurant.filter((restaurant) => {
-//         const restaurantName = restaurant.name.toLowerCase();
-//         return restaurantName.includes(query);
-//     });
-// };
-const [searchRestaurant, setSearchRestaurant] = useState("");
 
 
   return (<div className=''>
@@ -45,6 +36,8 @@ const [searchRestaurant, setSearchRestaurant] = useState("");
           <Route path="/" element={ <Restaurantss/> } />
           <Route path="/Restaurant" element={ <Restaurant/> } />
           <Route path="/Menuitem" element={ <Menu /> } />
+          <Route path="/restaurant/:restaurantId" element={ <GetMenu /> } />
+
         </Routes>
       <Footer />
           
