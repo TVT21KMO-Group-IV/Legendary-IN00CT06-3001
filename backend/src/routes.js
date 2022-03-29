@@ -22,6 +22,7 @@ app.use(bodyParser.json({limit: "50mb"}));
 app.use(bodyParser.urlencoded({limit: "50mb",extended: false}));
 app.use(passport.initialize());
 
+// Get all restaurants from the database
 app.get('/restaurant', function (req, res) {
     dbConn.getConnection(function (err, connection) {
         dbConn.query('SELECT * FROM restaurant', function (error, results) {
@@ -32,9 +33,11 @@ app.get('/restaurant', function (req, res) {
   });
 });
 
+
 app.get('/menuitem', function (req, res) {
   dbConn.getConnection(function (err, connection) {
       dbConn.query('SELECT * FROM menuitem', function (error, results) {
+
     if (error) throw error;
     console.log(error);
     res.send(results)

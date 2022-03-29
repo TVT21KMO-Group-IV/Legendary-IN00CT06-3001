@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './fontawesome-free-5.15.4-web/css/all.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
