@@ -139,3 +139,5 @@ insert into menuitem (dish, name, description, price, menuItemImg, idRestaurant)
 insert into menuitem (dish, name, description, price, menuItemImg, idRestaurant) VALUES ('Pääruoka', 'Pizza Margherita', 'Tomaattikastike, juusto', '7.0', 'https://www.yumcurry.com/wp-content/uploads/2020/06/pizza-margherita-recipe.jpg', '1');
 insert into menuitem (dish, name, description, price, menuItemImg, idRestaurant) VALUES ('Pääruoka', 'Kebab Ranskalaisilla', 'Kebab, ranskalaiset, salaatti', 10, 'https://sirinlounasravintola.fi/wp-content/uploads/2020/07/Lasten-kebab-rans.png', 2);
 insert into menuitem (dish, name, description, price, menuItemImg, idRestaurant) VALUES ('Jälkiruoka', 'Jäätelöannos', 'Suklaa, mansikka ja vaniljajäätelöä', 8, 'https://cdn.anna.fi/wp-content/uploads/s3/sites/40/2020/08/17073648/p2160447_0.jpg', 1);
+insert into user values('1','Riku','1234', 'Riku',' Savolainen',' Viistokuja 3, Murto', 'yes');
+insert into user values('2','D1b2n4','1234', 'Risto','Mämmi',' Ristitie 66, Kiikeli', 'No');
