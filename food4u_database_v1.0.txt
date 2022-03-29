@@ -18,7 +18,7 @@ CREATE SCHEMA IF NOT EXISTS `food4u` DEFAULT CHARACTER SET utf8 ;
 USE `food4u` ;
 
 -- -----------------------------------------------------
--- Table `food4u`.`User`
+-- Table `food4u`.`user`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food4u`.`user` (
   `idUser` INT NOT NULL AUTO_INCREMENT,
@@ -33,7 +33,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `food4u`.`Restaurant`
+-- Table `food4u`.`restaurant`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food4u`.`restaurant` (
   `idRestaurant` INT NOT NULL AUTO_INCREMENT,
@@ -48,7 +48,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `food4u`.`MenuItem`
+-- Table `food4u`.`menuitem`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food4u`.`menuitem` (
   `idMenuItem` INT NOT NULL AUTO_INCREMENT,
@@ -62,14 +62,14 @@ CREATE TABLE IF NOT EXISTS `food4u`.`menuitem` (
   INDEX `fk_Menu_Restaurant1_idx` (`idRestaurant` ASC) VISIBLE,
   CONSTRAINT `fk_Menu_Restaurant1`
     FOREIGN KEY (`idRestaurant`)
-    REFERENCES `food4u`.`Restaurant` (`idRestaurant`)
+    REFERENCES `food4u`.`restaurant` (`idRestaurant`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `food4u`.`Orderhistory`
+-- Table `food4u`.`orderhistory`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food4u`.`orderhistory` (
   `idOrder` INT NOT NULL AUTO_INCREMENT,
@@ -84,24 +84,24 @@ CREATE TABLE IF NOT EXISTS `food4u`.`orderhistory` (
   INDEX `fk_Orderhistory_User1_idx` (`idUser` ASC) VISIBLE,
   CONSTRAINT `fk_Orderhistory_Restaurant1`
     FOREIGN KEY (`idRestaurant`)
-    REFERENCES `food4u`.`Restaurant` (`idRestaurant`)
+    REFERENCES `food4u`.`restaurant` (`idRestaurant`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Orderhistory_Menu1`
     FOREIGN KEY (`idMenuItem`)
-    REFERENCES `food4u`.`MenuItem` (`idMenuItem`)
+    REFERENCES `food4u`.`menuitem` (`idMenuItem`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Orderhistory_User1`
     FOREIGN KEY (`idUser`)
-    REFERENCES `food4u`.`User` (`idUser`)
+    REFERENCES `food4u`.`user` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `food4u`.`OrderContent`
+-- Table `food4u`.`ordercontent`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food4u`.`orderContent` (
   `idOrderContent` INT NOT NULL AUTO_INCREMENT,
@@ -115,12 +115,12 @@ CREATE TABLE IF NOT EXISTS `food4u`.`orderContent` (
   INDEX `fk_OrderContent_MenuItem1_idx` (`idMenuItem` ASC) VISIBLE,
   CONSTRAINT `fk_OrderContent_Orderhistory1`
     FOREIGN KEY (`idOrder`)
-    REFERENCES `food4u`.`Orderhistory` (`idOrder`)
+    REFERENCES `food4u`.`orderhistory` (`idOrder`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_OrderContent_MenuItem1`
     FOREIGN KEY (`idMenuItem`)
-    REFERENCES `food4u`.`MenuItem` (`idMenuItem`)
+    REFERENCES `food4u`.`menuitem` (`idMenuItem`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
