@@ -43,17 +43,14 @@ app.get('/menuitem', function (req, res) {
 });
 
 
-app.get(`/restaurant/:idRestaurant`, function(req, res) {
+app.get(`/restaurant/:idRestaurant/restaurant`, function(req, res) {
   dbConn.getConnection(function (err, connection) {
-    dbConn.query('SELECT * FROM restaurant WHERE idRestaurant=?',[req.params.idRestaurant], function(err, rows) {
-        if(err) {
-            req.flash('error', err);
-            res.render('restaurant', {data:''});
-        } else {
-            res.render('restaurant', {data:rows});
-        }
-      });
-    });   
+    dbConn.query('SELECT * FROM restaurant WHERE idRestaurant=?',[req.params.idRestaurant], function(error, result) {
+      if (error) throw error;
+      console.log(error);
+      res.send(result)  
+    });
+  });   
 });
 
 app.get(`/restaurant/:idRestaurant/menu`, function(req, res) {

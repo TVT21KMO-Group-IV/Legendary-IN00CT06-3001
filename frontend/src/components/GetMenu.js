@@ -5,6 +5,7 @@ export default function Menus (props) {
 
     const [menus, setMenus] =useState([]);
     const {restaurantId} = useParams();
+    const [restaurants, setRestaurants] = useState([]);
         
   console.log(restaurantId);
 
@@ -18,13 +19,26 @@ export default function Menus (props) {
     setMenus( restaurantMenu )
   },[]);
 
+  useEffect(async() => {
+    const restaurant = await fetch(`http://localhost:5000/restaurant/${restaurantId}/restaurant`).then((res)=>
+    res.json()
+    )
+    
+    console.log(restaurant)
+    setRestaurants( restaurant )
+  },[]);
+
    
       return (
           <div>
+
+            {restaurants.map(rest => <div key ={restaurantId.idRestaurant}>{rest.name}
+              </div>
+              )}
               {menus.map(menu => 
                   
-              <div key ={restaurantId.idRestaurant}>{menu.name}<div>{menu.description} {menu.price}</div>
-              <button>testinappi</button></div>
+              <div key ={restaurantId.idRestaurant}>{menu.name}<div>Annoksen kuvaus: {menu.description}, Hinta: {menu.price}€  
+              <button>Lisää ostoskoriin</button></div></div>
               )
               }
           </div>
