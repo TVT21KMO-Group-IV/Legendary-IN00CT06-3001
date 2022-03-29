@@ -45,7 +45,7 @@ app.get('/menuitem', function (req, res) {
 
 app.get(`/restaurant/:idRestaurant`, function(req, res) {
   dbConn.getConnection(function (err, connection) {
-    dbConn.query('SELECT * FROM restaurant where idRestaurant=?',[req.params.idRestaurant], function(err, rows) {
+    dbConn.query('SELECT * FROM restaurant WHERE idRestaurant=?',[req.params.idRestaurant], function(err, rows) {
         if(err) {
             req.flash('error', err);
             res.render('restaurant', {data:''});
@@ -56,7 +56,7 @@ app.get(`/restaurant/:idRestaurant`, function(req, res) {
     });   
 });
 
-app.get(`/menuitem/:idRestaurant`, function(req, res) {
+app.get(`/restaurant/:idRestaurant/menu`, function(req, res) {
   dbConn.getConnection(function (err, connection) {
     dbConn.query('SELECT * FROM menuitem where idRestaurant=?',[req.params.idRestaurant], function(error, result) {
      // dbConn.query('SELECT * FROM menuitem', function(error, result) {
