@@ -1,82 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-
 export default function Menus (props) {
 
     const [menus, setMenus] =useState([]);
-    const {idmenu} = useParams();
-    //let { idRestaurant } = useParams();
-    
-      useEffect(async(idRestaurant) => {
-        const oneMenu = await fetch(`http://localhost:5000/menuitem/${idRestaurant}`).then((res)=>
-        res.json()
-        )
+    const {restaurantId} = useParams();
         
-        console.log(oneMenu)
-        setMenus( oneMenu )
-      },[]);
+  console.log(restaurantId);
+
     
+  useEffect(async() => {
+    const restaurantMenu = await fetch(`http://localhost:5000/restaurant/${restaurantId}/menu`).then((res)=>
+    res.json()
+    )
+    
+    console.log(restaurantMenu)
+    setMenus( restaurantMenu )
+  },[]);
+
+   
       return (
-          <div>testitesti
+          <div>
               {menus.map(menu => 
                   
-              <div key ={idmenu.idRestaurant}>{menu.name}
+              <div key ={restaurantId.idRestaurant}>{menu.name}<div>{menu.description} {menu.price}</div>
               <button>testinappi</button></div>
               )
               }
           </div>
       )
       }
-
-// function Menu() {
-//     const [menus, setMenus] = useState({name:{}});
-//     const {idRestaurant}=useParams();
-//     const fetchM = () => {
-//         fetch(`http://localhost:5000/menuitem/${idRestaurant}`)
-//         .then(res=>res.json())
-//         .then(data=>setMenus(data))
-//     };
-//     useEffect(()=>{
-//         fetchM();
-//     },[]);
-//     return (
-//         <div>
-//             {menus.map(menu =><div key={menu.idRestaurant}>{menu.name}
-//         </div>)}
-//            </div>
-//     )
-// }
-// export default Menu;
-
-
-//  const SelectedMenu = () => {
-//     const [oneMenu, setOneMenu] = useState([]);
-//     useEffect(() => {
-//         fetchMenu();
-//     }, []);
-
-//     const fetchMenu = () => {
-//         axios
-//         .get('http://localhost:5000/menuitem/:idRestaurant')
-//         .then((res) => {
-//             setOneMenu(res.data);
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         });
-//     };
-//     return ( <div>
-//         <h1>Ravintolan menu</h1>
-//         <div className=''>
-//             {oneMenu.map((menuitem) => (
-//                 <div className='' key={menuitem.idRestaurant}>
-//                     <p>{menuitem.name} {menuitem.price}</p>
-//                     <Link to={`/menuitem/${menuitem.idRestaurant}`}>click</Link>
-//                     </div>
-//             ))}
-//             </div>
-//             </div>
-//     )
-// }
-// export default SelectedMenu;
