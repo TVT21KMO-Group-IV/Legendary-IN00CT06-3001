@@ -20,7 +20,7 @@ USE `food4u` ;
 -- -----------------------------------------------------
 -- Table `food4u`.`User`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `food4u`.`User` (
+CREATE TABLE IF NOT EXISTS `food4u`.`user` (
   `idUser` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
@@ -35,7 +35,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `food4u`.`Restaurant`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `food4u`.`Restaurant` (
+CREATE TABLE IF NOT EXISTS `food4u`.`restaurant` (
   `idRestaurant` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `type` VARCHAR(45) NOT NULL,
@@ -50,7 +50,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `food4u`.`MenuItem`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `food4u`.`MenuItem` (
+CREATE TABLE IF NOT EXISTS `food4u`.`menuitem` (
   `idMenuItem` INT NOT NULL AUTO_INCREMENT,
   `dish` VARCHAR(255) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
@@ -71,7 +71,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `food4u`.`Orderhistory`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `food4u`.`Orderhistory` (
+CREATE TABLE IF NOT EXISTS `food4u`.`orderhistory` (
   `idOrder` INT NOT NULL AUTO_INCREMENT,
   `orderDate` DATETIME NOT NULL,
   `orderPrice` FLOAT NOT NULL,
@@ -103,7 +103,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `food4u`.`OrderContent`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `food4u`.`OrderContent` (
+CREATE TABLE IF NOT EXISTS `food4u`.`orderContent` (
   `idOrderContent` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `amount` INT NULL,
