@@ -10,6 +10,7 @@ export default function NavBar() {
                 <div className='barButtons'>
                     <Link className="button"to ="/Login" title="Kirjaudu"><i class="fas fa-sign-in-alt" /></Link>
                     <Link className="button" to ="/Register" title="Luo itsellesi tunnus"><i class="fas fa-user-plus" /></Link>
+                    <Link className="button" to ="/ShoppingCart" title="Ostoskärry"><i class="fas fa-cart-arrow-down" /></Link>
                 </div>
          </div>   
     </div>

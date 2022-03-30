@@ -53,6 +53,7 @@ body {
   width: 150px;
   font-size: 16px;
   border: solid 2px rgb(116, 0, 0);
+  cursor: pointer;
 }
 
 .alignCenter {

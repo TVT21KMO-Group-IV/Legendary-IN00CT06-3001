@@ -6,6 +6,7 @@ export default function Menus (props) {
     const [menus, setMenus] =useState([]);
     const {restaurantId} = useParams();
     const [restaurants, setRestaurants] = useState([]);
+    const [cartItems, setCartItems] = useState([]);
         
   console.log(restaurantId);
 
@@ -28,17 +29,21 @@ export default function Menus (props) {
     setRestaurants( restaurant )
   },[]);
 
+  const onAdd = (menu) =>{
+    
+  }
+
    
       return (
           <div>
 
-            {restaurants.map(rest => <div key ={restaurantId.idRestaurant}>{rest.name}
-              </div>
+            {restaurants.map(rest =>
+               <div key ={restaurantId.idRestaurant}>{rest.name}</div>
               )}
               {menus.map(menu => 
-                  
-              <div key ={restaurantId.idRestaurant}>{menu.name}<div>Annoksen kuvaus: {menu.description}, Hinta: {menu.price}€  
-              <button>Lisää ostoskoriin</button></div></div>
+                <div key ={restaurantId.idRestaurant}>{menu.name}<div>
+                  Annoksen kuvaus: {menu.description}, Hinta: {menu.price}€  
+                <button>Lisää ostoskoriin</button></div></div>
               )
               }
           </div>
