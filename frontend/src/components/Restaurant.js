@@ -9,7 +9,7 @@ export default function Restaurants(props) {
 
 
     useEffect(async () => {
-        const onerestaurant = await fetch('http://localhost:5000/single-restaurant').then((res) =>
+        const onerestaurant = await fetch('http://localhost:5000/restaurant').then((res) =>
             res.json()
         )
 
@@ -22,7 +22,7 @@ export default function Restaurants(props) {
         <div className="restaurantWrapper">
             {restaurants.map(rafla =>
                 <div>
-                    <div className='restaurantMainImg' style={{backgroundImage: `url(${rafla.restaurantImg})` }}> </div>
+                    <div className='restaurantMainImg' style={{ backgroundImage: `url(${rafla.restaurantImg})`, backgroundRepeat: 'no-repeat' }}> </div>
                     <div className='restaurantDetails'>
                         <div><h1 className='restaurantName'>{rafla.name}</h1></div>
                         <div><i class="fas fa-money-bill-alt"></i>{rafla.pricerange} <i class="fas fa-tags"></i>{rafla.type}</div>
@@ -46,44 +46,7 @@ export default function Restaurants(props) {
                                         <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
                                     </div>
                                 </div>
-                                <div className="itemWrapper">
-                                    <div className="dishItem">
-                                        <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
-                                        <div className="dishDetails">
-                                            <strong>Annos 2 jolla on pitkä nimi</strong>
-                                            <p>30 €</p>
-                                        </div>
-                                        <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
-                                    </div>
-                                </div>
-                                <div className="itemWrapper">
-                                    <div className="dishItem">
-                                        <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
-                                        <div className="dishDetails">
-                                            <strong>Annos 3, myös laktoositon</strong>
-                                            <p>5 €</p>
-                                        </div>
-                                        <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
-                                    </div>
-                                </div>
-                                <div className="itemWrapper">
-                                    <div className="dishItem">
-                                        <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
-                                        <div className="dishDetails">
-                                            <strong>Annos 4</strong>
-                                            <p>10 €</p>
-                                        </div>
-                                        <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-
-                        <div className="menuDish">
-                            <h2 className="dishTitle">Jälkiruoka</h2>
-                        </div>
-                        <div className="menuDish">
-                            <h2 className="dishTitle">Iltapala</h2>
                         </div>
                     </div>
                 </div>)}

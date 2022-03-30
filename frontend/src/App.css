@@ -1,8 +1,3 @@
-body {
-  
-}
-
-
 .searchBar {
   margin-left: 41%;
   margin-top: 20px;
@@ -139,9 +134,9 @@ body {
 }
 
 .restaurantWrapper {
-  min-width: 1000px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .restaurantMainImg {
@@ -168,6 +163,7 @@ body {
   border-bottom: 1px solid #ccc;
   padding: 20px 0px;
   display: flex;
+  justify-content: center;
 }
 
 .menuSearch input {
@@ -193,8 +189,10 @@ body {
 }
 
 .menuDishItems {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
   gap: 10px
 }
 
@@ -207,7 +205,7 @@ body {
 
 .dishItem {
   display: flex;
-  width: 300px;
+  /*width: 300px;*/
 }
 
 .dishImg {
@@ -216,7 +214,11 @@ body {
 
 .dishDetails {
   padding: 10px 0px 0px 10px;
-  min-width: 200px;
+  width: 200px;
+}
+
+.dishDetails p {
+  margin-top: 0px;
 }
 
 .addToCartIcon {
