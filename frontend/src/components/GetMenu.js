@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-export default function Menus (props) {
+export default function GetMenu () {
 
     const [menus, setMenus] =useState([]);
     const {restaurantId} = useParams();
@@ -29,23 +29,25 @@ export default function Menus (props) {
     setRestaurants( restaurant )
   },[]);
 
-  const onAdd = (menu) =>{
-    
-  }
+  const addToCart = (menu) =>{
+    console.log("added");
+    setCartItems([...cartItems, { ...menu }]);
+  };
 
-   
       return (
           <div>
-
+            <h1>MENU:</h1>
             {restaurants.map(rest =>
-               <div key ={restaurantId.idRestaurant}>{rest.name}</div>
-              )}
-              {menus.map(menu => 
-                <div key ={restaurantId.idRestaurant}>{menu.name}<div>
-                  Annoksen kuvaus: {menu.description}, Hinta: {menu.price}€  
-                <button>Lisää ostoskoriin</button></div></div>
-              )
-              }
+               <div key ={restaurantId.idRestaurant}><h2>{rest.name}</h2></div>
+            )}
+
+              {menus.map((menu, idx) => (
+                <div key ={idx}><h3>{menu.name}</h3>
+                <div>Annoksen kuvaus: {menu.description} Hinta: {menu.price}€ 
+                <button onClick={() => addToCart(menu)}>Lisää ostoskoriin</button></div></div>
+                
+              ))}
+              
           </div>
-      )
-      }
+      );
+}

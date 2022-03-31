@@ -19,7 +19,7 @@ import ShoppingCart from './components/ShoppingCart';
 
 
 
-function App ()  {
+function App ({ cartItems })  {
 
 
 
@@ -37,7 +37,7 @@ function App ()  {
           <Route path="/Restaurant" element={ <Restaurant/> } />
           <Route path="/Menuitem" element={ <Menu /> } />
           <Route path="/restaurant/:restaurantId" element={ <GetMenu /> } />
-          <Route path="/ShoppingCart" element={ <ShoppingCart/>} />
+          <Route path="/ShoppingCart" element={ <ShoppingCart cartItems={cartItems} />} />
         </Routes>
       <Footer />
           
