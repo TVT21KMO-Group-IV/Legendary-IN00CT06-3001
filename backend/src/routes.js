@@ -61,10 +61,11 @@ app.get(`/restaurant/:idRestaurant/restaurant`, function(req, res) {
     });
   });   
 });
+
 app.post(`/restaurant`, function(req, res) {
   dbConn.getConnection(function (err, connection) {
     dbConn.query('INSERT INTO restaurant (name, type, pricerange, address, openingHours, restaurantImg) VALUES (?, ?, ?, ?, ?, ?)',
-    [req.params.name, req.params.type, req.params.pricerange, req.params.address, req.params.openingHours, req.params.restaurantImg],
+    [req.body.name, req.body.type, req.body.pricerange, req.body.address, req.body.openingHours, req.body.restaurantImg],
      function(error, result) {
       if (error) throw error;
       console.log(error);
@@ -73,13 +74,18 @@ app.post(`/restaurant`, function(req, res) {
   });   
 });
 
-// app.post('/restaurant', (req, res) => {
-//   var postData  = req.body;
-//   dbConn.query('INSERT INTO restaurant (name, type, pricerange, address, openingHours, restaurantImg) VALUES (?, ?, ?, ?, ?, ?)', postData, (error, result, fields) => {
-//     if (error) throw error;
-//     res.end(JSON.stringify(result));
-//   });
-// });
+//  app.post('/restaurant',  function (r, callback) {
+//    return dbConn.query('INSERT INTO restaurant (name, type, pricerange, address, openingHours, restaurantImg) VALUES (?, ?, ?, ?, ?, ?)',
+//    [r.name, r.type, r.pricerange, r.address, r.openingHours, r.restaurantImg], callback)
+//     (req.body, function (err, result){
+//         if(err) {
+//             res.json(err);
+//         } else {
+//             res.json(req.body);
+//         }
+//     }); 
+//    });  
+
 
 app.get(`/restaurant/:idRestaurant/menu`, function(req, res) {
   dbConn.getConnection(function (err, connection) {
@@ -91,9 +97,6 @@ app.get(`/restaurant/:idRestaurant/menu`, function(req, res) {
       });
     });   
 });
-
-
-
 
  app.listen(5000, () => {
      console.log('check http://localhost:5000/restaurant to see the data.');

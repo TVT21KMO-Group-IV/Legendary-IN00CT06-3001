@@ -3,19 +3,19 @@ import { useParams } from 'react-router-dom';
 
 function AddRestaurant() {
 
- 
+  //const data = { name, type, pricerange, address, openingHours, restaurantImg };
     const [ name, setName ] = useState('');
     const [ type, setType ] = useState('');
     const [ pricerange, setPricerange ] = useState('');
     const [ address, setAddress ] = useState('');
     const [ openingHours, setOpeningHours ] = useState('');
     const [ restaurantImg, setRestaurantImg ] = useState('');
-    const [ message, setMessage] = useState("");  // to store success or error message
+    const [ message, setMessage] = useState();  // to store success or error message
 
 let addSubmit = async (e) => {
     e.preventDefault();
  try {        
-    let res = await fetch(`http://localhost:5000/restaurant`, {
+    let res = await fetch(`http://localhost:5000/restaurant` , {
     method: 'POST',
     headers: {"Content-Type": "application/json",
   },
@@ -46,7 +46,6 @@ res.json());
 
     }
 };
-
 
 return (
     <div className="App">
@@ -94,9 +93,10 @@ return (
 
         <button type="submit">Luo ravintola</button>
 
-        <div className="message">{message ? <p>{message}</p> : null}</div>
+        <div className="message">{message ? <p>Ravintola lisätty</p> : null}</div>
       </form>
     </div>
   );
 }
 export default AddRestaurant;
+
