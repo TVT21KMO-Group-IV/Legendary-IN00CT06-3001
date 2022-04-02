@@ -1,9 +1,9 @@
-import React, { useState, useEffect, Component } from 'react'
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link, useParams } from 'react-router-dom';
+import '../App.css';
 
 function AddRestaurant() {
 
-  //const data = { name, type, pricerange, address, openingHours, restaurantImg };
     const [ name, setName ] = useState('');
     const [ type, setType ] = useState('');
     const [ pricerange, setPricerange ] = useState('');
@@ -49,50 +49,61 @@ res.json());
 
 return (
     <div className="App">
+      <div className='createBox'><h1>Luo uusi ravintola</h1></div>
       <form onSubmit={ addSubmit }>
-        <div></div>
-        <input
+        <div className='addText'>Ravintolan nimi: 
+        <input className='addBox'
           type="text"
           value={name}
           placeholder="Ravintolan nimi"
           onChange={(e) => setName(e.target.value)}
-        />
-        <div></div>
-        <input
+        /></div>
+        <div className='addText'>Ravintolan tyyppi: 
+        <input className='addBox'
           type="text"
           value={type}
           placeholder="Ravintolan tyyppi"
           onChange={(e) => setType(e.target.value)}
-        />
-        <div></div>
-        <input
-          type="text"
-          value={pricerange}
-          placeholder="Hintaluokka"
-          onChange={(e) => setPricerange(e.target.value)}
-        />
-        <div></div>
-        <input
+        /></div>
+        
+        <div className='addText'>Ravintolan osoite: 
+        <input className='addBox'
           type="text"
           value={address}
           placeholder="Osoite"
           onChange={(e) => setAddress(e.target.value)}
-        /><div></div>
-        <input
+        /></div>
+        <div className='addText'>Ravintolan aukioloajat: 
+        <input className='addBox'
           type="text"
           value={openingHours}
           placeholder="Aukioloajat"
           onChange={(e) => setOpeningHours(e.target.value)}
-        /><div></div>
-        <input
+        /></div>
+        <div className='addText'>URL ravintolan kuvaan: 
+        <input className='addBox'
           type="text"
           value={restaurantImg}
           placeholder="URL ravintolan kuvaan"
           onChange={(e) => setRestaurantImg(e.target.value)}
-        /><div></div>
+        /></div>
+        <div className='addText'>Hintaluokka: 
+        <select className='addBox2'
+          type="text"
+          value={pricerange}
+          onChange={(e) => setPricerange(e.target.value)}>
+            <option value="€">€</option>
+            <option value="€€">€€</option>
+            <option value="€€€">€€€</option>
+            <option value="€€€€">€€€€</option>
+        </select></div>
+        <div className='addText'>
+          Tähän ownerId useParams kautta kun token on joskus saatu tehtyä
+        </div>
+        <div className='createBox'>
 
-        <button type="submit">Luo ravintola</button>
-
+        <button  className='createBox'type="submit">Luo ravintola</button>
+        </div>
         <div className="message">{message ? <p>Ravintola lisätty</p> : null}</div>
       </form>
     </div>

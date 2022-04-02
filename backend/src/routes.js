@@ -16,15 +16,13 @@ const dbConn = mysql.createPool({
 	password:'foodpass',
 	database:'food4u'
 });
-//const restaurantRouter = require('./routes/restaurant.routes');
 
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json({limit: "50mb"}));
-app.use(bodyParser.urlencoded({limit: "50mb",extended: true}));
+app.use(bodyParser.urlencoded({limit: "50mb",extended: false}));
 app.use(passport.initialize());
-//app.use('/restaurant', restaurantRouter);
 
 
 // Get all restaurants from the database
@@ -73,18 +71,19 @@ app.post(`/restaurant`, function(req, res) {
     });
   });   
 });
+app.post(`/menuitem`, function(req, res) {
+  dbConn.getConnection(function (err, connection) {
+    dbConn.query('INSERT INTO menuitem (dish, name, description, price, menuItemImg, idRestaurant) VALUES (?, ?, ?, ?, ?, ?)',
+    [req.body.dish, req.body.name, req.body.description, req.body.price, req.body.menuItemImg, req.params.idRestaurant],
+     function(error, result) {
+      if (error) throw error;
+      console.log(error);
+      res.send(result)  
+    });
+  });   
+});
 
-//  app.post('/restaurant',  function (r, callback) {
-//    return dbConn.query('INSERT INTO restaurant (name, type, pricerange, address, openingHours, restaurantImg) VALUES (?, ?, ?, ?, ?, ?)',
-//    [r.name, r.type, r.pricerange, r.address, r.openingHours, r.restaurantImg], callback)
-//     (req.body, function (err, result){
-//         if(err) {
-//             res.json(err);
-//         } else {
-//             res.json(req.body);
-//         }
-//     }); 
-//    });  
+  
 
 
 app.get(`/restaurant/:idRestaurant/menu`, function(req, res) {

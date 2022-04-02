@@ -238,4 +238,22 @@ body {
   justify-content: space-around;
   align-items: center;
 }
+.createBox {
 
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 19px;
+  text-align: center;
+}
+.addText {
+  width: 60%;
+  text-align: right;
+}
+.addBox {
+  margin-left: 3%;
+  width: 200px;
+}
+.addBox2 {
+  margin-left: 3%;
+  width: 208px;
+}
