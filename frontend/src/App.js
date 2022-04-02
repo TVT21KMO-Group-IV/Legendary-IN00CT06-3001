@@ -15,6 +15,7 @@ import Register from './components/Register';
 import Menu from './components/Menu';
 import Footer from './components/Footer';
 import GetMenu from './components/GetMenu';
+import AddRestaurant from './components/AddRestaurant';
 
 
 
@@ -37,7 +38,8 @@ function App ()  {
           <Route path="/Restaurant" element={ <Restaurant/> } />
           <Route path="/Menuitem" element={ <Menu /> } />
           <Route path="/restaurant/:restaurantId" element={ <GetMenu /> } />
-
+          <Route path="/AddRestaurant" element={ <AddRestaurant /> } />
+          
         </Routes>
       <Footer />
           
