@@ -52,41 +52,34 @@ return (
       <div className='createBox'><h1>Luo uusi ravintola</h1></div>
       <form onSubmit={ addSubmit }>
         <div className='addText'>Ravintolan nimi: 
-        <input className='addBox'
+        <input className='addBox' required="required"
           type="text"
           value={name}
           placeholder="Ravintolan nimi"
           onChange={(e) => setName(e.target.value)}
         /></div>
-        <div className='addText'>Ravintolan tyyppi: 
-        <input className='addBox'
-          type="text"
-          value={type}
-          placeholder="Ravintolan tyyppi"
-          onChange={(e) => setType(e.target.value)}
-        /></div>
-        
         <div className='addText'>Ravintolan osoite: 
-        <input className='addBox'
+        <input className='addBox' required="required"
           type="text"
           value={address}
           placeholder="Osoite"
           onChange={(e) => setAddress(e.target.value)}
         /></div>
-        <div className='addText'>Ravintolan aukioloajat: 
-        <input className='addBox'
+        <div className='addText'>Ravintolan tyyppi: 
+        <select className='addBox2'
           type="text"
-          value={openingHours}
-          placeholder="Aukioloajat"
-          onChange={(e) => setOpeningHours(e.target.value)}
-        /></div>
-        <div className='addText'>URL ravintolan kuvaan: 
-        <input className='addBox'
-          type="text"
-          value={restaurantImg}
-          placeholder="URL ravintolan kuvaan"
-          onChange={(e) => setRestaurantImg(e.target.value)}
-        /></div>
+          value={type}
+          placeholder="Ravintolan tyyppi"
+          onChange={(e) => setType(e.target.value)}>
+            <option value="">Casual Dining</option>
+            <option value="">Pizzeria</option>
+            <option value="">Kebabravintola</option>
+            <option value="">Pihviravintola</option>
+            <option value="">Buffet</option>
+            <option value="">Fast Food</option>
+            <option value="">Fast Casual</option>
+            <option value="">Fine Dining</option>
+        </select></div>
         <div className='addText'>Hintaluokka: 
         <select className='addBox2'
           type="text"
@@ -96,7 +89,21 @@ return (
             <option value="€€">€€</option>
             <option value="€€€">€€€</option>
             <option value="€€€€">€€€€</option>
-        </select></div>
+        </select></div>        
+        <div className='addText'>Ravintolan aukioloajat: 
+        <input className='addBox' required="required"
+          type="text"
+          value={openingHours}
+          placeholder="Aukioloajat"
+          onChange={(e) => setOpeningHours(e.target.value)}
+        /></div>
+        <div className='addText'>URL ravintolan kuvaan: 
+        <input className='addBox' 
+          type="text"
+          value={restaurantImg}
+          placeholder="URL ravintolan kuvaan"
+          onChange={(e) => setRestaurantImg(e.target.value)}
+        /></div>        
         <div className='addText'>
           Tähän ownerId useParams kautta kun token on joskus saatu tehtyä
         </div>
