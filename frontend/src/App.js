@@ -16,6 +16,7 @@ import Menu from './components/Menu';
 import Footer from './components/Footer';
 import GetMenu from './components/GetMenu';
 import AddRestaurant from './components/AddRestaurant';
+import AddMenu from './components/AddMenu'
 
 
 
@@ -38,8 +39,8 @@ function App ()  {
           <Route path="/Restaurant" element={ <Restaurant/> } />
           <Route path="/Menuitem" element={ <Menu /> } />
           <Route path="/restaurant/:restaurantId" element={ <GetMenu /> } />
-          <Route path="/AddRestaurant" element={ <AddRestaurant /> } />
-          
+          <Route path="/addRestaurant" element={ <AddRestaurant /> } />
+          <Route path="/AddMenu/:restaurantId" element={ <AddMenu /> } />
         </Routes>
       <Footer />
           
