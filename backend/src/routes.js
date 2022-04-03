@@ -97,6 +97,19 @@ app.get(`/restaurant/:idRestaurant/menu`, function(req, res) {
     });   
 });
 
+
+app.post(`/user`, function(req, res) {
+  dbConn.getConnection(function (err, connection) {
+    dbConn.query('INSERT INTO user (idUser, username, password, fname, lname, address, idOwner) VALUES (?, ?, ?, ?, ?, ?)',
+    [req.body.idUser+1, req.body.username, req.body.password, req.body.fname, req.body.lname, req.body.address, req.body.idOwner],
+     function(error, result) {
+      if (error) throw error;
+      console.log(error);
+      res.send(result)  
+    });
+  });   
+});
+
  app.listen(5000, () => {
-     console.log('check http://localhost:5000/restaurant to see the data.');
+     console.log('check http://localhost:5000/register to see the data.');
    });
