@@ -71,7 +71,7 @@ app.post(`/restaurant`, function(req, res) {
     });
   });   
 });
-app.post(`/menuitem`, function(req, res) {
+app.post(`/menuitem/:idRestaurant`, function(req, res) {
   dbConn.getConnection(function (err, connection) {
     dbConn.query('INSERT INTO menuitem (dish, name, description, price, menuItemImg, idRestaurant) VALUES (?, ?, ?, ?, ?, ?)',
     [req.body.dish, req.body.name, req.body.description, req.body.price, req.body.menuItemImg, req.params.idRestaurant],
