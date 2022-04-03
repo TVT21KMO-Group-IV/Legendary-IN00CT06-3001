@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `food4u`.`user` (
   `fname` VARCHAR(45) NOT NULL,
   `lname` VARCHAR(45) NOT NULL,
   `address` VARCHAR(45) NOT NULL,
-  `owner` VARCHAR(45) NOT NULL,
+  `idOwner` INT NULL,
   PRIMARY KEY (`idUser`))
 ENGINE = InnoDB;
 
@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `food4u`.`restaurant` (
   `address` VARCHAR(45) NOT NULL,
   `openingHours` VARCHAR(45) NOT NULL,
   `restaurantImg` VARCHAR(255) NULL,
+  `idOwner` INT NULL,
   PRIMARY KEY (`idRestaurant`))
 ENGINE = InnoDB;
 
