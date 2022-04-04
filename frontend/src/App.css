@@ -1,3 +1,12 @@
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: stretch;
+  align-items: center;
+}
+
 .searchBar {
   margin-left: 41%;
   margin-top: 20px;
@@ -80,6 +89,9 @@
 }
 
 .barBackground{
+  order: 0;
+  flex: 0 1 auto;
+  align-self: stretch;
   background-color: #e32934;
   color: white;
   height: 130px;
@@ -145,6 +157,7 @@
 }
 
 .restaurantDetails {
+  width: 960px;
   padding: 20px 0px;
 }
 
@@ -159,6 +172,7 @@
 }
 
 .restaurantMenuFunctions {
+  width: 960px;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   padding: 20px 0px;
@@ -186,6 +200,10 @@
 
 .restaurantMenuFunctions .menuSearch {
   width: 30%;
+}
+
+.restaurantMenuDisplay {
+  width: 960px;
 }
 
 .menuDishItems {
@@ -230,6 +248,9 @@
 }
 
 .footerWrapper {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: stretch;
   margin-top: 100px;
   padding-bottom: 40px;
   background-color: #221f1f;

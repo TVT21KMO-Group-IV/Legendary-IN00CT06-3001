@@ -47,35 +47,35 @@ export default function Menus(props) {
           </div>
         </>
       )}
-      
-      <div className="restaurantMenuDisplay">
-      
-        
-          <div className="dish">
-            <h2 className="dishTitle">menu.dish</h2>
-            <div className="menuDishItems">
 
-{menus.map(menu =>
-        <>
-              <div className="itemWrapper">
-                <div className="dishItem">
-                  <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
-                  <div className="dishDetails">
-                    <strong>{menu.name}</strong>
-                    <p>{menu.description}</p>
-                    <p>{menu.price} €</p>
+      <div className="restaurantMenuDisplay">
+
+
+        <div className="dish">
+          <h2 className="dishTitle">menu.dish</h2>
+          <div className="menuDishItems">
+
+            {menus.map(menu =>
+              <>
+                <div className="itemWrapper">
+                  <div className="dishItem">
+                    <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
+                    <div className="dishDetails">
+                      <strong>{menu.name}</strong>
+                      <p>{menu.description}</p>
+                      <p>{menu.price} €</p>
+                    </div>
+                    <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
                   </div>
-                  <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
                 </div>
-              </div>
-</>
-      )
-      }
-              
-            </div>
+              </>
+            )
+            }
+
           </div>
-        
         </div>
+
+      </div>
 
 
     </div>
