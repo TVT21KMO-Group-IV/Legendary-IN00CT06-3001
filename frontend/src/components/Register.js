@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import '../App.css';
 
 function Register() {
 
-    const [ idUser, setIdUser ] = useState('');
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ fname, setFname ] = useState('');
     const [ lname, setLname ] = useState('');
     const [ address, setAddress ] = useState('');
-    const [ idOwner, setIdOwner] = useState();  
-    const [ message, setMessage] = useState();  // to store success or error message
+    const [ idOwner, setIdOwner] = useState('');  
+    const [ message, setMessage] = useState('');  // to store success or error message
 
 let addSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +20,7 @@ let addSubmit = async (e) => {
     headers: {"Content-Type": "application/json",
   },
     body: JSON.stringify( {
-        idUser: idUser,
+        
         username: username,
         password: password,
         fname: fname,
@@ -33,7 +32,7 @@ let addSubmit = async (e) => {
 res.json());
 
     if (res.status === 200) {
-        setIdUser('');
+        
         setUsername('');
         setPassword('');
         setFname('');
@@ -56,15 +55,17 @@ res.json());
         <p>
         Reggaappas ittes sissään
         </p>
-            <div><input type="text" placeholder='Etunimi' className='loginInsertBox'></input></div>
-            <div><input type="text" placeholder='Sukunimi' className='loginInsertBox'></input></div>
-            <div><input type="text" placeholder='Osoite' className='loginInsertBox'></input></div>
-            <div><input type="text" placeholder='Puh.num' className='loginInsertBox'></input></div>
-            <div><input type="text" placeholder='Käyttäjätunnus' className='loginInsertBox'></input></div>
-            <div><input type="text" placeholder='Salasana' className='loginInsertBox'></input></div> 
-            <button className='loginButton'>Luo käyttäjä</button>
-        
-       
+            <form onSubmit={ addSubmit}>
+                <div><input type="text"  value = { username} placeholder='Käyttäjätunnus' className='loginInsertBox'> onChange = {(e) => setUsername(e.target.value)}</input></div>
+                <div><input type="text"  value = { password }placeholder='Salasana' className='loginInsertBox'> onChange = {(e) => setPassword(e.target.value)}</input></div>
+                <div><input type="text" value ={ fname } placeholder='Etunimi' className='loginInsertBox'> onChange = {(e) => setFname(e.target.value)}</input></div>
+                <div><input type="text" value ={ lname } placeholder='Sukunimi' className='loginInsertBox'> onChange = {(e) => setLname(e.target.value)}</input></div>
+                <div><input type="text"  value ={ address } placeholder='Osoite' className='loginInsertBox'> onChange = {(e) => setAddress(e.target.value)}</input></div>
+                <div><input type="text"  value = { idOwner }placeholder='Omistaja' className='loginInsertBox'> onChange = {(e) => setIdOwner(e.target.value)}</input></div> 
+
+                <div><button className='loginButton'type='submit'>Luo käyttäjä</button></div>
+                <div className="message">{message ? <p>Käyttäjä lisätty</p> : null}</div>
+            </form>
     </div>
   )
 }
