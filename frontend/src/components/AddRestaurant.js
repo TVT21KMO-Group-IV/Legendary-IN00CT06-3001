@@ -71,14 +71,14 @@ return (
           value={type}
           placeholder="Ravintolan tyyppi"
           onChange={(e) => setType(e.target.value)}>
-            <option value="">Casual Dining</option>
-            <option value="">Pizzeria</option>
-            <option value="">Kebabravintola</option>
-            <option value="">Pihviravintola</option>
-            <option value="">Buffet</option>
-            <option value="">Fast Food</option>
-            <option value="">Fast Casual</option>
-            <option value="">Fine Dining</option>
+            <option value="Casual Dining">Casual Dining</option>
+            <option value="Pizzeria">Pizzeria</option>
+            <option value="Kebabravintola">Kebabravintola</option>
+            <option value="Pihviravintola">Pihviravintola</option>
+            <option value="Buffet">Buffet</option>
+            <option value="Fast Food">Fast Food</option>
+            <option value="Fast Casual">Fast Casual</option>
+            <option value="Fine Dining">Fine Dining</option>
         </select></div>
         <div className='addText'>Hintaluokka: 
         <select className='addBox2'

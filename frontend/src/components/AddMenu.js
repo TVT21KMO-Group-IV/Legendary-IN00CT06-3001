@@ -54,6 +54,8 @@ useEffect(async() => {
     console.log(restaurantMenu)
     setMenus( restaurantMenu )
   },[]);
+
+
 return (
     <div className="App">
       <div className='createBox'><h1>Lisää uusi annos</h1></div>
@@ -64,9 +66,9 @@ return (
           value={dish}
           placeholder="Annoksen tyyppi"
           onChange={(e) => setDish(e.target.value)}>
-            <option value="">Alkuruoka</option>
-            <option value="">Pääruoka</option>
-            <option value="">Jälkiruoka</option>
+            <option value="Alkuruoka">Alkuruoka</option>
+            <option value="Pääruoka">Pääruoka</option>
+            <option value="Jälkiruoka">Jälkiruoka</option>
         </select></div>
         <div className='addText'>Annoksen nimi: 
         <input className='addBox' required="required"
@@ -82,7 +84,7 @@ return (
           placeholder="Kuvaus"
           onChange={(e) => setDescription(e.target.value)}
         /></div>
-               
+             
         <div className='addText'>Annoksen Hinta: 
         <input className='addBox' required="required"
           type="text"
