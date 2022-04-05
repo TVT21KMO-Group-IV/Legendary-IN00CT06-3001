@@ -9,6 +9,7 @@ const bcrypt = require('bcryptjs');
 //const { v4: uuidv4 } = require('uuid');
 
 
+
 //src kansiosta node routes.js lähtee käyntiin http://localhost:5000/restaurant näkee hard koodatut ravintolat
 
 const dbConn = mysql.createPool({
@@ -129,7 +130,8 @@ app.get('/restaurant', function (req, res) {
 });
 });
 
-// Get all menuitems from database
+
+
 app.get('/menuitem', function (req, res) {
   dbConn.getConnection(function (err, connection) {
       dbConn.query('SELECT * FROM menuitem', function (error, results) {

@@ -26,7 +26,7 @@ function App ()  {
 
 
 
-  return (<div className=''>
+  return (<div className='pageWrapper'>
      
   
     <BrowserRouter>
