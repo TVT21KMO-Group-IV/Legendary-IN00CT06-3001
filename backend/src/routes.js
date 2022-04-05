@@ -12,10 +12,12 @@ const bcrypt = require('bcryptjs');
 //src kansiosta node routes.js lähtee käyntiin http://localhost:5000/restaurant näkee hard koodatut ravintolat
 
 const dbConn = mysql.createPool({
-    host:'localhost',
+  host:'localhost',
 	user:'fooduser',
 	password:'foodpass',
-	database:'food4u'
+	database:'food4u',
+  acquireTimeout: 1000,
+  connectionLimit: 100
 });
 
 
@@ -27,10 +29,20 @@ app.use(passport.initialize());
 
 // const BasicStrategy = require('passport-http').BasicStrategy;
 
+// app.get('/restaurant', function (req, res) {
+//   dbConn.getConnection(function (err, connection) {
+//       dbConn.query('SELECT * FROM restaurant', function (error, results) {
+//     if (error) throw error;
+//     console.log(error);
+//     res.send(results)
+//   });
+// });
+// });
+
 // passport.use(new BasicStrategy('/login',
 //   function(username, password, done) {
-//     dbConn.getConnection(function (username, callback) {
-//       dbConn.query('SELECT username, password FROM user WHERE username= ?', [username], callback);
+//     dbConn.getConnection(function (username, ) {
+//       dbConn.query('SELECT * FROM user WHERE username= ?', [username], function (error, result));
 //     const user = user.getUserByName(username);
 //     if(user == undefined) {
 //       // Username not found
@@ -89,6 +101,7 @@ app.use(passport.initialize());
   
 //   const payload = {
 //     user: {
+//       idUser: req.user.idUser,
 //       username: req.user.username,
 //       idOwner: req.user.idOwner
 //     }
@@ -110,7 +123,7 @@ app.get('/restaurant', function (req, res) {
   dbConn.getConnection(function (err, connection) {
       dbConn.query('SELECT * FROM restaurant', function (error, results) {
     if (error) throw error;
-    console.log(error);
+    console.log("Ravintolat haettu");
     res.send(results)
   });
 });
@@ -122,7 +135,7 @@ app.get('/menuitem', function (req, res) {
       dbConn.query('SELECT * FROM menuitem', function (error, results) {
 
     if (error) throw error;
-    console.log(error);
+    console.log("Menu haettu");
     res.send(results)
   });
 });
@@ -133,20 +146,20 @@ app.get(`/restaurant/:idRestaurant/restaurant`, function(req, res) {
   dbConn.getConnection(function (err, connection) {
     dbConn.query('SELECT * FROM restaurant WHERE idRestaurant=?',[req.params.idRestaurant], function(error, result) {
       if (error) throw error;
-      console.log(error);
+      console.log("Ravintola haettu");
       res.send(result)  
     });
   });   
 });
 
 // Add new restaurant to the database
-app.post(`/restaurant`, function(req, res) {
+app.post(`/addrestaurant`, function(req, res) {
   dbConn.getConnection(function (err, connection) {
     dbConn.query('INSERT INTO restaurant (name, type, pricerange, address, openingHours, restaurantImg) VALUES (?, ?, ?, ?, ?, ?)',
     [req.body.name, req.body.type, req.body.pricerange, req.body.address, req.body.openingHours, req.body.restaurantImg],
      function(error, result) {
       if (error) throw error;
-      console.log(error);
+      console.log("Ravintola lisätty");
       res.send(result)  
     });
   });   
@@ -159,7 +172,7 @@ app.post(`/menuitem/:idRestaurant`, function(req, res) {
     [req.body.dish, req.body.name, req.body.description, req.body.price, req.body.menuItemImg, req.params.idRestaurant],
      function(error, result) {
       if (error) throw error;
-      console.log(error);
+      console.log("Annos lisätty");
       res.send(result)  
     });
   });   
@@ -171,7 +184,7 @@ app.get(`/restaurant/:idRestaurant/menu`, function(req, res) {
     dbConn.query('SELECT * FROM menuitem where idRestaurant=?',[req.params.idRestaurant], function(error, result) {
      // dbConn.query('SELECT * FROM menuitem', function(error, result) {
         if (error) throw error;
-        console.log(error);
+        console.log("Ruokalista haettu");
         res.send(result)  
       });
     });   
@@ -187,7 +200,7 @@ app.post(`/user`, function(req, res) {
     [ req.body.username, passwordHash, req.body.fname, req.body.lname, req.body.address, req.body.idOwner],
      function(error, result) {
       if (error) throw error;
-      console.log(error);
+      console.log("Käyttäjä luotu");
       res.send(result)  
     });
   });   
