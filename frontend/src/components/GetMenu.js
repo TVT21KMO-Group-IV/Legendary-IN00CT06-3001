@@ -26,13 +26,6 @@ export default function Menus(props) {
     setRestaurants(restaurant)
   }, []);
 
-  useEffect(async () => {
-    const dish = await fetch(`http://localhost:5000/restaurant/${restaurantId}/getdishes`).then((res) =>
-      res.json()
-    )
-    setDishes(dish);
-  })
-
   const [menuItemFilter, setRest] = useState('');
   const filter = (e) => {
     const keyw = e.target.value;
@@ -55,49 +48,38 @@ export default function Menus(props) {
           </div>
           <div className="restaurantMenuFunctions">
             <div className="menuSearch"><input type="search" value={menuItemFilter} onChange={filter} className="" placeholder="Etsi ruokalistalta" /></div>
-            <div className="menuListDishes">
-              {dishes.map(dishTitle =>
-                <>
-                  <p><a href="#">{dishTitle.dish}</a></p>
-                </>
-              )}
-            </div>
+            
           </div>
         </>
       )}
-      <div className="tunnistevaan">
-
-      </div>
+     
       <div className="restaurantMenuDisplay">
 
+      
+            <div className="dish">
+              
+              <div className="menuDishItems">
 
-        <div className="dish">
-          <h2 className="dishTitle">menu.dish</h2>
-          <div className="menuDishItems">
-
-            {filteredMenuItems.length ? filteredMenuItems.map((menus) => (
-              <>
-                <div className="itemWrapper">
-                  <div className="dishItem">
-                    <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
-                    <div className="dishDetails">
-                      <strong>{menus.name}</strong>
-                      <p>{menus.description}</p>
-                      <p>{menus.price} €</p>
+                {filteredMenuItems.length ? filteredMenuItems.map((menus) => (
+                  <>
+                    <div className="itemWrapper">
+                      <div className="dishItem">
+                        <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
+                        <div className="dishDetails">
+                          <strong>{menus.name}</strong>
+                          <p>{menus.description}</p>
+                          <p>{menus.price} €</p>
+                        </div>
+                        <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
+                      </div>
                     </div>
-                    <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
-                  </div>
-                </div>
-              </>
-            )) : <div>Tällaista annosta ei löydy, koita jotain muuta hakusanaa.</div>
-            }
-
-          </div>
-        </div>
-
+                  </>
+                )) : <div>Tällaista annosta ei löydy, koita jotain muuta hakusanaa.</div>
+                }
+              </div>
+            </div>
+     
       </div>
-
-
     </div>
   );
 }
