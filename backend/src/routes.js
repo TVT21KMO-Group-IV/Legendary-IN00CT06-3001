@@ -11,10 +11,12 @@ const passport = require('passport');
 //src kansiosta node routes.js lähtee käyntiin http://localhost:5000/restaurant näkee hard koodatut ravintolat
 
 const dbConn = mysql.createPool({
-    host:'localhost',
+  host:'localhost',
 	user:'fooduser',
 	password:'foodpass',
-	database:'food4u'
+	database:'food4u',
+  acquireTimeout: 1000,
+  connectionLimit: 100
 });
 
 
@@ -105,7 +107,8 @@ app.post(`/user`, function(req, res) {
      function(error, result) {
       if (error) throw error;
       console.log(error);
-      res.send(result)  
+      res.send(result) 
+      db_conn.close(); 
     });
   });   
 });
