@@ -57,17 +57,23 @@ res.json());
         </p>
             <form onSubmit={ addSubmit}>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div><input type="text"  value = { username} placeholder='Käyttäjätunnus' className='loginInsertBox' onChange = {(e) => setUsername(e.target.value)}></input></div>
                 <div><input type="password"  value = { password }placeholder='Salasana' className='loginInsertBox' onChange = {(e) => setPassword(e.target.value)}></input></div>
                 <div><input type="text" value ={ fname } placeholder='Etunimi' className='loginInsertBox' onChange = {(e) => setFname(e.target.value)}></input></div>
                 <div><input type="text" value ={ lname } placeholder='Sukunimi' className='loginInsertBox' onChange = {(e) => setLname(e.target.value)}></input></div>
                 <div><input type="text"  value ={ address } placeholder='Osoite' className='loginInsertBox' onChange = {(e) => setAddress(e.target.value)}></input></div>
 =======
+=======
+>>>>>>> 554549bd2c1165bc4d3ac2e2ab705902fcdadaf9
                 <div><input type="text" required="required" value = { username} placeholder='Käyttäjätunnus' className='loginInsertBox' onChange = {(e) => setUsername(e.target.value)}></input></div>
                 <div><input type="password" required="required" value = { password }placeholder='Salasana' className='loginInsertBox' onChange = {(e) => setPassword(e.target.value)}></input></div>
                 <div><input type="text" required="required" value ={ fname } placeholder='Etunimi' className='loginInsertBox' onChange = {(e) => setFname(e.target.value)}></input></div>
                 <div><input type="text" required="required" value ={ lname } placeholder='Sukunimi' className='loginInsertBox' onChange = {(e) => setLname(e.target.value)}></input></div>
                 <div><input type="text" required="required" value ={ address } placeholder='Osoite' className='loginInsertBox' onChange = {(e) => setAddress(e.target.value)}></input></div>
+<<<<<<< HEAD
+>>>>>>> 554549bd2c1165bc4d3ac2e2ab705902fcdadaf9
+=======
 >>>>>>> 554549bd2c1165bc4d3ac2e2ab705902fcdadaf9
                 <div><input type="text"  value = { idOwner }placeholder='Omistaja' className='loginInsertBox' onChange = {(e) => setIdOwner(e.target.value)}></input></div> 
 
