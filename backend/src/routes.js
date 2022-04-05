@@ -205,8 +205,10 @@ app.post(`/user`, function(req, res) {
       res.send(result) 
       db_conn.close(); 
 =======
+=======
+>>>>>>> 554549bd2c1165bc4d3ac2e2ab705902fcdadaf9
       console.log("Käyttäjä luotu");
-      res.send(result)  
+      res.send(result) 
 >>>>>>> 554549bd2c1165bc4d3ac2e2ab705902fcdadaf9
     });
   });   
