@@ -19,25 +19,43 @@ import ShoppingCart from './components/ShoppingCart';
 
 
 
-function App ({ cartItems })  {
+function App ()  {
 
+  const [cartItems, setCartItems] = useState([]);
 
+  const addToCart = (menu) =>{
+    if (cartItems.indexOf(menu) !== -1)
+    return;
+    setCartItems([...cartItems, menu]);
+    };
 
+    const handleQty = (menu, d) =>{
+      const ind = cartItems.indexOf(menu);
+      const arr = cartItems;
+      arr[ind].amount += d;
+      if (arr[ind].amount === 0) arr[ind].amount = 1;
+      setCartItems([...arr]);
+    };
+/*
+    useEffect(() =>{
+      console.log("cart change");
+    }, [cartItems]);
+*/
 
   return (<div className=''>
      
   
     <BrowserRouter>
 
-      <NavBar />
+      <NavBar cartItems={cartItems}/>
         <Routes>
           <Route path="/Login" element={ <Login/> } />
           <Route path="/Register" element={ <Register/>} />
           <Route path="/" element={ <Restaurantss/> } />
           <Route path="/Restaurant" element={ <Restaurant/> } />
           <Route path="/Menuitem" element={ <Menu /> } />
-          <Route path="/restaurant/:restaurantId" element={ <GetMenu /> } />
-          <Route path="/ShoppingCart" element={ <ShoppingCart cartItems={cartItems} />} />
+          <Route path="/restaurant/:restaurantId" element={ <GetMenu cartItems={cartItems} addToCart={addToCart} /> } />
+          <Route path="/ShoppingCart" element={ <ShoppingCart cartItems={cartItems} setCartItems={setCartItems} handleQty={handleQty} />} />
         </Routes>
       <Footer />
           

@@ -2,7 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import siteLogo from './food4u_logo_001_vaalea_100px.png';
 
-export default function NavBar() {
+export default function NavBar(props) {
+  const {cartItems} =  props;
   return (
     <div className='barBackground'>
         <div className='barElements'>
@@ -10,7 +11,7 @@ export default function NavBar() {
                 <div className='barButtons'>
                     <Link className="button"to ="/Login" title="Kirjaudu"><i class="fas fa-sign-in-alt" /></Link>
                     <Link className="button" to ="/Register" title="Luo itsellesi tunnus"><i class="fas fa-user-plus" /></Link>
-                    <Link className="button" to ="/ShoppingCart" title="Ostoskärry"><i class="fas fa-cart-arrow-down" /></Link>
+                    <Link className="button" to ="/ShoppingCart" title="Ostoskärry"><i class="fas fa-cart-arrow-down" />{cartItems.length}</Link>
                 </div>
          </div>   
     </div>
