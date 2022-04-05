@@ -6,6 +6,7 @@ export default function Menus(props) {
   const [menus, setMenus] = useState([]);
   const { restaurantId } = useParams();
   const [restaurants, setRestaurants] = useState([]);
+  const [dishes, setDishes] = useState([]);
 
   useEffect(async () => {
     const restaurantMenu = await fetch(`http://localhost:5000/restaurant/${restaurantId}/menu`).then((res) =>
@@ -25,6 +26,13 @@ export default function Menus(props) {
     setRestaurants(restaurant)
   }, []);
 
+  useEffect(async () => {
+    const dish = await fetch(`http://localhost:5000/restaurant/${restaurantId}/getdishes`).then((res) =>
+      res.json()
+    )
+    setDishes(dish);
+  })
+
   const [menuItemFilter, setRest] = useState('');
   const filter = (e) => {
     const keyw = e.target.value;
@@ -39,7 +47,7 @@ export default function Menus(props) {
       {restaurants.map(rest =>
 
         <>
-          <div className='restaurantMainImg' style={{ backgroundImage: `url(${rest.restaurantImg})`, backgroundRepeat: 'no-repeat'}}> </div>
+          <div className='restaurantMainImg' style={{ backgroundImage: `url(${rest.restaurantImg})`, backgroundRepeat: 'no-repeat' }}> </div>
           <div className='restaurantDetails'>
             <div><h1 className='restaurantName'>{rest.name}</h1></div>
             <div><i class="fas fa-money-bill-alt"></i>{rest.pricerange} <i class="fas fa-tags"></i>{rest.type}</div>
@@ -47,11 +55,19 @@ export default function Menus(props) {
           </div>
           <div className="restaurantMenuFunctions">
             <div className="menuSearch"><input type="search" value={menuItemFilter} onChange={filter} className="" placeholder="Etsi ruokalistalta" /></div>
-            <div className="menuListDishes">Näytä: <a href="#">Pääruoka</a> - <a href="#">Jälkiruoka</a> - <a href="#">Iltapala</a></div>
+            <div className="menuListDishes">
+              {dishes.map(dishTitle =>
+                <>
+                  <p><a href="#">{dishTitle.dish}</a></p>
+                </>
+              )}
+            </div>
           </div>
         </>
       )}
+      <div className="tunnistevaan">
 
+      </div>
       <div className="restaurantMenuDisplay">
 
 
