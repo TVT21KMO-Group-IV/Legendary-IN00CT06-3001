@@ -135,6 +135,7 @@ insert into restaurant (name, type, pricerange, address, openingHours, restauran
 insert into restaurant (name, type, pricerange, address, openingHours, restaurantImg) VALUES ('Chez Dominique', 'Fine Dining', '€€€€', 'Rikhardinkatu 5', '17-24', 'https://www.halton.com/wp-content/uploads/2020/05/Solution-Fine-dining-003.jpg');
 insert into restaurant (name, type, pricerange, address, openingHours, restaurantImg) VALUES ('Grilli Toro', 'Pihviravintola', '€€', 'Valjakkalanraitti 3', '11-24', 'https://www.kotikokki.net/media/cache/large/recipeimage/large/52d6dc5ed074a9ec0e077d1a/original.jpg?1297467421');
 insert into restaurant (name, type, pricerange, address, openingHours, restaurantImg) VALUES ('GoodWin Steak House', 'Pihviravintola', '€€€', 'Lihamestarinpolku 1', '11-24', 'https://www.steak.fi/411i500x367.jpg?key=44bfcf19da486e4e62ec4e7cec089bf8');
+<<<<<<< HEAD:food4u_database_v1.1.txt
 insert into menuitem (dish, name, description, price, menuItemImg, idRestaurant) VALUES ('alkuruoka', 'Valkosipulileipä', 'Valkosipulileipä', 5, 'https://www.kotikokki.net/media/cache/large/recipeimage/large/52d6dfa7d074a9ec0e0a6d52/original.jpg?1297724550', 1);
 insert into menuitem (dish, name, description, price, menuItemImg, idRestaurant) VALUES ('alkuruoka', 'Valkosipulileipä', 'Valkosipulileipä', 5, 'https://www.kotikokki.net/media/cache/large/recipeimage/large/52d6dfa7d074a9ec0e0a6d52/original.jpg?1297724550', 2);
 insert into menuitem (dish, name, description, price, menuItemImg, idRestaurant) VALUES ('Pääruoka', 'Pizza Margherita', 'Tomaattikastike, juusto', '7.0', 'https://www.yumcurry.com/wp-content/uploads/2020/06/pizza-margherita-recipe.jpg', '1');
@@ -142,3 +143,12 @@ insert into menuitem (dish, name, description, price, menuItemImg, idRestaurant)
 insert into menuitem (dish, name, description, price, menuItemImg, idRestaurant) VALUES ('Jälkiruoka', 'Jäätelöannos', 'Suklaa, mansikka ja vaniljajäätelöä', 8, 'https://cdn.anna.fi/wp-content/uploads/s3/sites/40/2020/08/17073648/p2160447_0.jpg', 1);
 insert into user values('1','Riku','1234', 'Riku',' Savolainen',' Viistokuja 3, Murto', 'yes');
 insert into user values('2','D1b2n4','1234', 'Risto','Mämmi',' Ristitie 66, Kiikeli', 'No');
+=======
+insert into restaurant (name, type, pricerange, address, openingHours, restaurantImg) VALUES ('Niilos Cafe', 'Kahvila', '€€€€', 'Milloin missäkin tapahtumassa', '10-13', 'https://www.vastavalo.net/albums/userpics/10119/normal_varikastori.jpg');
+insert into menuitem (dish, name, description, price, menuItemImg, idRestaurant) VALUES ('Pääruoka', 'Valkosipulileipä', 'Valkosipulileipä', 5, 'https://www.kotikokki.net/media/cache/large/recipeimage/large/52d6dfa7d074a9ec0e0a6d52/original.jpg?1297724550', 1);
+insert into menuitem (dish, name, description, price, menuItemImg, idRestaurant) VALUES ('Naposteltavaa', 'Valkosipulileipä', 'Valkosipulileipä', 5, 'https://www.kotikokki.net/media/cache/large/recipeimage/large/52d6dfa7d074a9ec0e0a6d52/original.jpg?1297724550', 2);
+insert into menuitem (dish, name, description, price, menuItemImg, idRestaurant) VALUES ('Pääruoka', 'Pizza Margherita', 'Tomaattikastike, juusto', '7.0', 'https://www.yumcurry.com/wp-content/uploads/2020/06/pizza-margherita-recipe.jpg', '3');
+insert into menuitem (dish, name, description, price, menuItemImg, idRestaurant) VALUES ('Pääruoka', 'Kebab Ranskalaisilla', 'Kebab, ranskalaiset, salaatti', 10, 'https://sirinlounasravintola.fi/wp-content/uploads/2020/07/Lasten-kebab-rans.png', 4);
+insert into menuitem (dish, name, description, price, menuItemImg, idRestaurant) VALUES ('Jälkiruoka', 'Jäätelöannos', 'Suklaa, mansikka ja vaniljajäätelöä', 8, 'https://cdn.anna.fi/wp-content/uploads/s3/sites/40/2020/08/17073648/p2160447_0.jpg', 5);
+insert into menuitem (dish, name, description, price, menuItemImg, idRestaurant) VALUES ('Aamukahvi', 'Kahvi mustana', 'Tummapaahtoinen kahvi, 3 dl', 2, 'https://www.haggman.fi/wp-content/uploads/2015/05/Kahvi.jpg', 6);
+>>>>>>> ravintola-sivun-backend-toiminnot:food4u_database_v1.0.txt
