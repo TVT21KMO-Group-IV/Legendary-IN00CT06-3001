@@ -21,26 +21,18 @@ import ShoppingCart from './components/ShoppingCart';
 
 function App ()  {
 
+  
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = (menu) =>{
-    if (cartItems.indexOf(menu) !== -1)
-    return;
-    setCartItems([...cartItems, menu]);
-    };
+  const addToCart = (menu) => {
+    setCartItems([...cartItems, {...menu}]);
+  };
 
-    const handleQty = (menu, d) =>{
-      const ind = cartItems.indexOf(menu);
-      const arr = cartItems;
-      arr[ind].amount += d;
-      if (arr[ind].amount === 0) arr[ind].amount = 1;
-      setCartItems([...arr]);
-    };
-/*
-    useEffect(() =>{
-      console.log("cart change");
-    }, [cartItems]);
-*/
+  const removeFromCart = (menuToRemove) => {
+    setCartItems(
+      cartItems.filter((menu) => menu !== menuToRemove)
+      );
+  };
 
   return (<div className=''>
      
@@ -55,7 +47,7 @@ function App ()  {
           <Route path="/Restaurant" element={ <Restaurant/> } />
           <Route path="/Menuitem" element={ <Menu /> } />
           <Route path="/restaurant/:restaurantId" element={ <GetMenu cartItems={cartItems} addToCart={addToCart} /> } />
-          <Route path="/ShoppingCart" element={ <ShoppingCart cartItems={cartItems} setCartItems={setCartItems} handleQty={handleQty} />} />
+          <Route path="/ShoppingCart" element={ <ShoppingCart cartItems={cartItems} removeFromCart={removeFromCart} />} />
         </Routes>
       <Footer />
           

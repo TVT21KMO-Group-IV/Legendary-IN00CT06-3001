@@ -3,44 +3,64 @@ import { Link } from 'react-router-dom'
 
 export default function ShoppingCart(props) {
 
-  const {cartItems, setCartItems, handleQty} =  props;
-  const [price, setPrice] = useState(0);
-
-  const removeFromCart = (id) =>{
-    const arr = cartItems.filter((menu) => menu.idMenuItem !== id);
-    setCartItems(arr);
-    handlePrice();
-  }
-
-  const handlePrice = () =>{
-    let ans = 0;
-    cartItems.map((menu) => (ans += menu.amount * menu.price));
-    setPrice(ans);
-  };
-  
-  useEffect(() =>{
-    handlePrice();
-  });
-
-  
-    return (
-    
-            <div>
-                <h1>OSTOSKORI:</h1>
-                {cartItems.map((menu) => (
-                <div key ={menu.idMenuItem}><h3>{menu.name}</h3>
-                <div>Hinta: {menu.price}€
-                <div> 
-                <button onClick={() => handleQty(menu, 1)}> + </button>
-                <button>{menu.amount}</button>
-                <button onClick={() => handleQty(menu, -1)}> - </button></div></div>
-                <div>
-                  <button onClick={() => removeFromCart(menu.idMenuItem)}>Poista</button>
-                </div></div>
-                ))}
-                
-                <div><h3>Yhteensä: {price}€ </h3></div>
+  const {cartItems, removeFromCart} =  props;
+  const itemsPrice = cartItems.reduce((a, c) => a + 1 * c.price, 0);
+  const delPrice = 3.90;
+  const totalPrice = itemsPrice + delPrice;
+  return (
+    <aside className="block col-1">
+      <h2>Ostoskori</h2>
+      <div>
+        {cartItems.length === 0 && <div>Ostoskori on tyhjä</div>}
+        {cartItems.map((item) => (
+          <div key={item.id} className="row">
+            <div className="col-2">{item.name}</div>
+            <div className="col-2">
+              <button onClick={() => removeFromCart(item)} className="remove">
+                Poista ostoskorista
+              </button>{' '}
               
-    </div>
-    )
-            }
+            </div>
+
+            <div className="col-2 text-right">
+              {item.price.toFixed(2)}€
+            </div>
+          </div>
+        ))}
+
+        {cartItems.length !== 0 && (
+          <>
+            <hr></hr>
+            <div className="row">
+              <div className="col-2">Ostokset:</div>
+              <div className="col-1 text-right">{itemsPrice.toFixed(2)}€</div>
+            </div>
+            
+            <div className="row">
+              <div className="col-2">Toimituskulut:</div>
+              <div className="col-1 text-right">
+                {delPrice.toFixed(2)}€
+              </div>
+            </div>
+            <hr></hr>
+            <div className="row">
+              <div className="col-2">
+                <strong>Yhteensä:</strong>
+              </div>
+              <div className="col-1 text-right">
+                <strong>{totalPrice.toFixed(2)}€</strong>
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <button>
+                Maksa
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+    </aside>
+  );
+}
+    

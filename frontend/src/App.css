@@ -139,6 +139,18 @@ body {
   cursor: pointer;
 }
 
+.barButtons span{
+  background-color: green;
+  border-radius: 20px;
+  color: white;
+  position: absolute;
+  top: 30px;
+  right: 240px;
+  font-size: 12px;
+  padding: 5px;
+
+}
+
 .restaurantWrapper {
   min-width: 1000px;
   display: flex;
