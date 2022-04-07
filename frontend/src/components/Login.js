@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+
 export default function Login() {
 
   const [ username, setUsername ] = useState('');
@@ -35,16 +36,18 @@ console.log(err);
 
 }
 };
-
+     
   return (
     <div className='alignCenter'>
         <p>
         Kirjaudu sisään antamalla käyttäjätunnus ja salasana
         </p>
         <form onSubmit={ addSubmit }>
-          <div><input type="text" value={username} placeholder='Käyttäjätunnus' className='loginInsertBox' onChange={(e) => setUsername(e.target.value)}></input></div>
-          <div><input type="password" value={password} placeholder='Salasana' className='loginInsertBox' onChange={(e) => setPassword(e.target.value)}></input></div>
-          <button className='loginButton' type="submit">Kirjaudu sisään</button>
+          <div><input type="text" value={username} placeholder='Käyttäjätunnus' className='loginInsertBox' onChange={(e) => setUsername(e.target.value)}>
+            </input></div>
+          <div><input type="password" value={password} placeholder='Salasana' className='loginInsertBox' onChange={(e) => setPassword(e.target.value)}>
+            </input></div>
+          <button className='loginButton' type="submit" >Kirjaudu sisään</button>
 
           <div className="message">{message ? <p>Kirjauduttu sisään</p> : null}</div>
           </form>
