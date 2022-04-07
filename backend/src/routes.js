@@ -28,6 +28,8 @@ app.use(bodyParser.urlencoded({limit: "50mb",extended: true}));
 app.use(passport.initialize());
 
 const jwt = require("jsonwebtoken");
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+      jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 
 let jwtSecretKey = null;
 if(process.env.JWTKEY === undefined) {
@@ -39,7 +41,7 @@ if(process.env.JWTKEY === undefined) {
 app.post("/login", (req, res)=> {
 const user = req.body.username
 const password = req.body.password
-const idOwner = req.body.idOwner
+const isOwner = req.body.isOwner
 dbConn.getConnection ( async (err, connection)=> {
 if (err) throw (err)
  const sqlSearch = "Select * from user where username = ?"
@@ -58,11 +60,15 @@ if (result.length == 0) {
 if (await bcrypt.compare(password, passwordHash)) {
     console.log("Login Successful")
     console.log("Generating accessToken")
-    jwt.sign({ user: user, idOwner }, jwtSecretKey, {expiresIn: "2h"}, (err, token) => {
-
-      res.json({ token });  
+    return res.json({token: jwt.sign({ user: user, isOwner }, jwtSecretKey, {expiresIn: "2h"}, (err, token) => { 
+      token = `Bearer ${token}`,
       console.log(token)
-    });    
+    })})
+    // jwt.sign({ user: user, idOwner }, jwtSecretKey, {expiresIn: "2h"}, (err, token) => {
+
+    //   res.json({ token });  
+    //   console.log(token)
+    // });    
    } else {
     console.log("Password Incorrect")
     res.send("Password incorrect!")
@@ -151,8 +157,8 @@ app.post(`/user`, function(req, res) {
     
     const salt = bcrypt.genSaltSync(6);
   const passwordHash = bcrypt.hashSync(req.body.password, salt);
-    dbConn.query('INSERT INTO user (username, password, fname, lname, address, idOwner) VALUES (?, ?, ?, ?, ?, ?)',
-    [ req.body.username, passwordHash, req.body.fname, req.body.lname, req.body.address, req.body.idOwner],
+    dbConn.query('INSERT INTO user (username, password, fname, lname, address, isOwner) VALUES (?, ?, ?, ?, ?, ?)',
+    [ req.body.username, passwordHash, req.body.fname, req.body.lname, req.body.address, req.body.isOwner],
      function(error, result) {
       if (error) throw error;
       console.log("Käyttäjä luotu");
