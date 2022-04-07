@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-export default function Menus(props) {
 
-  const [menus, setMenus] = useState([]);
-  const { restaurantId } = useParams();
-  const [restaurants, setRestaurants] = useState([]);
-  const [dishes, setDishes] = useState([]);
+export default function GetMenu (props) {
 
-  useEffect(async () => {
-    const restaurantMenu = await fetch(`http://localhost:5000/restaurant/${restaurantId}/menu`).then((res) =>
-      res.json()
+  const {addToCart} =  props;
+
+    const [menus, setMenus] =useState([]);
+    const {restaurantId} = useParams();
+    const [restaurants, setRestaurants] = useState([]);
+   
+        
+  console.log(restaurantId);
+
+    
+  useEffect(async() => {
+    const restaurantMenu = await fetch(`http://localhost:5000/restaurant/${restaurantId}/menu`).then((res)=>
+    res.json()
+
     )
 
     console.log(restaurantMenu)
@@ -32,7 +39,6 @@ export default function Menus(props) {
     setRest(keyw);
   };
   let filteredMenuItems = menus.filter(menuItem => menuItem.name.toLowerCase().includes(menuItemFilter.toLowerCase()) || menuItem.description.toLowerCase().includes(menuItemFilter.toLowerCase()))
-
 
   return (
     <div className="restaurantWrapper">
@@ -70,7 +76,8 @@ export default function Menus(props) {
                           <p>{menus.description}</p>
                           <p>{menus.price} €</p>
                         </div>
-                        <div className="addToCartIcon"><i class="fas fa-cart-plus" /></div>
+                        <div className="addToCartIcon"><button onClick={() => addToCart(menus)}>Lisää ostoskoriin</button><i class="fas fa-cart-plus" /></div>
+
                       </div>
                     </div>
                   </>
@@ -83,3 +90,4 @@ export default function Menus(props) {
     </div>
   );
 }
+

@@ -28,6 +28,8 @@ app.use(bodyParser.json({limit: "50mb"}));
 app.use(bodyParser.urlencoded({limit: "50mb",extended: true}));
 app.use(passport.initialize());
 
+
+
 const jwt = require("jsonwebtoken");
 
 let jwtSecretKey = null;
@@ -74,6 +76,7 @@ if (await bcrypt.compare(password, passwordHash)) {
 
 
 
+
 // Get all restaurants from the database
 app.get('/restaurant', function (req, res) {
   dbConn.getConnection(function (err, connection) {
@@ -104,10 +107,12 @@ app.get(`/restaurant/:idRestaurant/restaurant`, function(req, res) {
     dbConn.query('SELECT * FROM restaurant WHERE idRestaurant=?',[req.params.idRestaurant], function(error, result) {
       if (error) throw error;
       console.log("Ravintola haettu");
+
       res.send(result)  
     });
   });   
 });
+
 
 // Add new restaurant to the database
 app.post(`/addrestaurant`, function(req, res) {
@@ -121,6 +126,7 @@ app.post(`/addrestaurant`, function(req, res) {
     });
   });   
 });
+
 
 // Add menuitems for selected restaurant
 app.post(`/menuitem/:idRestaurant`, function(req, res) {
@@ -157,16 +163,11 @@ app.post(`/user`, function(req, res) {
     [ req.body.username, passwordHash, req.body.fname, req.body.lname, req.body.address, req.body.idOwner],
      function(error, result) {
       if (error) throw error;
-<<<<<<< HEAD
-      console.log(error);
-      res.send(result) 
-      db_conn.close(); 
-=======
-=======
->>>>>>> 554549bd2c1165bc4d3ac2e2ab705902fcdadaf9
       console.log("Käyttäjä luotu");
       res.send(result) 
->>>>>>> 554549bd2c1165bc4d3ac2e2ab705902fcdadaf9
+      console.log("Käyttäjä luotu");
+      res.send(result) 
+
     });
   });   
 });

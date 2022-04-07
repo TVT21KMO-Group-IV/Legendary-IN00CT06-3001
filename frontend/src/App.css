@@ -28,13 +28,27 @@
   width: 150px;
   height: 150px;
 }
+
 .addMenuItemImg {
   width: 50px;
   height: 50px;
 }
+
 .line {
   border-bottom: 4px solid rgb(190, 187, 187);
 }
+.addMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-bottom: 2px solid rgb(116, 0, 0);
+  padding-bottom: 1%;
+  padding-top: 1%;
+}
+
 .addMenu {
   display: flex;
   flex-direction: row;
@@ -72,6 +86,7 @@
   width: 150px;
   font-size: 16px;
   border: solid 2px rgb(116, 0, 0);
+  cursor: pointer;
 }
 
 .alignCenter {
@@ -160,6 +175,18 @@
   cursor: pointer;
 }
 
+.barButtons span{
+  background-color: green;
+  border-radius: 20px;
+  color: white;
+  position: absolute;
+  top: 30px;
+  right: 240px;
+  font-size: 12px;
+  padding: 5px;
+
+}
+
 .restaurantWrapper {
   display: flex;
   flex-direction: column;
@@ -229,6 +256,10 @@
   gap: 10px
 }
 
+.restaurantMenuDisplay {
+  width: 960px;
+}
+
 .menuDishItems .itemWrapper {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -295,3 +326,4 @@
   margin-left: 3%;
   width: 208px;
 }
+
