@@ -9,7 +9,7 @@ function Register() {
     const [ fname, setFname ] = useState('');
     const [ lname, setLname ] = useState('');
     const [ address, setAddress ] = useState('');
-    const [ idOwner, setIdOwner] = useState('');  
+    const [ isOwner, setIsOwner] = useState(false);  
     const [ message, setMessage] = useState('');  // to store success or error message
 
 let addSubmit = async (e) => {
@@ -26,7 +26,7 @@ let addSubmit = async (e) => {
         fname: fname,
         lname: lname,
         address: address,
-        idOwner: idOwner,
+        isOwner: isOwner,
     }),
 }).then((res)=>
 res.json());
@@ -38,7 +38,7 @@ res.json());
         setFname('');
         setLname('');
         setAddress('');
-        setIdOwner('');
+        setIsOwner('');
         setMessage('Käyttäjä lisätty!');
     } else {
         setMessage("Error occured");
@@ -66,7 +66,7 @@ res.json());
                 <div><input type="text" required="required" value ={ fname } placeholder='Etunimi' className='loginInsertBox' onChange = {(e) => setFname(e.target.value)}></input></div>
                 <div><input type="text" required="required" value ={ lname } placeholder='Sukunimi' className='loginInsertBox' onChange = {(e) => setLname(e.target.value)}></input></div>
                 <div><input type="text" required="required" value ={ address } placeholder='Osoite' className='loginInsertBox' onChange = {(e) => setAddress(e.target.value)}></input></div>
-                <div><input type="text"  value = { idOwner }placeholder='Omistaja' className='loginInsertBox' onChange = {(e) => setIdOwner(e.target.value)}></input></div> 
+                <div><input type="checkbox" checked = { isOwner }placeholder='Omistaja' className='loginInsertBox' onChange = {(e) => setIsOwner(e.target.value)}></input></div> 
 
                 <div><button className='loginButton'type='submit'>Luo käyttäjä</button></div>
                 <div className="message">{message ? <p>Käyttäjätunnus luotu</p> : null}</div>
