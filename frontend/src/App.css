@@ -24,8 +24,26 @@ body {
   width: 150px;
   height: 150px;
 }
+
+.addMenuItemImg {
+  width: 50px;
+  height: 50px;
+}
+
 .line {
   border-bottom: 4px solid rgb(190, 187, 187);
+}
+
+.addMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-bottom: 2px solid rgb(116, 0, 0);
+  padding-bottom: 1%;
+  padding-top: 1%;
 }
 
 .restaurantHome {
@@ -86,6 +104,9 @@ body {
 }
 
 .barBackground{
+  order: 0;
+  flex: 0 1 auto;
+  align-self: stretch;
   background-color: #e32934;
   color: white;
   height: 130px;
@@ -163,6 +184,7 @@ body {
 }
 
 .restaurantDetails {
+  width: 960px;
   padding: 20px 0px;
 }
 
@@ -177,10 +199,12 @@ body {
 }
 
 .restaurantMenuFunctions {
+  width: 960px;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   padding: 20px 0px;
   display: flex;
+  justify-content: center;
 }
 
 .menuSearch input {
@@ -206,9 +230,15 @@ body {
 }
 
 .menuDishItems {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
   gap: 10px
+}
+
+.restaurantMenuDisplay {
+  width: 960px;
 }
 
 .menuDishItems .itemWrapper {
@@ -229,7 +259,11 @@ body {
 
 .dishDetails {
   padding: 10px 0px 0px 10px;
-  min-width: 200px;
+  width: 200px;
+}
+
+.dishDetails p {
+  margin-top: 0px;
 }
 
 .addToCartIcon {
@@ -241,6 +275,9 @@ body {
 }
 
 .footerWrapper {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: stretch;
   margin-top: 100px;
   padding-bottom: 40px;
   background-color: #221f1f;
@@ -251,4 +288,22 @@ body {
   justify-content: space-around;
   align-items: center;
 }
+.createBox {
 
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 19px;
+  text-align: center;
+}
+.addText {
+  width: 60%;
+  text-align: right;
+}
+.addBox {
+  margin-left: 3%;
+  width: 200px;
+}
+.addBox2 {
+  margin-left: 3%;
+  width: 208px;
+}
