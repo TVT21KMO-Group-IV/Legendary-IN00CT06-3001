@@ -45,7 +45,7 @@ function App ()  {
           <Route path="/Register" element={ <Register/>} />
           <Route path="/" element={ <Restaurantss/> } />
           <Route path="/Restaurant" element={ <Restaurant/> } />
-          <Route path="/Menuitem" element={ <Menu /> } />
+          
           <Route path="/restaurant/:restaurantId" element={ <GetMenu cartItems={cartItems} addToCart={addToCart} /> } />
           <Route path="/ShoppingCart" element={ <ShoppingCart cartItems={cartItems} removeFromCart={removeFromCart} />} />
         </Routes>

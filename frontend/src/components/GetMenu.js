@@ -32,25 +32,62 @@ export default function GetMenu (props) {
     setRestaurants( restaurant )
   },[]);
 
+  const [menuItemFilter, setRest] = useState('');
+  const filter = (e) => {
+    const keyw = e.target.value;
+    setRest(keyw);
+  };
+  let filteredMenuItems = menus.filter(menuItem => menuItem.name.toLowerCase().includes(menuItemFilter.toLowerCase()) || menuItem.description.toLowerCase().includes(menuItemFilter.toLowerCase()))
+
   
 
  
-        return (
-          <div>
-            <h1>MENU:</h1>
-            {restaurants.map(rest =>
-               <div key ={restaurantId.idRestaurant}><h2>{rest.name}</h2></div>
-            )}
+  return (
+    <div className="restaurantWrapper">
 
-              {menus.map((menu) => (
-                <div key ={menu.idMenuItem}><h3>{menu.name}</h3>
-                <div>Annoksen kuvaus: {menu.description} Hinta: {menu.price}€
-                <button onClick={() => addToCart(menu)}>Lisää ostoskoriin</button></div></div>
-                
-              ))}
-  
-                
-                
-        </div>
-      );
+      {restaurants.map(rest =>
+
+        <>
+          <div className='restaurantMainImg' style={{ backgroundImage: `url(${rest.restaurantImg})`, backgroundRepeat: 'no-repeat' }}> </div>
+          <div className='restaurantDetails'>
+            <div><h1 className='restaurantName'>{rest.name}</h1></div>
+            <div><i class="fas fa-money-bill-alt"></i>{rest.pricerange} <i class="fas fa-tags"></i>{rest.type}</div>
+            <div><i class="fas fa-map-marked" />{rest.address} <i class="fas fa-clock"></i>{rest.openingHours}</div>
+          </div>
+          <div className="restaurantMenuFunctions">
+            <div className="menuSearch"><input type="search" value={menuItemFilter} onChange={filter} className="" placeholder="Etsi ruokalistalta" /></div>
+            
+          </div>
+        </>
+      )}
+     
+      <div className="restaurantMenuDisplay">
+
+      
+            <div className="dish">
+              
+              <div className="menuDishItems">
+
+                {filteredMenuItems.length ? filteredMenuItems.map((menus) => (
+                  <>
+                    <div className="itemWrapper">
+                      <div className="dishItem">
+                        <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
+                        <div className="dishDetails">
+                          <strong>{menus.name}</strong>
+                          <p>{menus.description}</p>
+                          <p>{menus.price} €</p>
+                        </div>
+                        <div className="addToCartIcon"><button onClick={() => addToCart(menus)}>Lisää ostoskoriin</button><i class="fas fa-cart-plus" /></div>
+                      </div>
+                    </div>
+                  </>
+                )) : <div>Tällaista annosta ei löydy, koita jotain muuta hakusanaa.</div>
+                }
+              </div>
+            </div>
+     
+      </div>
+    </div>
+  );
 }
