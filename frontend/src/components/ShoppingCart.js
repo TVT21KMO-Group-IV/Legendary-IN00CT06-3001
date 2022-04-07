@@ -14,9 +14,8 @@ export default function ShoppingCart(props) {
         {cartItems.length === 0 && <div>Ostoskori on tyhjä</div>}
         {cartItems.map((item) => (
           <div key={item.id} className="row">
-            <div className="col-2">{item.name}</div>
-            <div className="col-2">
-              <button onClick={() => removeFromCart(item)} className="remove">
+            <div className="col-2">{item.name}
+            <button onClick={() => removeFromCart(item)} className="remove">
                 Poista ostoskorista
               </button>{' '}
               
