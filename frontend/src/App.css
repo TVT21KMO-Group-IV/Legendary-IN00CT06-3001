@@ -1,7 +1,11 @@
-body {
-  
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: stretch;
+  align-items: center;
 }
-
 
 .searchBar {
   margin-left: 41%;
@@ -32,6 +36,17 @@ body {
 
 .line {
   border-bottom: 4px solid rgb(190, 187, 187);
+}
+.addMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-bottom: 2px solid rgb(116, 0, 0);
+  padding-bottom: 1%;
+  padding-top: 1%;
 }
 
 .addMenu {
@@ -173,9 +188,9 @@ body {
 }
 
 .restaurantWrapper {
-  min-width: 1000px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .restaurantMainImg {
@@ -229,6 +244,10 @@ body {
   width: 30%;
 }
 
+.restaurantMenuDisplay {
+  width: 960px;
+}
+
 .menuDishItems {
   display: flex;
   flex-wrap: wrap;
@@ -250,7 +269,7 @@ body {
 
 .dishItem {
   display: flex;
-  width: 300px;
+  /*width: 300px;*/
 }
 
 .dishImg {
@@ -307,3 +326,4 @@ body {
   margin-left: 3%;
   width: 208px;
 }
+

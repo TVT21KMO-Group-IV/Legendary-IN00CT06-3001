@@ -17,20 +17,21 @@ export default function GetMenu (props) {
   useEffect(async() => {
     const restaurantMenu = await fetch(`http://localhost:5000/restaurant/${restaurantId}/menu`).then((res)=>
     res.json()
-    )
-    
-    console.log(restaurantMenu)
-    setMenus( restaurantMenu )
-  },[]);
 
-  useEffect(async() => {
-    const restaurant = await fetch(`http://localhost:5000/restaurant/${restaurantId}/restaurant`).then((res)=>
-    res.json()
     )
-    
+
+    console.log(restaurantMenu)
+    setMenus(restaurantMenu)
+  }, []);
+
+  useEffect(async () => {
+    const restaurant = await fetch(`http://localhost:5000/restaurant/${restaurantId}/restaurant`).then((res) =>
+      res.json()
+    )
+
     console.log(restaurant)
-    setRestaurants( restaurant )
-  },[]);
+    setRestaurants(restaurant)
+  }, []);
 
   const [menuItemFilter, setRest] = useState('');
   const filter = (e) => {
@@ -39,9 +40,6 @@ export default function GetMenu (props) {
   };
   let filteredMenuItems = menus.filter(menuItem => menuItem.name.toLowerCase().includes(menuItemFilter.toLowerCase()) || menuItem.description.toLowerCase().includes(menuItemFilter.toLowerCase()))
 
-  
-
- 
   return (
     <div className="restaurantWrapper">
 
@@ -79,6 +77,7 @@ export default function GetMenu (props) {
                           <p>{menus.price} €</p>
                         </div>
                         <div className="addToCartIcon"><button onClick={() => addToCart(menus)}>Lisää ostoskoriin</button><i class="fas fa-cart-plus" /></div>
+
                       </div>
                     </div>
                   </>
@@ -91,3 +90,4 @@ export default function GetMenu (props) {
     </div>
   );
 }
+
