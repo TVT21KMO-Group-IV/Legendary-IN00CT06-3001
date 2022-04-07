@@ -26,7 +26,7 @@ let addSubmit = async (e) => {
         fname: fname,
         lname: lname,
         address: address,
-        isOwner: isOwner,
+        isOwner: false,
     }),
 }).then((res)=>
 res.json());
@@ -53,7 +53,7 @@ res.json());
   return (
     <div className='alignCenter'>
         <p>
-        Ljuo itsellesi uusi käyttäjätunnus
+        Luo itsellesi uusi käyttäjätunnus
         </p>
             <form onSubmit={ addSubmit}>
                 <div><input type="text"  value = { username} placeholder='Käyttäjätunnus' className='loginInsertBox' onChange = {(e) => setUsername(e.target.value)}></input></div>
@@ -61,11 +61,6 @@ res.json());
                 <div><input type="text" value ={ fname } placeholder='Etunimi' className='loginInsertBox' onChange = {(e) => setFname(e.target.value)}></input></div>
                 <div><input type="text" value ={ lname } placeholder='Sukunimi' className='loginInsertBox' onChange = {(e) => setLname(e.target.value)}></input></div>
                 <div><input type="text"  value ={ address } placeholder='Osoite' className='loginInsertBox' onChange = {(e) => setAddress(e.target.value)}></input></div>
-                <div><input type="text" required="required" value = { username} placeholder='Käyttäjätunnus' className='loginInsertBox' onChange = {(e) => setUsername(e.target.value)}></input></div>
-                <div><input type="password" required="required" value = { password }placeholder='Salasana' className='loginInsertBox' onChange = {(e) => setPassword(e.target.value)}></input></div>
-                <div><input type="text" required="required" value ={ fname } placeholder='Etunimi' className='loginInsertBox' onChange = {(e) => setFname(e.target.value)}></input></div>
-                <div><input type="text" required="required" value ={ lname } placeholder='Sukunimi' className='loginInsertBox' onChange = {(e) => setLname(e.target.value)}></input></div>
-                <div><input type="text" required="required" value ={ address } placeholder='Osoite' className='loginInsertBox' onChange = {(e) => setAddress(e.target.value)}></input></div>
                 <div><input type="checkbox" checked = { isOwner }placeholder='Omistaja' className='loginInsertBox' onChange = {(e) => setIsOwner(e.target.value)}></input></div> 
 
                 <div><button className='loginButton'type='submit'>Luo käyttäjä</button></div>

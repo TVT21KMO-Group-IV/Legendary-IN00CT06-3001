@@ -15,19 +15,12 @@ import Register from './components/Register';
 import Menu from './components/Menu';
 import Footer from './components/Footer';
 import GetMenu from './components/GetMenu';
-
-import ShoppingCart from './components/ShoppingCart';
-
 import AddRestaurant from './components/AddRestaurant';
 import AddMenu from './components/AddMenu'
-
-
-
-
+import ShoppingCart from './components/ShoppingCart';
 
 function App ()  {
 
-  
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (menu) => {
@@ -40,7 +33,8 @@ function App ()  {
       );
   };
 
-  return (<div className='pageWrapper'>
+
+  return (<div className=''>
      
   
     <BrowserRouter>
