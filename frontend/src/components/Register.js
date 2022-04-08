@@ -4,12 +4,13 @@ import '../App.css';
 
 function Register() {
 
+
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ fname, setFname ] = useState('');
     const [ lname, setLname ] = useState('');
     const [ address, setAddress ] = useState('');
-    const [ isOwner, setIsOwner] = useState(false);  
+    const [ isOwner, setIsOwner] = useState(); 
     const [ message, setMessage] = useState('');  // to store success or error message
 
 let addSubmit = async (e) => {
@@ -20,13 +21,13 @@ let addSubmit = async (e) => {
     headers: {"Content-Type": "application/json",
   },
     body: JSON.stringify( {
-        
+        //isChecked: false,
         username: username,
         password: password,
         fname: fname,
         lname: lname,
         address: address,
-        isOwner: false,
+        isOwner: isOwner,
     }),
 }).then((res)=>
 res.json());
@@ -56,13 +57,25 @@ res.json());
         Luo itsellesi uusi käyttäjätunnus
         </p>
             <form onSubmit={ addSubmit}>
-                <div><input type="text"  value = { username} placeholder='Käyttäjätunnus' className='loginInsertBox' onChange = {(e) => setUsername(e.target.value)}></input></div>
-                <div><input type="password"  value = { password }placeholder='Salasana' className='loginInsertBox' onChange = {(e) => setPassword(e.target.value)}></input></div>
-                <div><input type="text" value ={ fname } placeholder='Etunimi' className='loginInsertBox' onChange = {(e) => setFname(e.target.value)}></input></div>
-                <div><input type="text" value ={ lname } placeholder='Sukunimi' className='loginInsertBox' onChange = {(e) => setLname(e.target.value)}></input></div>
-                <div><input type="text"  value ={ address } placeholder='Osoite' className='loginInsertBox' onChange = {(e) => setAddress(e.target.value)}></input></div>
-                <div><input type="checkbox" checked = { isOwner }placeholder='Omistaja' className='loginInsertBox' onChange = {(e) => setIsOwner(e.target.value)}></input></div> 
-
+                <div className='addText'>Anna käyttäjänimi: 
+                  <input type="text"  value = { username} placeholder='Käyttäjätunnus' className='addBox' onChange = {(e) => setUsername(e.target.value)}></input></div>
+                <div className='addText'>Anna salasana:
+                  <input type="password"  value = { password }placeholder='Salasana' className='addBox' onChange = {(e) => setPassword(e.target.value)}></input></div>
+                <div className='addText'>Etunimi: 
+                  <input type="text" value ={ fname } placeholder='Etunimi' className='addBox' onChange = {(e) => setFname(e.target.value)}></input></div>
+                <div className='addText'>Sukunimi: 
+                  <input type="text" value ={ lname } placeholder='Sukunimi' className='addBox' onChange = {(e) => setLname(e.target.value)}></input></div>
+                <div className='addText'>Osoite: 
+                  <input type="text"  value ={ address } placeholder='Osoite' className='addBox' onChange = {(e) => setAddress(e.target.value)}></input></div>
+                <div className='addText'>Käyttäjäprofiili: 
+                <select className='addBox2'
+                    type="text"
+                    value={isOwner}
+                    onChange={(e) => setIsOwner(e.target.value)}>
+                <option value="0">Olen asiakas</option>
+                <option value="1">Olen ravintoloitsija</option>
+                </select>
+                </div>
                 <div><button className='loginButton'type='submit'>Luo käyttäjä</button></div>
                 <div className="message">{message ? <p>Käyttäjätunnus luotu</p> : null}</div>
             </form>

@@ -171,8 +171,6 @@ app.post(`/user`, function(req, res) {
       if (error) throw error;
       console.log("Käyttäjä luotu");
       res.send(result) 
-      console.log("Käyttäjä luotu");
-      res.send(result) 
 
     });
   });   
