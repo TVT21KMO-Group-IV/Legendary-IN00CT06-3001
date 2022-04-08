@@ -23,13 +23,13 @@ function App ()  {
 
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = (menu) => {
-    setCartItems([...cartItems, {...menu}]);
+  const addToCart = (menus) => {
+    setCartItems([...cartItems, {...menus}]);
   };
 
   const removeFromCart = (menuToRemove) => {
     setCartItems(
-      cartItems.filter((menu) => menu !== menuToRemove)
+      cartItems.filter((menus) => menus !== menuToRemove)
       );
   };
 
