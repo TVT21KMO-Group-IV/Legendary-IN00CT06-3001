@@ -76,12 +76,12 @@ export default function GetMenu (props) {
                           <p>{menus.description}</p>
                           <p>{menus.price} €</p>
                         </div>
-                        <div className="addToCartIcon"><button onClick={() => addToCart(menus)}>Lisää ostoskoriin</button><i class="fas fa-cart-plus" /></div>
+                        <div className="addToCartIcon"><i onClick={() => addToCart(menus)} class="fas fa-cart-plus" /></div>
 
                       </div>
                     </div>
                   </>
-                )) : <div>Tällaista annosta ei löydy, koita jotain muuta hakusanaa.</div>
+                )) : <div className="information">Tällaista annosta ei löydy, koita jotain muuta hakusanaa.</div>
                 }
               </div>
             </div>
