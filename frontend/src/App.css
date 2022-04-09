@@ -175,16 +175,17 @@
   cursor: pointer;
 }
 
-.barButtons span{
-  background-color: green;
+.barButtons .cartItemCount {
+  background-color: #ffffff;
   border-radius: 20px;
-  color: white;
-  position: absolute;
-  top: 30px;
-  right: 240px;
+  color: #e32934;
+  margin: 0px 0px 0px 10px;
   font-size: 12px;
   padding: 5px;
+}
 
+.barButtons a:link {
+  text-decoration: none;
 }
 
 .restaurantWrapper {
@@ -256,6 +257,11 @@
   gap: 10px
 }
 
+.menuDishItems .information {
+  padding: 10px 0px;
+  color: #E32934;
+}
+
 .restaurantMenuDisplay {
   width: 960px;
 }
@@ -291,6 +297,42 @@
   justify-content: center;
   font-size: 30px;
   color: #d09326;
+}
+
+.addToCartIcon:hover {
+  background-color: #04aa6d;
+}
+
+.addToCartIcon:active {
+  background-color: #04aa6d;
+  color: #ffffff;
+}
+
+.shoppingCartWrapper {
+  min-width: 400px;
+}
+
+.removeFromCartIcon {
+  padding: 15px 15px 0px 15px;
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  color: #221f1f;
+}
+
+.removeFromCartIcon:hover {
+  background-color: #e50914;
+}
+
+.removeFromCartIcon:active {
+  background-color: #e50914;
+  color: #ffffff;
+}
+
+.startPayment button {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
 }
 
 .footerWrapper {

@@ -3,27 +3,23 @@ import { Link } from 'react-router-dom'
 
 export default function ShoppingCart(props) {
 
-  const {cartItems, removeFromCart} =  props;
+  const { cartItems, removeFromCart } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + 1 * c.price, 0);
   const delPrice = 3.90;
   const totalPrice = itemsPrice + delPrice;
   return (
-    <aside className="block col-1">
+    <div className="shoppingCartWrapper">
       <h2>Ostoskori</h2>
-      <div>
+      <div className="cartContents">
         {cartItems.length === 0 && <div>Ostoskori on tyhjä</div>}
         {cartItems.map((item) => (
-          <div key={item.id} className="row">
-            <div className="col-2">{item.name}
-            <button onClick={() => removeFromCart(item)} className="remove">
-                Poista ostoskorista
-              </button>{' '}
-              
+          <div key={item.id} className="dishItem">
+            <div className="dishDetails">
+              <strong>{item.name}</strong>
+              <p>{item.price.toFixed(2)}€</p>
             </div>
-
-            <div className="col-2 text-right">
-              {item.price.toFixed(2)}€
-            </div>
+            <div className="removeFromCartIcon" onClick={() => removeFromCart(item)}><i class="fas fa-trash"></i></div>
+            {' '}
           </div>
         ))}
 
@@ -34,7 +30,7 @@ export default function ShoppingCart(props) {
               <div className="col-2">Ostokset:</div>
               <div className="col-1 text-right">{itemsPrice.toFixed(2)}€</div>
             </div>
-            
+
             <div className="row">
               <div className="col-2">Toimituskulut:</div>
               <div className="col-1 text-right">
@@ -51,15 +47,12 @@ export default function ShoppingCart(props) {
               </div>
             </div>
             <hr />
-            <div className="row">
-              <button>
-                Maksa
-              </button>
+            <div className="startPayment">
+              <button>Siirry maksamaan</button>
             </div>
           </>
         )}
       </div>
-    </aside>
+    </div >
   );
 }
-    
