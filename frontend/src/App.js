@@ -17,37 +17,21 @@ import Footer from './components/Footer';
 import GetMenu from './components/GetMenu';
 import AddRestaurant from './components/AddRestaurant';
 import AddMenu from './components/AddMenu'
-import ShoppingCart from './components/ShoppingCart';
+
 
 function App ()  {
-
-  const [cartItems, setCartItems] = useState([]);
-
-  const addToCart = (menu) => {
-    setCartItems([...cartItems, {...menu}]);
-  };
-
-  const removeFromCart = (menuToRemove) => {
-    setCartItems(
-      cartItems.filter((menu) => menu !== menuToRemove)
-      );
-  };
-
 
   return (<div className='pageWrapper'>
      
   
     <BrowserRouter>
 
-      <NavBar cartItems={cartItems}/>
+      <NavBar />
         <Routes>
           <Route path="/Login" element={ <Login/> } />
           <Route path="/Register" element={ <Register/>} />
           <Route path="/" element={ <Restaurantss/> } />
           <Route path="/Restaurant" element={ <Restaurant/> } />
-          <Route path="/restaurant/:restaurantId" element={ <GetMenu cartItems={cartItems} addToCart={addToCart} /> } />
-          <Route path="/ShoppingCart" element={ <ShoppingCart cartItems={cartItems} removeFromCart={removeFromCart} />} />
-          <Route path="/Menuitem" element={ <Menu /> } />
           <Route path="/restaurant/:restaurantId" element={ <GetMenu /> } />
           <Route path="/addRestaurant" element={ <AddRestaurant /> } />
           <Route path="/AddMenu/:restaurantId" element={ <AddMenu /> } />

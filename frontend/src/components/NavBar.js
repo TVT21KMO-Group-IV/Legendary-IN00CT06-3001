@@ -11,8 +11,7 @@ export default function NavBar(props) {
                 <div className='barButtons'>
                     <Link className="button"to ="/Login" title="Kirjaudu"><i class="fas fa-sign-in-alt" /></Link>
                     <Link className="button" to ="/Register" title="Luo itsellesi tunnus"><i class="fas fa-user-plus" /></Link>
-                    <Link className="button" to ="/ShoppingCart" title="Ostoskori"><i class="fas fa-cart-arrow-down" /><span className="cartItemCount">{cartItems.length}</span></Link>
-                    
+                     
                 </div>
          </div>   
     </div>
