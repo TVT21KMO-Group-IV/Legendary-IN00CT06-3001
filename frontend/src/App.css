@@ -258,6 +258,7 @@
 
 .restaurantMenuDisplay {
   width: 960px;
+  
 }
 
 .menuDishItems .itemWrapper {
@@ -329,7 +330,7 @@
 
 .cart{
   margin: auto;
-  width: 50%;
+  width: 20%;
   border: 3px solid rgb(116, 0, 0);
   padding: 10px;
   
