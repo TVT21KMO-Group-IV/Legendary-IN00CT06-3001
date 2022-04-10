@@ -31,7 +31,6 @@ function App ()  {
           <Route path="/Login" element={ <Login/> } />
           <Route path="/Register" element={ <Register/>} />
           <Route path="/" element={ <Restaurantss/> } />
-          <Route path="/Restaurant" element={ <Restaurant/> } />
           <Route path="/restaurant/:restaurantId" element={ <GetMenu /> } />
           <Route path="/addRestaurant" element={ <AddRestaurant /> } />
           <Route path="/AddMenu/:restaurantId" element={ <AddMenu /> } />

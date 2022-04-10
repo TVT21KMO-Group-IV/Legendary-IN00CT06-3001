@@ -7,8 +7,13 @@
   align-items: center;
 }
 
+.homeRestaurantSearch {
+  display: flex;
+  justify-content: center;
+}
+
 .searchBar {
-  margin-left: 41%;
+  /* margin-left: 41%; */
   margin-top: 20px;
   margin-bottom: 20px;
   height: 50px;
@@ -22,7 +27,7 @@
   width: 150px;
   height: 150px;
   border: solid 2px rgb(116, 0, 0);
-  }
+}
 
 .menuItemImg {
   width: 150px;
@@ -37,6 +42,7 @@
 .line {
   border-bottom: 4px solid rgb(190, 187, 187);
 }
+
 .addMenu {
   display: flex;
   flex-direction: row;
@@ -92,6 +98,7 @@
 .alignCenter {
   text-align: center;
 }
+
 .loginInsertBox {
   height: 40px;
   width: 180px;
@@ -100,7 +107,7 @@
   margin-top: 1%;
 }
 
-.loginButton{
+.loginButton {
   margin-top: 25px;
   width: 197px;
   height: 45px;
@@ -114,11 +121,8 @@
 .padding5 {
   padding: 5%;
 }
-.paddingBottom {
-  margin-left: auto;
-}
 
-.barBackground{
+.barBackground {
   order: 0;
   flex: 0 1 auto;
   align-self: stretch;
@@ -128,13 +132,14 @@
   box-shadow: 0 4px 2px -2px gray
 }
 
-.barElements{
+.barElements {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-left: 10%;
 }
-.logo{
+
+.logo {
   margin-right: auto;
   font-family: cursive;
   font-size: 70px;
@@ -144,7 +149,7 @@
   text-decoration-color: transparent;
 }
 
-.barButtons{
+.barButtons {
   margin-right: 10%;
   display: flex;
   font-size: 20px;
@@ -159,16 +164,16 @@
 
 .barButtons .button:hover {
   background-color: #d5242e;
-  
+
 }
 
-.kirjBut{
+.kirjBut {
   font-size: 15px;
   padding: 30px;
   cursor: pointer;
 }
 
-.rekBut{
+.rekBut {
   font-size: 15px;
   padding: 15px 3px;
   margin-left: 5%;
@@ -188,7 +193,7 @@
   text-decoration: none;
 }
 
-.restaurantWrapper {
+.contentWrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -197,6 +202,8 @@
 .restaurantMainImg {
   width: 960px;
   height: 350px;
+  background-size: cover;
+  background-position: center;
 }
 
 .restaurantDetails {
@@ -269,6 +276,7 @@
 .menuDishItems .itemWrapper {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
 .menuDishItems .itemWrapper:hover {
   background-color: #f8f8f8;
 }
@@ -280,6 +288,10 @@
 
 .dishImg {
   padding: 5px;
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
 }
 
 .dishDetails {
@@ -350,6 +362,7 @@
   justify-content: space-around;
   align-items: center;
 }
+
 .createBox {
 
   margin-top: 20px;
@@ -357,98 +370,99 @@
   font-size: 19px;
   text-align: center;
 }
+
 .addText {
   width: 60%;
   text-align: right;
 }
+
 .addBox {
   margin-left: 3%;
   width: 200px;
 }
+
 .addBox2 {
   margin-left: 3%;
   width: 208px;
 }
 
-.cart{
+.cart {
   margin: auto;
   width: 45%;
   border: 3px solid rgb(0, 0, 0);
   padding: 10px;
   margin-top: 20px;
-  
-  
+
+
 }
 
-.cart h2{
+.cart h2 {
   font-size: 25px;
   text-align: center;
 }
 
-.cart-item-name{
+.cart-item-name {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 17px;
   background-color: rgb(255, 233, 209);
-  
+
 }
 
-.cart-item-price{
+.cart-item-price {
   text-align: center;
   margin-left: 20px;
 }
 
-.cart-price-name{
+.cart-price-name {
   text-align: center;
   margin-top: 20px;
   font-size: 20px;
 }
 
-.cart-price-price{
+.cart-price-price {
   text-align: center;
   margin-left: 20px;
   margin-bottom: 20px;
   font-size: 20px;
 }
 
-.removebtn{
+.removebtn {
   margin-left: 25px;
   padding: 5px;
   cursor: pointer;
   font-size: 17px;
   border: none;
-  background-color: rgb(255, 233, 209);  
+  background-color: rgb(255, 233, 209);
 }
 
-.total{
+.total {
   font-size: 20px;
   text-align: center;
 }
-.totalPrice{
+
+.totalPrice {
   font-size: 30px;
   text-align: center;
 }
 
-.cartbtns{
+.cartbtns {
   display: flex;
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 20px;
-  
+
 }
 
-.continuebtn{
+.continuebtn {
   width: 700px;
 }
 
-.paybtn{
-  
-}
+.paybtn {}
 
-.cartAddress{
+.cartAddress {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
-

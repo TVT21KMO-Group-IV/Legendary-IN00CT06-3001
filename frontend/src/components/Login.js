@@ -38,7 +38,7 @@ console.log(err);
 };
      
   return (
-    <div className='alignCenter'>
+    <div className="contentWrapper">
         <p>
         Kirjaudu sisään antamalla käyttäjätunnus ja salasana
         </p>

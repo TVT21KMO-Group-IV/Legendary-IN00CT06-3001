@@ -56,7 +56,7 @@ export default function GetMenu () {
 
 
   return (
-    <div className="restaurantWrapper">
+    <div className="contentWrapper">
 
       {restaurants.map(rest =>
 
@@ -85,7 +85,7 @@ export default function GetMenu () {
                   <>
                     <div className="itemWrapper">
                       <div className="dishItem">
-                        <div className="dishImg"><img src="https://via.placeholder.com/100" /></div>
+                        <div className="dishImg" style={{ backgroundImage: `url(${menus.menuItemImg})`, backgroundRepeat: 'no-repeat' }}></div>
                         <div className="dishDetails">
                           <strong>{menus.name}</strong>
                           <p>{menus.description}</p>

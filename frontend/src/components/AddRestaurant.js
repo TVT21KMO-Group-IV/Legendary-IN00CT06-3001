@@ -48,7 +48,7 @@ res.json());
 };
 
 return (
-    <div className="App">
+  <div className="contentWrapper">
       <div className='createBox'><h1>Luo uusi ravintola</h1></div>
       <form onSubmit={ addSubmit }>
         <div className='addText'>Ravintolan nimi: 
