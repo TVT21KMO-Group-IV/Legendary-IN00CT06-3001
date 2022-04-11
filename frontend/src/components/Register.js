@@ -52,7 +52,7 @@ res.json());
 
 
   return (
-    <div className="contentWrapper">
+    <div className="alignCenter">
         <p>
         Luo itsellesi uusi käyttäjätunnus
         </p>
