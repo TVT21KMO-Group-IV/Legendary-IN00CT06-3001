@@ -19,6 +19,7 @@ import AddRestaurant from './components/AddRestaurant';
 import AddMenu from './components/AddMenu'
 
 
+
 function App ()  {
 
   return (<div className='pageWrapper'>
@@ -34,6 +35,7 @@ function App ()  {
           <Route path="/restaurant/:restaurantId" element={ <GetMenu /> } />
           <Route path="/addRestaurant" element={ <AddRestaurant /> } />
           <Route path="/AddMenu/:restaurantId" element={ <AddMenu /> } />
+          
         </Routes>
       <Footer />
           

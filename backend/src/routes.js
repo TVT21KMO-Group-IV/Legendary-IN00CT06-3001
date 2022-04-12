@@ -249,6 +249,26 @@ app.post(`/user`, function(req, res) {
   });   
 });
 
+// Add new order to the database
+app.post(`/pay`, passport.authenticate('jwt', { session: false }),
+ function(req, res) {
+  if (req.user.isOwner != 1){
+    res.sendStatus(403); 
+    return
+  }
+  dbConn.getConnection(function (err, connection) {
+    
+    dbConn.query('INSERT INTO ordercontent (name, amount, price) VALUES (?, ?, ?)',
+    [req.body.name, req.body.amount, req.body.price],
+     function(error, result) {
+      if (error) throw error;
+      console.log("Ostos lisätty");
+      res.send(result)  
+      
+    });
+  });   
+});
+
  app.listen(5000, () => {
      console.log('check http://localhost:5000/register to see the data.');
 });

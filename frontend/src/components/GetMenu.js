@@ -141,7 +141,7 @@ export default function GetMenu () {
           
           <div className="cartbtns">
           <Link className="continuebtn" to ="/" title="Jatka ostoksia"><button>Peruuta</button></Link>
-          <Link className="paybtn" to ="/Pay" title="Maksa"><button>Siirry maksamaan</button></Link>
+          <Link className="paybtn" to ="/Pay" title="Maksa"><button>Maksa</button></Link>
           </div>
         </>
       )}
