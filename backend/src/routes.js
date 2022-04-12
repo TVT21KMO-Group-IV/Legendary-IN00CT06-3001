@@ -29,59 +29,125 @@ app.use(bodyParser.urlencoded({limit: "50mb",extended: true}));
 app.use(passport.initialize());
 
 
-
-const jwt = require("jsonwebtoken");
-const ExtractJwt = require('passport-jwt').ExtractJwt;
-      jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-
 let jwtSecretKey = null;
 if(process.env.JWTKEY === undefined) {
   jwtSecretKey = require('./jwt-key.json').secret;
 } else {
   jwtSecretKey = process.env.JWTKEY;
 }
+const jwt = require("jsonwebtoken");
+const JwtStrategy = require('passport-jwt').Strategy,
+    ExtractJwt = require('passport-jwt').ExtractJwt;
+ 
+      let options = {}
+      options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+
+      /* This is the secret signing key.
+         You should NEVER store it in code  */
+      options.secretOrKey = jwtSecretKey;
+      
+      passport.use(new JwtStrategy(options, function(jwt_payload, done) {
+        console.log("Processing JWT payload for token content:");
+        console.log(jwt_payload);
+        /* Here you could do some processing based on the JWT payload.
+        For example check if the key is still valid based on expires property.
+        */
+        const now = Date.now() / 1000;
+        if(jwt_payload.exp > now) {
+          done(null, jwt_payload);
+        }
+        else {// expired
+          done(null, false);
+        }
+      }));
+
+
 
 app.post("/login", (req, res)=> {
 const user = req.body.username
 const password = req.body.password
-const isOwner = req.body.isOwner
+const owner1 = req.body.isOwner
 dbConn.getConnection ( async (err, connection)=> {
 if (err) throw (err)
- const sqlSearch = "Select * from user where username = ?"
- const search_query = mysql.format(sqlSearch,[user])
-await connection.query (search_query, async (err, result) => {
-connection.release()
-  
-  if (err) throw (err)
-if (result.length == 0) {
-   console.log("User does not exist")
-   res.sendStatus(404)
-  } 
-  else {
-   const passwordHash = result[0].password
-   //get the passwordHash from result
-if (await bcrypt.compare(password, passwordHash)) {
-    console.log("Login Successful")
-    console.log("Generating accessToken")
-    return res.json({token: jwt.sign({ user: user, isOwner }, jwtSecretKey, {expiresIn: "2h"}, (err, token) => { 
-      token = `Bearer ${token}`,
-      console.log(token)
-    })})
-    // jwt.sign({ user: user, idOwner }, jwtSecretKey, {expiresIn: "2h"}, (err, token) => {
+    const sqlSearch = "Select * from user where username = ?"
+    const search_query = mysql.format(sqlSearch,[user, owner1])
+    console.log(search_query)
+     dbConn.query(search_query, async (err, result) => {
+       console.log(result)
+       connection.release(); 
+    if (err)
+      throw (err);
+    if (result.length == 0) {
+      console.log("User does not exist");
+      res.sendStatus(404);
+    }
+    else {
+      const passwordHash = result[0].password;
+      //get the passwordHash from result
+      if (await bcrypt.compare(password, passwordHash)) {
+        console.log("Login Successful");
+        console.log("Generating accessToken");
+        res.json({
+          token: jwt.sign({ user: user, isOwner: result[0].isOwner }, jwtSecretKey, { expiresIn: "2h" }
+          
+        )})
+        //});
 
-    //   res.json({ token });  
-    //   console.log(token)
-    // });    
-   } else {
-    console.log("Password Incorrect")
-    res.send("Password incorrect!")
-   }}
+
+        // jwt.sign({ user: user, isOwner }, jwtSecretKey, {expiresIn: "2h"}, (err, token) => {
+        //   res.json({ token });  
+        //   console.log(token)
+        // });    
+      } else {
+        console.log("Password Incorrect");
+        res.send("Password incorrect!");
+      }
+    }
+  }) 
 }) 
 }) 
-}) 
 
+app.get(
+  '/jwtProtectedResource',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    console.log("jwt");
+    res.json(
+      {
+        status: "Successfully accessed protected resource with JWT",
+        user: req.user
+      }
+    );
+  }
+);
+app.get('/todosJWT',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    console.log('GET /todosJWT')
+    console.log(req.user)
+    if (req.user.isOwner == 1){
+      res.json({});
+    }else{
+      res.sendStatus(403);
+    }
+    //const t = todos.getAllUserTodos(req.user.id);
+    //console.log('User Id: ' + req.user.id);
+    
+})
+app.post('/todosJWT',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    console.log('POST /todosJWT');
+    console.log(req.body);
+    if(('description' in req.body) && ( 'dueDate' in req.body)) {
+      todos.insertTodo(req.body.description, req.body.dueDate, req.user.id);
+      res.json(todos.getAllUserTodos(req.user.id));
+    }
+    else {
+      res.sendStatus(400);
+    }
 
-
+})
 
 // Get all restaurants from the database
 app.get('/restaurant', function (req, res) {
@@ -121,14 +187,21 @@ app.get(`/restaurant/:idRestaurant/restaurant`, function(req, res) {
 
 
 // Add new restaurant to the database
-app.post(`/addrestaurant`, function(req, res) {
+app.post(`/addrestaurant`, passport.authenticate('jwt', { session: false }),
+ function(req, res) {
+  if (req.user.isOwner != 1){
+    res.sendStatus(403); 
+    return
+  }
   dbConn.getConnection(function (err, connection) {
+    
     dbConn.query('INSERT INTO restaurant (name, type, pricerange, address, openingHours, restaurantImg) VALUES (?, ?, ?, ?, ?, ?)',
     [req.body.name, req.body.type, req.body.pricerange, req.body.address, req.body.openingHours, req.body.restaurantImg],
      function(error, result) {
       if (error) throw error;
       console.log("Ravintola lisätty");
       res.send(result)  
+      
     });
   });   
 });
