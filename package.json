@@ -4,11 +4,13 @@
   "description": "Group 4 Web App Project",
   "main": "index.js",
   "scripts": {
-    "frontend": "cd frontend && cd src && npm start",
-    "backend": "cd backend && cd src && node routes.js",
-    "local": "concurrently --kill-others-on-fail \"npm run backend\" \"npm run frontend\"",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
-  },
+    "dev": "react-scripts start",
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
+    },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TVT21KMO-Group-IV/Legendary-IN00CT06-3001.git"
@@ -35,6 +37,7 @@
     "passport-http": "^0.3.0",
     "passport-jwt": "^4.0.0",
     "react-router-dom": "^6.2.2",
+    "serve": "^13.0.2",
     "uuid": "^8.3.2"
   }
 }
