@@ -1,0 +1,40 @@
+{
+  "name": "food4u",
+  "version": "1.0.0",
+  "description": "Group 4 Web App Project",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "cd frontend && cd src && npm start",
+    "backend": "cd backend && cd src && node routes.js",
+    "local": "concurrently --kill-others-on-fail \"npm run backend\" \"npm run frontend\"",
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TVT21KMO-Group-IV/Legendary-IN00CT06-3001.git"
+  },
+  "author": "Group 4 Industry Standard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TVT21KMO-Group-IV/Legendary-IN00CT06-3001/issues"
+  },
+  "homepage": "https://github.com/TVT21KMO-Group-IV/Legendary-IN00CT06-3001#readme",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "callback": "^0.0.1",
+    "concurrently": "^7.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "mysql": "^2.18.1",
+    "passport": "^0.5.2",
+    "passport-http": "^0.3.0",
+    "passport-jwt": "^4.0.0",
+    "react-router-dom": "^6.2.2",
+    "uuid": "^8.3.2"
+  }
+}

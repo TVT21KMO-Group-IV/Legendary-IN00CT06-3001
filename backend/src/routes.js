@@ -7,19 +7,30 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 //const { v4: uuidv4 } = require('uuid');
-
-
+const path = require('path')
 
 //src kansiosta node routes.js lähtee käyntiin http://localhost:5000/restaurant näkee hard koodatut ravintolat
 
-const dbConn = mysql.createPool({
+/* const dbConn = mysql.createPool({
   host:'localhost',
 	user:'fooduser',
 	password:'foodpass',
 	database:'food4u',
   acquireTimeout: 1000,
   connectionLimit: 100
-});
+}); */
+
+try {
+  dbConn = mysql.createPool({
+    host: 'eu-cdbr-west-02.cleardb.net',
+    user: 'b4626d49ec6b12',
+    password: '357ef813',
+    database: 'heroku_7c09d16aa6b59f9'
+  });
+}
+catch {
+  console.log("Pool creation failed");
+}
 
 
 const app = express();
@@ -27,6 +38,9 @@ app.use(cors());
 app.use(bodyParser.json({limit: "50mb"}));
 app.use(bodyParser.urlencoded({limit: "50mb",extended: true}));
 app.use(passport.initialize());
+
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, '../frontend/build')))
 
 
 let jwtSecretKey = null;
@@ -248,6 +262,11 @@ app.post(`/user`, function(req, res) {
     });
   });   
 });
+
+// AFTER defining routes: Anything that doesn't match what's above, send back index.html; (the beginning slash ('/') in the string is important!)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/../frontend/build/index.html'))
+})
 
  app.listen(5000, () => {
      console.log('check http://localhost:5000/register to see the data.');
