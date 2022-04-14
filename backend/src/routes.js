@@ -250,16 +250,11 @@ app.post(`/user`, function(req, res) {
 });
 
 // Add new order to the database
-app.post(`/pay`, passport.authenticate('jwt', { session: false }),
- function(req, res) {
-  if (req.user.isOwner != 1){
-    res.sendStatus(403); 
-    return
-  }
+app.post("/order", function(req, res) {
   dbConn.getConnection(function (err, connection) {
     
-    dbConn.query('INSERT INTO ordercontent (name, amount, price) VALUES (?, ?, ?)',
-    [req.body.name, req.body.amount, req.body.price],
+    dbConn.query('INSERT INTO ordercontent (amount, price, address) VALUES (?, ?, ?)',
+    [req.body.amount, req.body.price, req.body.address],
      function(error, result) {
       if (error) throw error;
       console.log("Ostos lisätty");
