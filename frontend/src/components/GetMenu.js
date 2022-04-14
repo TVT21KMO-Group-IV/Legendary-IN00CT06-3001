@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 
-export default function GetMenu () {
+export default function GetMenu (props) {
 
-  
+  const { userJwt } = props
     const [cartItems, setCartItems] = useState([]);
     const [menus, setMenus] =useState([]);
     const {restaurantId} = useParams();
@@ -33,6 +33,7 @@ export default function GetMenu () {
     )
 
     console.log(restaurant)
+    console.log(userJwt)
     setRestaurants(restaurant)
   }, []);
 

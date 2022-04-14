@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function Restaurantss(props) {
 
+  const { userJwt } = props
   const [restaurants, setRestaurants] = useState([]);
   //const [menus, setMenus] =useState([]);
 
@@ -30,7 +31,7 @@ export default function Restaurantss(props) {
   const [rest, setRest] = useState('');
   const filter = (e) => {
     const keyw = e.target.value;
-    console.log("testi");
+    console.log("testi", userJwt);
     setRest(keyw);
   };
   let filteredRestaurants = restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(rest.toLowerCase()) || restaurant.type.toLowerCase().includes(rest.toLowerCase()))

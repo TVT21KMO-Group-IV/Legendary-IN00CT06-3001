@@ -1,26 +1,26 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
-import { UserAuthContext } from './Contexts'
 import '../App.css';
 
-function AddRestaurant() {
+function AddRestaurant(props) {
 
-  const UserAuthContextValue = useContext(UserAuthContext);
-    const [ name, setName ] = useState('');
+  const { userJwt } = props
+
+     const [ name, setName ] = useState('');
     const [ type, setType ] = useState('');
     const [ pricerange, setPricerange ] = useState('');
     const [ address, setAddress ] = useState('');
     const [ openingHours, setOpeningHours ] = useState('');
     const [ restaurantImg, setRestaurantImg ] = useState('');
     const [ message, setMessage] = useState();  // to store success or error message
-
+    console.log(userJwt);
 let addSubmit = async (e) => {
     e.preventDefault();
  try {        
     let res = await fetch(`http://localhost:5000/addrestaurant` , {
     method: 'POST',
     headers: {"Content-Type": "application/json",
-    'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+ 
   },
     body: JSON.stringify( {
         name: name,

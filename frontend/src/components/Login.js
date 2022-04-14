@@ -30,17 +30,22 @@ export default function Login(props) {
         if (response.status !== 200) {
           throw new Error("cannot fetch data");
         }
-        let data = await response.json();
-        props.setUserJwt(data.token)
-        navigate("/", { replace: true });
-        console.log(data)
-        return data;
+        let data = await response.json()
+        .then((data) => {
+          props.setUserJwt(data.token)
+          navigate("/", { replace: true });
+         console.log(data)
+        })
+         
+        //return data;
         // console.log(result);
         // console.log(result.data);
         // setLoginProcessState("success");
         // setTimeout(() => {
         //   setLoginProcessState("idle")
-        //   props.setUserJwt(result.data.token)
+        //   props.setUserJwt(data.token)
+        //   console.log(data)
+        //   console.log(data.setUserJwt)
         //   navigate("/", { replace: true });
         // }, 1500);
       } catch (error) {
@@ -49,6 +54,13 @@ export default function Login(props) {
         setTimeout(() => setLoginProcessState("idle"), 1500);
       }
     }
+    //  onSubmit()
+    //    .then((data) => {
+    //      console.log("resolved", data);
+    //    })
+    //    .czatch((err) =>{
+    //      console.log("r3j3ct3d", err.message);
+    //    });
      
     let loginUIControls = null;
     switch(loginProcessState) {

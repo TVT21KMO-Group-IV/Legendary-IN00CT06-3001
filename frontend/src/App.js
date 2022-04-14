@@ -20,20 +20,21 @@ import AddMenu from './components/AddMenu'
 
 const jwtFromStorage = window.localStorage.getItem('appAuthData');
 
-function App ()  {
+function App (props)  {
 
   const [ userJwt, setUserJwt ] = useState(jwtFromStorage);
   let authRoutes = <>
   <Route path="/login" element = { <Login login={(token) => {
                     window.localStorage.setItem('appAuthData', token);
                     setUserJwt(token);
-                  }} /> } />
-                  
+                  }} /> } />                 
   </>
-  if(userJwt != null) {
-    authRoutes = <Route path="/addrestaurant" element={ <AddRestaurant userJwt={ userJwt } logout={() => setUserJwt(null)}/> }/>
+  
+  // if(userJwt != null) {
+  //   authRoutes = <Route path="/addrestaurant" element={ <AddRestaurant setUserJwt={ setUserJwt } /> }/>
     
-  }
+  // }
+  console.log(userJwt)
 
   return (<div className='pageWrapper'>
      
@@ -43,11 +44,11 @@ function App ()  {
       <NavBar />
         <Routes>
           <Route path="/Login" element={<Login setUserJwt={ setUserJwt } />} />
-          <Route path="/Register" element={ <Register/>} />
+          <Route path="/Register" element={ <Register userJwt={ userJwt } />} />
           <Route path="/" element={ <Restaurantss/> } />
           <Route path="/restaurant/:restaurantId" element={ <GetMenu /> } />
-          <Route path="/addRestaurant" element={ <AddRestaurant /> } />
-          <Route path="/AddMenu/:restaurantId" element={ <AddMenu /> } />
+          <Route path="/addRestaurant" element={ <AddRestaurant userJwt={ userJwt } /> } />
+          <Route path="/AddMenu/:restaurantId" element={ <AddMenu userJwt={ userJwt } /> } />
         </Routes>
       <Footer />
           

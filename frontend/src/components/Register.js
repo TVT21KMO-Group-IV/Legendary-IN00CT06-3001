@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import '../App.css';
 
-function Register() {
+function Register(props) {
 
-
+  const { userJwt } = props
+console.log(userJwt)
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ fname, setFname ] = useState('');
