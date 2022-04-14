@@ -22,7 +22,6 @@ let addSubmit = async (e) => {
     headers: {"Content-Type": "application/json",
   },
     body: JSON.stringify( {
-        //isChecked: false,
         username: username,
         password: password,
         fname: fname,
@@ -72,8 +71,7 @@ res.json());
                 <select className='addBox2'
                     type="text"
                     value={isOwner}
-                    onChange={(e) => setIsOwner(e.target.value)}>
-                     
+                    onChange={(e) => setIsOwner(e.target.value)}>                     
                 <option value="0">Olen asiakas</option>
                 <option value="1">Olen ravintoloitsija</option>
                 </select>

@@ -32,8 +32,8 @@ function App ()  {
   </>
   if(userJwt != null) {
     authRoutes = <Route path="/addrestaurant" element={ <AddRestaurant userJwt={ userJwt } logout={() => setUserJwt(null)}/> }/>
+    
   }
-
 
   return (<div className='pageWrapper'>
      
@@ -42,7 +42,7 @@ function App ()  {
 
       <NavBar />
         <Routes>
-          <Route path="/Login" element={ <Login/> } />
+          <Route path="/Login" element={<Login setUserJwt={ setUserJwt } />} />
           <Route path="/Register" element={ <Register/>} />
           <Route path="/" element={ <Restaurantss/> } />
           <Route path="/restaurant/:restaurantId" element={ <GetMenu /> } />
