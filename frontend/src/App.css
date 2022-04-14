@@ -60,11 +60,10 @@
   flex-direction: row;
   justify-content: space-between;
   font-size: 40px;
-  margin-left: 10%;
-  margin-right: 10%;
   border-bottom: 4px solid rgb(116, 0, 0);
   padding-bottom: 1%;
   padding-top: 1%;
+ 
 }
 
 .restaurantHomeText {
@@ -73,6 +72,14 @@
   justify-content: space-between;
   width: 75%;
   margin-top: 3%;
+  
+}
+
+.restaurantHomeAddress {
+  font-size: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 20px;
 }
 
 
