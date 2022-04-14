@@ -12,9 +12,10 @@ function Register() {
     const [ address, setAddress ] = useState('');
     const [ isOwner, setIsOwner] = useState(); 
     const [ message, setMessage] = useState('');  // to store success or error message
-
+  
 let addSubmit = async (e) => {
     e.preventDefault();
+    var isOwner =0;
  try {        
     let res = await fetch(`http://localhost:5000/user` , {
     method: 'POST',
@@ -72,6 +73,7 @@ res.json());
                     type="text"
                     value={isOwner}
                     onChange={(e) => setIsOwner(e.target.value)}>
+                     
                 <option value="0">Olen asiakas</option>
                 <option value="1">Olen ravintoloitsija</option>
                 </select>
