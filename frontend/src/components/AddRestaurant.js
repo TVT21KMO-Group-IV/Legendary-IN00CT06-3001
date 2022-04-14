@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
+import { UserAuthContext } from './Contexts'
 import '../App.css';
 
 function AddRestaurant() {
 
+  const UserAuthContextValue = useContext(UserAuthContext);
     const [ name, setName ] = useState('');
     const [ type, setType ] = useState('');
     const [ pricerange, setPricerange ] = useState('');
@@ -18,6 +20,7 @@ let addSubmit = async (e) => {
     let res = await fetch(`http://localhost:5000/addrestaurant` , {
     method: 'POST',
     headers: {"Content-Type": "application/json",
+    'Authorization': 'Bearer ' + UserAuthContextValue.jwt
   },
     body: JSON.stringify( {
         name: name,

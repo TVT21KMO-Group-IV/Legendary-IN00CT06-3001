@@ -18,12 +18,26 @@ import GetMenu from './components/GetMenu';
 import AddRestaurant from './components/AddRestaurant';
 import AddMenu from './components/AddMenu'
 
+const jwtFromStorage = window.localStorage.getItem('appAuthData');
 
 function App ()  {
 
+  const [ userJwt, setUserJwt ] = useState(jwtFromStorage);
+  let authRoutes = <>
+  <Route path="/login" element = { <Login login={(token) => {
+                    window.localStorage.setItem('appAuthData', token);
+                    setUserJwt(token);
+                  }} /> } />
+                  
+  </>
+  if(userJwt != null) {
+    authRoutes = <Route path="/addrestaurant" element={ <AddRestaurant userJwt={ userJwt } logout={() => setUserJwt(null)}/> }/>
+  }
+
+
   return (<div className='pageWrapper'>
      
-  
+     <div>Auth status: { userJwt != null ? "Logged in": "Not logged in" } </div>
     <BrowserRouter>
 
       <NavBar />

@@ -64,13 +64,12 @@ const JwtStrategy = require('passport-jwt').Strategy,
 
 
 app.post("/login", (req, res)=> {
-const user = req.body.username
-const password = req.body.password
-const owner1 = req.body.isOwner
-dbConn.getConnection ( async (err, connection)=> {
+ const user = req.body.username
+ const password = req.body.password
+ dbConn.getConnection ( async (err, connection)=> {
 if (err) throw (err)
     const sqlSearch = "Select * from user where username = ?"
-    const search_query = mysql.format(sqlSearch,[user, owner1])
+    const search_query = mysql.format(sqlSearch,[user])
     console.log(search_query)
      dbConn.query(search_query, async (err, result) => {
        console.log(result)
@@ -88,7 +87,7 @@ if (err) throw (err)
         console.log("Login Successful");
         console.log("Generating accessToken");
         res.json({
-          token: jwt.sign({ user: user, isOwner: result[0].isOwner }, jwtSecretKey, { expiresIn: "2h" }
+          token: jwt.sign({ username: result[0].username, isOwner: result[0].isOwner }, jwtSecretKey, { expiresIn: "2h" }
           
         )})
         //});
