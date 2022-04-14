@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-
+import Axios from "axios";
 
 export default function GetMenu () {
 
@@ -12,8 +12,19 @@ export default function GetMenu () {
     const itemsPrice = cartItems.reduce((a, c) => a + 1 * c.price, 0);
     const delPrice = 3.90;
     const totalPrice = itemsPrice + delPrice;
+    const [address, setAddress] = useState("");
+
+    const addOrder = () => {
+     Axios.post("http://localhost:5000/order", {
+         amount: cartItems.length,
+         price: totalPrice,
+         address: address,
+    }).then(() =>{
+      console.log("success");
+    });
+  };
+      
    
-        
   console.log(restaurantId);
 
     
@@ -135,13 +146,19 @@ export default function GetMenu () {
             </div>
           
           <hr />
+          
+
           <div className='cartAddress'>
-          <form><input type="text"  placeholder='Osoite' className='loginInsertBox' ></input></form>
-          </div>
+          <input className='loginInsertBox' required="required"
+            type="text"
+            value={address}
+            placeholder ="Toimitusosoite"
+            onChange={(e) => setAddress(e.target.value)}
+          /></div>
           
           <div className="cartbtns">
-          <Link className="continuebtn" to ="/" title="Jatka ostoksia"><button>Peruuta</button></Link>
-          <Link className="paybtn" to ="/Pay" title="Maksa"><button>Maksa</button></Link>
+          <Link to ="/" title="Peruuta"><button className="continuebtn">Peruuta</button></Link>
+          <Link to ="Order"><button onClick={ addOrder } className="paybtn">Maksa</button></Link>
           </div>
         </>
       )}
