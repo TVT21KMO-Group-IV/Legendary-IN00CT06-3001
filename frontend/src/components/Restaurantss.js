@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function Restaurantss(props) {
 
+  const { userJwt } = props
   const [restaurants, setRestaurants] = useState([]);
   //const [menus, setMenus] =useState([]);
 
@@ -29,15 +30,14 @@ export default function Restaurantss(props) {
 
   const [rest, setRest] = useState('');
   const filter = (e) => {
-    const keyw = e.target.value;
-    console.log("testi");
+    const keyw = e.target.value; 
     setRest(keyw);
   };
   let filteredRestaurants = restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(rest.toLowerCase()) || restaurant.type.toLowerCase().includes(rest.toLowerCase()))
-
-
+  
   return (
     <div className="contentWrapper">
+      <div className='addBox3'><Link to="/addrestaurant"><button className='createRestaurantButton'type='submit'>Ravintoloitsija Luo Ravintola</button></Link></div>
       <div className="homeRestaurantSearch">
         <input
           type="search"

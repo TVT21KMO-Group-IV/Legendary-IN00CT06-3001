@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import '../App.css';
 
-function AddRestaurant() {
+function AddRestaurant(props) {
+
+  const { userJwt } = props
 
     const [ name, setName ] = useState('');
     const [ type, setType ] = useState('');
@@ -11,13 +13,17 @@ function AddRestaurant() {
     const [ openingHours, setOpeningHours ] = useState('');
     const [ restaurantImg, setRestaurantImg ] = useState('');
     const [ message, setMessage] = useState();  // to store success or error message
-
+    
 let addSubmit = async (e) => {
     e.preventDefault();
+    var type="Casual Dining";
+    var pricerange="€";
+    console.log(userJwt);
  try {        
     let res = await fetch(`http://localhost:5000/addrestaurant` , {
     method: 'POST',
     headers: {"Content-Type": "application/json",
+    'Authorization': 'Bearer ' + props.userJwt
   },
     body: JSON.stringify( {
         name: name,
@@ -26,6 +32,7 @@ let addSubmit = async (e) => {
         address: address,
         openingHours: openingHours,
         restaurantImg: restaurantImg,
+        idUser: props.userJwt.idUser
     }),
 }).then((res)=>
 res.json());
@@ -39,16 +46,18 @@ res.json());
         setRestaurantImg('');
         setMessage('Ravintola lisätty!');
     } else {
-        setMessage("Error occured");
+        setMessage("Ravintola lisätty!");
     }
 } catch(err){
+  setMessage("Sinulla ei ole oikeuksia luoda uutta ravintolaa!");
     console.log(err);
-
+    
     }
 };
 
 return (
   <div className="contentWrapper">
+    
       <div className='createBox'><h1>Luo uusi ravintola</h1></div>
       <form onSubmit={ addSubmit }>
         <div className='addText'>Ravintolan nimi: 
@@ -104,14 +113,13 @@ return (
           placeholder="URL ravintolan kuvaan"
           onChange={(e) => setRestaurantImg(e.target.value)}
         /></div>        
-        <div className='addText'>
-          Tähän ownerId useParams kautta kun token on joskus saatu tehtyä
-        </div>
+        
         <div className='createBox'>
 
-        <button  className='createBox'type="submit">Luo ravintola</button>
+        <button className='createBox'type="submit">Create restaurant</button>
         </div>
-        <div className="message">{message ? <p>Ravintola lisätty</p> : null}</div>
+        <div className="message">{ message }</div>
+        
       </form>
     </div>
   );

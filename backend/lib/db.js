@@ -1,37 +1,21 @@
 
-const mysql = require('mysql');
-let dbConn= null;
+var mysql = require('mysql');
 
-try{ dbConn = mysql.createPool({
+var dbConn = mysql.createPool({
 	host:'localhost',
 	user:'fooduser',
 	password:'foodpass',
-	database:'food4u'
+	database:'food4u',
+  acquireTimeout: 1000,
+  connectionLimit: 100
 });
-}
-catch {
-    console.log("Pool creation failed");
-  }
+dbConn.connect(function(error){
+	if(!!error) {
+		console.log(error);
+	} else {
+		console.log('Time to bake!');
+	}
+});
+
+module.exports  = dbConn;
   
-  
-    const api = {
-      query: (query, ...parameters) =>
-      {
-        let promise = new Promise(function(resolve, reject) {
-          dbConn.query(query, ...parameters, (error, results, fields) => {
-            if(error) {
-              reject(error)
-            };
-    
-            resolve(results);
-          })
-        });
-    
-        return promise;
-      },
-      closeAll: () => {
-        dbConn.end();
-      }
-    };
-    
-    module.exports = api;

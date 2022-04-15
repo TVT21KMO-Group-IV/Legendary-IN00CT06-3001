@@ -1,58 +1,102 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState  } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios';
+import Constants from './Constants.json';
 
 
-export default function Login() {
 
-  const [ username, setUsername ] = useState('');
-    const [ password, setPassword ] = useState('');  
-    const [ message, setMessage] = useState();  // to store success or error message
-
-let addSubmit = async (e) => {
-    e.preventDefault();
- try {        
-    let res = await fetch(`http://localhost:5000/login` , {
-    method: 'POST',
-    headers: {"Content-Type": "application/json",
-  },
-    body: JSON.stringify( {
-      username: username,
-      password: password,
-        
-    }),
-}).then((res)=>
-res.json());
-
-if (res.status === 200) {
-  setUsername('');
-  setPassword('');
+export default function Login(props) {
   
-  setMessage('Kirjauduttu!');
-} else {
-  setMessage("Error occured");
-}
-} catch(err){
-console.log(err);
+   const [ username, setUsername ] = useState('');
+     const [ password, setPassword ] = useState('');  
 
-}
-};
+    let navigate = useNavigate();
+  
+    const [ loginProcessState, setLoginProcessState ] = useState("idle");
+
+    const onSubmit = async (event) => {
+      event.preventDefault();
+      setLoginProcessState("processing");
+      try {
+        const response = await fetch(`http://localhost:5000/login` , {
+               method: 'POST',
+               headers: {"Content-Type": "application/json",
+         },
+          body: JSON.stringify({
+            username: username,
+            password: password
+          })
+        })
+        if (response.status !== 200) {
+          throw new Error("cannot fetch data");
+        }
+        let data = await response.json()
+        .then((data) => {
+          props.setUserJwt(data.token)
+          navigate("/", { replace: true });
+         console.log(data)
+        })
+         
+        //return data;
+        // console.log(result);
+        // console.log(result.data);
+        // setLoginProcessState("success");
+        // setTimeout(() => {
+        //   setLoginProcessState("idle")
+        //   props.setUserJwt(data.token)
+        //   console.log(data)
+        //   console.log(data.setUserJwt)
+        //   navigate("/", { replace: true });
+        // }, 1500);
+      } catch (error) {
+        console.error(error.message);
+        setLoginProcessState("error");
+        setTimeout(() => setLoginProcessState("idle"), 1500);
+      }
+    }
+    //  onSubmit()
+    //    .then((data) => {
+    //      console.log("resolved", data);
+    //    })
+    //    .czatch((err) =>{
+    //      console.log("r3j3ct3d", err.message);
+    //    });
      
-  return (
-    <div className="contentWrapper">
-        <p>
-        Kirjaudu sisään antamalla käyttäjätunnus ja salasana
-        </p>
-        <form onSubmit={ addSubmit }>
-          <div><input type="text" value={username} placeholder='Käyttäjätunnus' className='loginInsertBox' onChange={(e) => setUsername(e.target.value)}>
-            </input></div>
-          <div><input type="password" value={password} placeholder='Salasana' className='loginInsertBox' onChange={(e) => setPassword(e.target.value)}>
-            </input></div>
-          <button className='loginButton' type="submit" >Kirjaudu sisään</button>
-
-          <div className="message">{message ? <p>Kirjauduttu sisään</p> : null}</div>
-          </form>
-    </div>
-  )
-}
-
-
+    let loginUIControls = null;
+    switch(loginProcessState) {
+      case "idle":
+        loginUIControls = <button type="submit">Login</button>
+        break;
+  
+      case "processing":
+        loginUIControls = <span style={{color: 'blue'}}>Processing login...</span>
+        break;
+  
+      case "success":
+        loginUIControls = <span style={{color: 'green'}}>Login successful</span>
+        break;
+  
+      case "error":
+        loginUIControls = <span style={{color: 'red'}}>Error</span>
+        break;
+  
+      default:
+        loginUIControls = <button type="submit">Login</button>
+    }
+  
+  
+    return (
+      <div>
+        <h1>Login</h1>
+        <form onSubmit={ onSubmit }>
+        <div><input type="text" value={username} placeholder='Käyttäjätunnus' className='loginInsertBox' onChange={(e) => setUsername(e.target.value)}>
+             </input></div>
+           <div><input type="password" value={password} placeholder='Salasana' className='loginInsertBox' onChange={(e) => setPassword(e.target.value)}>
+             </input></div>
+          <div>
+            { loginUIControls }
+          </div>
+        </form>
+      </div>
+    )
+  }

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import '../App.css';
 
-function AddMenu() {
+function AddMenu(props) {
+  const { userJwt } = props
   const [menus, setMenus] = useState([]);
   const [dish, setDish] = useState('');
   const [name, setName] = useState('');
@@ -14,6 +15,7 @@ function AddMenu() {
 
   let addSubmit = async (e) => {
     e.preventDefault();
+    var setDish="Alkuruoka";
     try {
       let res = await fetch(`http://localhost:5000/menuitem/${restaurantId}`, {
         method: 'POST',
@@ -51,7 +53,7 @@ function AddMenu() {
     const restaurantMenu = await fetch(`http://localhost:5000/restaurant/${restaurantId}/menu`).then((res) =>
       res.json()
     )
-
+    console.log(userJwt)
     console.log(restaurantMenu)
     setMenus(restaurantMenu)
   }, []);

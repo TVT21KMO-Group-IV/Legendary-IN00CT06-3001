@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import '../App.css';
 
-function Register() {
+function Register(props) {
 
-
+  const { userJwt } = props
+console.log(userJwt)
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ fname, setFname ] = useState('');
@@ -12,16 +13,16 @@ function Register() {
     const [ address, setAddress ] = useState('');
     const [ isOwner, setIsOwner] = useState(); 
     const [ message, setMessage] = useState('');  // to store success or error message
-
+  
 let addSubmit = async (e) => {
     e.preventDefault();
+    var isOwner =0;
  try {        
     let res = await fetch(`http://localhost:5000/user` , {
     method: 'POST',
     headers: {"Content-Type": "application/json",
   },
     body: JSON.stringify( {
-        //isChecked: false,
         username: username,
         password: password,
         fname: fname,
@@ -71,7 +72,7 @@ res.json());
                 <select className='addBox2'
                     type="text"
                     value={isOwner}
-                    onChange={(e) => setIsOwner(e.target.value)}>
+                    onChange={(e) => setIsOwner(e.target.value)}>                     
                 <option value="0">Olen asiakas</option>
                 <option value="1">Olen ravintoloitsija</option>
                 </select>
