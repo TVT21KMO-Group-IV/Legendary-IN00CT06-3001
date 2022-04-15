@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-//var dbConn  = require('../lib/db');
+//const dbConn  = require('../lib/db');
 const mysql = require('mysql');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -86,21 +86,21 @@ if (err) throw (err)
       if (await bcrypt.compare(password, passwordHash)) {
         console.log("Login Successful");
         console.log("Generating accessToken");
-        res.json({
-          token: jwt.sign({ username: result[0].username, isOwner: result[0].isOwner }, jwtSecretKey, { expiresIn: "2h" }
+        // res.json({
+        //   token: jwt.sign({ username: result[0].username, isOwner: result[0].isOwner }, jwtSecretKey, { expiresIn: "2h" }
           
-        )})
+        // )})
         //});
 
+        jwt.sign({ username: result[0].username, isOwner: result[0].isOwner }, jwtSecretKey, {expiresIn: "2h"}, (err, token) => {
+          res.json({ token });  
+          console.log(token)
+        });   
 
-        // jwt.sign({ user: user, isOwner }, jwtSecretKey, {expiresIn: "2h"}, (err, token) => {
-        //   res.json({ token });  
-        //   console.log(token)
-        // });    
       } else {
         console.log("Password Incorrect");
         res.send("Password incorrect!");
-      }
+      }//console.log(jwt)
     }
   }) 
 }) 
@@ -178,7 +178,7 @@ app.get(`/restaurant/:idRestaurant/restaurant`, function(req, res) {
     dbConn.query('SELECT * FROM restaurant WHERE idRestaurant=?',[req.params.idRestaurant], function(error, result) {
       if (error) throw error;
       console.log("Ravintola haettu");
-
+      
       res.send(result)  
     });
   });   

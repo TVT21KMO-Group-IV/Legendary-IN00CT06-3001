@@ -30,10 +30,10 @@ function App (props)  {
                   }} /> } />                 
   </>
   
-  // if(userJwt != null) {
-  //   authRoutes = <Route path="/addrestaurant" element={ <AddRestaurant setUserJwt={ setUserJwt } /> }/>
+  if(userJwt != null) {
+    authRoutes = <Route path="/addrestaurant" element={ <AddRestaurant userJwt={ userJwt } /> }/>
     
-  // }
+  }
   console.log(userJwt)
 
   return (<div className='pageWrapper'>

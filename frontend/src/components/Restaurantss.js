@@ -39,6 +39,7 @@ export default function Restaurantss(props) {
 
   return (
     <div className="contentWrapper">
+      <Link to="/addrestaurant"><button className='loginButton'type='submit'>Luo ravintola</button></Link>
       <div className="homeRestaurantSearch">
         <input
           type="search"

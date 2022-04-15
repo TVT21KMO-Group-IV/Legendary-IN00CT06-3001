@@ -20,7 +20,7 @@ let addSubmit = async (e) => {
     let res = await fetch(`http://localhost:5000/addrestaurant` , {
     method: 'POST',
     headers: {"Content-Type": "application/json",
- 
+    'Authorization': 'Bearer ' + props.userJwt
   },
     body: JSON.stringify( {
         name: name,
