@@ -28,7 +28,7 @@ app.use(bodyParser.json({limit: "50mb"}));
 app.use(bodyParser.urlencoded({limit: "50mb",extended: true}));
 app.use(passport.initialize());
 
-
+//create a secret key for jwt
 let jwtSecretKey = null;
 if(process.env.JWTKEY === undefined) {
   jwtSecretKey = require('./jwt-key.json').secret;
@@ -68,6 +68,7 @@ app.post("/login", (req, res)=> {
  const password = req.body.password
  dbConn.getConnection ( async (err, connection)=> {
 if (err) throw (err)
+//perform a sql search with given username to get specific data for the username
     const sqlSearch = "Select * from user where username = ?"
     const search_query = mysql.format(sqlSearch,[user])
     console.log(search_query)
@@ -76,13 +77,14 @@ if (err) throw (err)
        connection.release(); 
     if (err)
       throw (err);
+      //check if the given username exist
     if (result.length == 0) {
       console.log("User does not exist");
       res.sendStatus(404);
     }
     else {
       const passwordHash = result[0].password;
-      //get the passwordHash from result
+      //get the passwordHash from result and compare if the password is correct
       if (await bcrypt.compare(password, passwordHash)) {
         console.log("Login Successful");
         console.log("Generating accessToken");
@@ -91,8 +93,8 @@ if (err) throw (err)
           
         // )})
         //});
-
-        jwt.sign({ username: result[0].username, isOwner: result[0].isOwner }, jwtSecretKey, {expiresIn: "2h"}, (err, token) => {
+          //with jwt.sign we create the jsonwebtoken, payload has values idUser, username and isOwner
+        jwt.sign({ iduser: result[0].idUser, username: result[0].username, isOwner: result[0].isOwner }, jwtSecretKey, {expiresIn: "2h"}, (err, token) => {
           res.json({ token });  
           console.log(token)
         });   
@@ -106,48 +108,6 @@ if (err) throw (err)
 }) 
 }) 
 
-app.get(
-  '/jwtProtectedResource',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    console.log("jwt");
-    res.json(
-      {
-        status: "Successfully accessed protected resource with JWT",
-        user: req.user
-      }
-    );
-  }
-);
-app.get('/todosJWT',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    console.log('GET /todosJWT')
-    console.log(req.user)
-    if (req.user.isOwner == 1){
-      res.json({});
-    }else{
-      res.sendStatus(403);
-    }
-    //const t = todos.getAllUserTodos(req.user.id);
-    //console.log('User Id: ' + req.user.id);
-    
-})
-app.post('/todosJWT',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    console.log('POST /todosJWT');
-    console.log(req.body);
-    if(('description' in req.body) && ( 'dueDate' in req.body)) {
-      todos.insertTodo(req.body.description, req.body.dueDate, req.user.id);
-      res.json(todos.getAllUserTodos(req.user.id));
-    }
-    else {
-      res.sendStatus(400);
-    }
-
-})
-
 // Get all restaurants from the database
 app.get('/restaurant', function (req, res) {
   dbConn.getConnection(function (err, connection) {
@@ -160,7 +120,7 @@ app.get('/restaurant', function (req, res) {
 });
 
 
-
+// get all menulist items
 app.get('/menuitem', function (req, res) {
   dbConn.getConnection(function (err, connection) {
       dbConn.query('SELECT * FROM menuitem', function (error, results) {
@@ -177,15 +137,24 @@ app.get(`/restaurant/:idRestaurant/restaurant`, function(req, res) {
   dbConn.getConnection(function (err, connection) {
     dbConn.query('SELECT * FROM restaurant WHERE idRestaurant=?',[req.params.idRestaurant], function(error, result) {
       if (error) throw error;
-      console.log("Ravintola haettu");
-      
+      console.log("Ravintola haettu");     
       res.send(result)  
     });
   });   
 });
 
+// app.get(`/newr`, function(req, res) {
+//   dbConn.getConnection(function (err, connection) {
+//     dbConn.query('SELECT * FROM restaurant ORDER BY idRestaurant DESC LIMIT 1', function(error, result) {
+//       if (error) throw error;
+//       console.log("Viimeksi lisätty ravintola haettu");     
+//       res.send(result)  
+//     });
+//   });   
+// });
 
-// Add new restaurant to the database
+
+// Add new restaurant to the database, only with value 1 from isOwner checked with token
 app.post(`/addrestaurant`, passport.authenticate('jwt', { session: false }),
  function(req, res) {
   if (req.user.isOwner != 1){
@@ -247,7 +216,7 @@ app.post(`/user`, function(req, res) {
     });
   });   
 });
-
+// give the port that we are listening
  app.listen(5000, () => {
      console.log('check http://localhost:5000/register to see the data.');
 });

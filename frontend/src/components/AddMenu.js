@@ -15,6 +15,7 @@ function AddMenu(props) {
 
   let addSubmit = async (e) => {
     e.preventDefault();
+    var setDish="Alkuruoka";
     try {
       let res = await fetch(`http://localhost:5000/menuitem/${restaurantId}`, {
         method: 'POST',

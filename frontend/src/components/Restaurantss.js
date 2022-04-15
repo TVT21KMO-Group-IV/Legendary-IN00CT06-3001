@@ -30,16 +30,14 @@ export default function Restaurantss(props) {
 
   const [rest, setRest] = useState('');
   const filter = (e) => {
-    const keyw = e.target.value;
-    console.log("testi", userJwt);
+    const keyw = e.target.value; 
     setRest(keyw);
   };
   let filteredRestaurants = restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(rest.toLowerCase()) || restaurant.type.toLowerCase().includes(rest.toLowerCase()))
-
-
+  
   return (
     <div className="contentWrapper">
-      <Link to="/addrestaurant"><button className='loginButton'type='submit'>Luo ravintola</button></Link>
+      <div className='addBox3'><Link to="/addrestaurant"><button className='createRestaurantButton'type='submit'>Ravintoloitsija Luo Ravintola</button></Link></div>
       <div className="homeRestaurantSearch">
         <input
           type="search"

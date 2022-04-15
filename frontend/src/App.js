@@ -31,7 +31,7 @@ function App (props)  {
   </>
   
   if(userJwt != null) {
-    authRoutes = <Route path="/addrestaurant" element={ <AddRestaurant userJwt={ userJwt } /> }/>
+    authRoutes = <Route path="/addrestaurant" element={ <AddRestaurant userJwt={ userJwt } logout={() => setUserJwt(null)} /> }/>
     
   }
   console.log(userJwt)

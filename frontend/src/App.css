@@ -113,7 +113,6 @@
   height: 45px;
   font-size: 20px;
 }
-
 .padding {
   padding: 1%;
 }
@@ -381,16 +380,26 @@
 
 .addBox {
   margin-left: auto; 
-margin-right: 0;
+  margin-right: 0;
   width: 200px;
 }
 
 .addBox2 {
   margin-left: auto; 
-margin-right: 0;
+  margin-right: 0;
   width: 208px;
 }
-
+.addBox3 {
+  margin-left: auto; 
+  margin-right: 5%;
+  width: 200px;
+}
+.createRestaurantButton {
+  margin-top: 25px;
+  width: 150px;
+  height: 45px;
+  font-size: 15px;
+}
 .cart {
   margin: auto;
   width: 45%;
