@@ -51,7 +51,7 @@ export default function Restaurantss(props) {
         <div className="paddingTop">
           {filteredRestaurants.length ? filteredRestaurants.map((restaurants) => (
             <div key={restaurants.idRestaurant} className='restaurantHome'><img src={restaurants.restaurantImg} className='restaurantImg' />
-              <div className='restaurantHomeText' >{restaurants.name} {restaurants.address}
+              <div className='restaurantHomeText' >{restaurants.name} <div className='restaurantHomeAddress'>{restaurants.address}</div>
 
                 <div><Link to={`/restaurant/${restaurants.idRestaurant}`}><button className='homeMenuButton' >Avaa ravintolan ruokalista</button></Link></div></div></div>
           )) : <div><h1>Hakuehdoillasi ei löydy ravintolaa</h1></div>}

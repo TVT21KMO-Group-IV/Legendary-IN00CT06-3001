@@ -216,7 +216,26 @@ app.post(`/user`, function(req, res) {
     });
   });   
 });
+
 // give the port that we are listening
+
+
+// Add new order to the database
+app.post("/order", function(req, res) {
+  dbConn.getConnection(function (err, connection) {
+    
+    dbConn.query('INSERT INTO ordercontent (amount, price, address) VALUES (?, ?, ?)',
+    [req.body.amount, req.body.price, req.body.address],
+     function(error, result) {
+      if (error) throw error;
+      console.log("Ostos lisätty");
+      res.send(result)  
+      
+    });
+  });   
+});
+
+
  app.listen(5000, () => {
      console.log('check http://localhost:5000/register to see the data.');
 });

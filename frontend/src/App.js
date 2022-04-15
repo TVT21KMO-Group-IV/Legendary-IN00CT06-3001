@@ -17,6 +17,8 @@ import Footer from './components/Footer';
 import GetMenu from './components/GetMenu';
 import AddRestaurant from './components/AddRestaurant';
 import AddMenu from './components/AddMenu'
+import Order from './components/Order';
+
 
 const jwtFromStorage = window.localStorage.getItem('appAuthData');
 
@@ -37,10 +39,8 @@ function App (props)  {
   console.log(userJwt)
 
   return (<div className='pageWrapper'>
-     
      <div>Auth status: { userJwt != null ? "Logged in": "Not logged in" } </div>
-    <BrowserRouter>
-
+     <BrowserRouter>
       <NavBar />
         <Routes>
           <Route path="/Login" element={<Login setUserJwt={ setUserJwt } />} />
@@ -49,6 +49,7 @@ function App (props)  {
           <Route path="/restaurant/:restaurantId" element={ <GetMenu /> } />
           <Route path="/addRestaurant" element={ <AddRestaurant userJwt={ userJwt } /> } />
           <Route path="/AddMenu/:restaurantId" element={ <AddMenu userJwt={ userJwt } /> } />
+          <Route path="/restaurant/:restaurantId/Order" element={ <Order />} />
         </Routes>
       <Footer />
           
