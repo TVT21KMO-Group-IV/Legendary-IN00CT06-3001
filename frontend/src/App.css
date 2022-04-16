@@ -387,8 +387,8 @@
 }
 .addBox3 {
   margin-left: auto; 
-  margin-right: 5%;
-  width: 200px;
+  margin-right: 0;
+  width: 150px;
 }
 .createRestaurantButton {
   margin-top: 25px;

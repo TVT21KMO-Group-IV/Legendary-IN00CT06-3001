@@ -10,6 +10,7 @@ function AddMenu(props) {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [menuItemImg, setMenuItemImg] = useState('');
+  const [restaurants, setRestaurants] = useState([]);
   const { restaurantId } = useParams('');
   const [message, setMessage] = useState();  // to store success or error message
 
@@ -50,17 +51,24 @@ function AddMenu(props) {
     }
   };
   useEffect(async () => {
-    const restaurantMenu = await fetch(`http://localhost:5000/restaurant/${restaurantId}/menu`).then((res) =>
+    const restaurant = await fetch(`http://localhost:5000/restaurant/${restaurantId}/restaurant`).then((res) =>
       res.json()
     )
-    console.log(userJwt)
-    console.log(restaurantMenu)
-    setMenus(restaurantMenu)
+
+    console.log(restaurant)
+    setRestaurants(restaurant)
   }, []);
 
 
   return (
     <div className="contentWrapper">
+      <div className="paddingTop">
+          {restaurants.map((restaurants) => (
+            <div key={restaurants.idRestaurant} className='restaurantHome'><img src={restaurants.restaurantImg} className='restaurantImg' />
+              <div className='restaurantHomeText' >{restaurants.name}
+                </div></div>
+          )) }
+        </div>
       <div className='createBox'><h1>Lisää uusi annos</h1></div>
       <form onSubmit={addSubmit}>
         <div className='addText'>Ruokatyyppi:
