@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import '../App.css';
+import jwt_decode from "jwt-decode";
 
 function AddRestaurant(props) {
 
   const { userJwt } = props
-
+  var decoded = jwt_decode(userJwt);
+  
     const [ name, setName ] = useState('');
     const [ type, setType ] = useState('');
     const [ pricerange, setPricerange ] = useState('');
@@ -13,8 +15,8 @@ function AddRestaurant(props) {
     const [ openingHours, setOpeningHours ] = useState('');
     const [ restaurantImg, setRestaurantImg ] = useState('');
     const [ message, setMessage] = useState();  // to store success or error message
-    
-let addSubmit = async (e) => {
+
+    let addSubmit = async (e) => {
     e.preventDefault();
     var type="Casual Dining";
     var pricerange="€";
@@ -32,11 +34,12 @@ let addSubmit = async (e) => {
         address: address,
         openingHours: openingHours,
         restaurantImg: restaurantImg,
-        idUser: props.userJwt.idUser
+        idUser: decoded.idUser
     }),
 }).then((res)=>
 res.json());
-
+console.log(decoded)
+    console.log(props.userJwt);
     if (res.status === 200) {
         setName('');
         setType('');

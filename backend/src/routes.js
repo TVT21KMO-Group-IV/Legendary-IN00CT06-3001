@@ -94,7 +94,7 @@ if (err) throw (err)
         // )})
         //});
           //with jwt.sign we create the jsonwebtoken, payload has values idUser, username and isOwner
-        jwt.sign({ iduser: result[0].idUser, username: result[0].username, isOwner: result[0].isOwner }, jwtSecretKey, {expiresIn: "2h"}, (err, token) => {
+        jwt.sign({ idUser: result[0].idUser, username: result[0].username, isOwner: result[0].isOwner }, jwtSecretKey, {expiresIn: "2h"}, (err, token) => {
           res.json({ token });  
           console.log(token)
         });   
@@ -143,6 +143,16 @@ app.get(`/restaurant/:idRestaurant/restaurant`, function(req, res) {
   });   
 });
 
+// Get restaurants of owner from database with idUser
+app.get(`/myrestaurants/:idUser`, function(req, res) {
+  dbConn.getConnection(function (err, connection) {
+    dbConn.query('SELECT * FROM restaurant WHERE idUser=?',[req.params.idUser], function(error, result) {
+      if (error) throw error;
+      console.log("Omistajan ravintolat haettu");     
+      res.send(result)  
+    });
+  });   
+});
 // app.get(`/newr`, function(req, res) {
 //   dbConn.getConnection(function (err, connection) {
 //     dbConn.query('SELECT * FROM restaurant ORDER BY idRestaurant DESC LIMIT 1', function(error, result) {
@@ -163,8 +173,8 @@ app.post(`/addrestaurant`, passport.authenticate('jwt', { session: false }),
   }
   dbConn.getConnection(function (err, connection) {
     
-    dbConn.query('INSERT INTO restaurant (name, type, pricerange, address, openingHours, restaurantImg) VALUES (?, ?, ?, ?, ?, ?)',
-    [req.body.name, req.body.type, req.body.pricerange, req.body.address, req.body.openingHours, req.body.restaurantImg],
+    dbConn.query('INSERT INTO restaurant (name, type, pricerange, address, openingHours, restaurantImg, idUser) VALUES (?, ?, ?, ?, ?, ?, ?)',
+    [req.body.name, req.body.type, req.body.pricerange, req.body.address, req.body.openingHours, req.body.restaurantImg, req.body.idUser],
      function(error, result) {
       if (error) throw error;
       console.log("Ravintola lisätty");

@@ -19,6 +19,7 @@ export default function Restaurantss(props) {
     setRestaurants(allrestaurants)
   }, []);
 
+  
   // useEffect(async(idRestaurant) => {
   //   const oneMenu = await fetch(`http://localhost:5000/menuitem/${idRestaurant}`).then((res)=>
   //   res.json()
@@ -37,6 +38,7 @@ export default function Restaurantss(props) {
   
   return (
     <div className="contentWrapper">
+      <div className='addBox3'><Link to="/myrestaurants/:idUser"><button className='createRestaurantButton'type='submit'>Ravintoloitsija Minun Ravintolat</button></Link></div>
       <div className='addBox3'><Link to="/addrestaurant"><button className='createRestaurantButton'type='submit'>Ravintoloitsija Luo Ravintola</button></Link></div>
       <div className="homeRestaurantSearch">
         <input
