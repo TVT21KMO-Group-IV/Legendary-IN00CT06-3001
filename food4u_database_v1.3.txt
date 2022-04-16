@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `food4u`.`restaurant` (
   `address` VARCHAR(45) NOT NULL,
   `openingHours` VARCHAR(45) NOT NULL,
   `restaurantImg` VARCHAR(255) NULL,
-  `idOwner` INT NULL,
+  `idUser` INT NULL,
   PRIMARY KEY (`idRestaurant`))
 ENGINE = InnoDB;
 
