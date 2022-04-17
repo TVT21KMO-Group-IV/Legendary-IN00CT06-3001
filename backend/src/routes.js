@@ -124,9 +124,19 @@ app.get('/restaurant', function (req, res) {
 app.get('/menuitem', function (req, res) {
   dbConn.getConnection(function (err, connection) {
       dbConn.query('SELECT * FROM menuitem', function (error, results) {
-
     if (error) throw error;
     console.log("Menu haettu");
+    res.send(results)
+  });
+});
+});
+
+// get all user information
+app.get('/userinfo/:idUser', function (req, res) {
+  dbConn.getConnection(function (err, connection) {
+      dbConn.query('SELECT * FROM user where idUser=?', [req.params.idUser], function (error, results) {
+    if (error) throw error;
+    console.log("Käyttäjätiedot haettu");
     res.send(results)
   });
 });
@@ -145,6 +155,7 @@ app.get(`/restaurant/:idRestaurant/restaurant`, function(req, res) {
 
 // Get restaurants of owner from database with idUser
 app.get(`/myrestaurants/:idUser`, function(req, res) {
+ 
   dbConn.getConnection(function (err, connection) {
     dbConn.query('SELECT * FROM restaurant WHERE idUser=?',[req.params.idUser], function(error, result) {
       if (error) throw error;
@@ -153,18 +164,8 @@ app.get(`/myrestaurants/:idUser`, function(req, res) {
     });
   });   
 });
-// app.get(`/newr`, function(req, res) {
-//   dbConn.getConnection(function (err, connection) {
-//     dbConn.query('SELECT * FROM restaurant ORDER BY idRestaurant DESC LIMIT 1', function(error, result) {
-//       if (error) throw error;
-//       console.log("Viimeksi lisätty ravintola haettu");     
-//       res.send(result)  
-//     });
-//   });   
-// });
 
-
-// Add new restaurant to the database, only with value 1 from isOwner checked with token
+// Add new restaurant to the database, only with value 1 from isOwner checked with token is able to add
 app.post(`/addrestaurant`, passport.authenticate('jwt', { session: false }),
  function(req, res) {
   if (req.user.isOwner != 1){

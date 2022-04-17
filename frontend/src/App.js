@@ -19,6 +19,7 @@ import AddRestaurant from './components/AddRestaurant';
 import AddMenu from './components/AddMenu'
 import Order from './components/Order';
 import MyRestaurants from './components/MyRestaurants';
+import UserInfo from './components/UserInfo';
 
 
 const jwtFromStorage = window.localStorage.getItem('appAuthData');
@@ -52,6 +53,7 @@ function App (props)  {
           <Route path="/AddMenu/:restaurantId" element={ <AddMenu userJwt={ userJwt } /> } />
           <Route path="/myrestaurants/:idUser" element={ <MyRestaurants userJwt={ userJwt } /> } />
           <Route path="/restaurant/:restaurantId/Order" element={ <Order />} />
+          <Route path="/UserInfo/:idUser" element={ <UserInfo userJwt={ userJwt } /> } />
         </Routes>
       <Footer />
           
