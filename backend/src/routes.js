@@ -228,15 +228,23 @@ app.post(`/user`, function(req, res) {
   });   
 });
 
-// give the port that we are listening
-
+// get all menulist items
+app.get(`/orders/:idUser`, function (req, res) {
+  dbConn.getConnection(function (err, connection) {
+      dbConn.query('SELECT price, address, idUser, idRestaurant, date_format(orderTime,"%d.%m.%Y : %H.%i.%s") as orderTime FROM ordercontent where idUser=?', [req.params.idUser], function (error, results) {
+    if (error) throw error;
+    console.log("Menu haettu");
+    res.send(results)
+  });
+});
+});
 
 // Add new order to the database
-app.post("/order", function(req, res) {
+app.post("/order/:idUser", function(req, res) {
   dbConn.getConnection(function (err, connection) {
     
-    dbConn.query('INSERT INTO ordercontent (amount, price, address) VALUES (?, ?, ?)',
-    [req.body.amount, req.body.price, req.body.address],
+    dbConn.query('INSERT INTO ordercontent (amount, price, address, idUser, restaurant) VALUES (?, ?, ?, ?, ?)',
+    [req.body.amount, req.body.price, req.body.address, req.body.idUser, req.body.restaurant],
      function(error, result) {
       if (error) throw error;
       console.log("Ostos lisätty");
@@ -246,7 +254,7 @@ app.post("/order", function(req, res) {
   });   
 });
 
-
+// 5000 the port that we are listening
  app.listen(5000, () => {
      console.log('check http://localhost:5000/register to see the data.');
 });
