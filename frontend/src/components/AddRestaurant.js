@@ -119,7 +119,7 @@ return (
         
         <div className='createBox'>
 
-        <button className='createBox'type="submit">Create restaurant</button>
+        <button className='createBox'type="submit">Luo uusi ravintola</button>
         </div>
         <div className="message">{ message }</div>
         

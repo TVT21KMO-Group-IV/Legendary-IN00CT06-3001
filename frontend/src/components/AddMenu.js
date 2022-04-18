@@ -11,6 +11,7 @@ function AddMenu(props) {
   const [price, setPrice] = useState('');
   const [menuItemImg, setMenuItemImg] = useState('');
   const [restaurants, setRestaurants] = useState([]);
+  const [del, setDel] = useState([]);
   const { restaurantId } = useParams('');
   const [message, setMessage] = useState();  // to store success or error message
 
@@ -57,6 +58,15 @@ function AddMenu(props) {
 
     console.log(restaurant)
     setRestaurants(restaurant)
+  }, []);
+  useEffect(async() => {
+    const restaurantMenu = await fetch(`http://localhost:5000/restaurant/${restaurantId}/menu`).then((res)=>
+    res.json()
+
+    )
+
+    console.log(restaurantMenu)
+    setMenus(restaurantMenu)
   }, []);
 
 

@@ -124,9 +124,29 @@ app.get('/restaurant', function (req, res) {
 app.get('/menuitem', function (req, res) {
   dbConn.getConnection(function (err, connection) {
       dbConn.query('SELECT * FROM menuitem', function (error, results) {
-
     if (error) throw error;
     console.log("Menu haettu");
+    res.send(results)
+  });
+});
+});
+
+app.get('/delete/:idMenuItem', function (req, res) {
+  dbConn.getConnection(function (err, connection) {
+      dbConn.query('DELETE FROM menuitem where idMenuItem=?',[req.params.idMenuItem], function (error, results) {
+    if (error) throw error;
+    console.log("Annos tuhottu");
+    res.send(results)
+  });
+});
+});
+
+// get all user information
+app.get('/userinfo/:idUser', function (req, res) {
+  dbConn.getConnection(function (err, connection) {
+      dbConn.query('SELECT * FROM user where idUser=?', [req.params.idUser], function (error, results) {
+    if (error) throw error;
+    console.log("Käyttäjätiedot haettu");
     res.send(results)
   });
 });
@@ -145,6 +165,7 @@ app.get(`/restaurant/:idRestaurant/restaurant`, function(req, res) {
 
 // Get restaurants of owner from database with idUser
 app.get(`/myrestaurants/:idUser`, function(req, res) {
+ 
   dbConn.getConnection(function (err, connection) {
     dbConn.query('SELECT * FROM restaurant WHERE idUser=?',[req.params.idUser], function(error, result) {
       if (error) throw error;
@@ -153,18 +174,8 @@ app.get(`/myrestaurants/:idUser`, function(req, res) {
     });
   });   
 });
-// app.get(`/newr`, function(req, res) {
-//   dbConn.getConnection(function (err, connection) {
-//     dbConn.query('SELECT * FROM restaurant ORDER BY idRestaurant DESC LIMIT 1', function(error, result) {
-//       if (error) throw error;
-//       console.log("Viimeksi lisätty ravintola haettu");     
-//       res.send(result)  
-//     });
-//   });   
-// });
 
-
-// Add new restaurant to the database, only with value 1 from isOwner checked with token
+// Add new restaurant to the database, only with value 1 from isOwner checked with token is able to add
 app.post(`/addrestaurant`, passport.authenticate('jwt', { session: false }),
  function(req, res) {
   if (req.user.isOwner != 1){
@@ -227,15 +238,23 @@ app.post(`/user`, function(req, res) {
   });   
 });
 
-// give the port that we are listening
-
+// get all menulist items
+app.get(`/orders/:idUser`, function (req, res) {
+  dbConn.getConnection(function (err, connection) {
+      dbConn.query('SELECT price, address, idUser, restaurant, date_format(orderTime,"%d.%m.%Y : %H.%i.%s") as orderTime FROM ordercontent where idUser=?', [req.params.idUser], function (error, results) {
+    if (error) throw error;
+    console.log("Menu haettu");
+    res.send(results)
+  });
+});
+});
 
 // Add new order to the database
-app.post("/order", function(req, res) {
+app.post("/order/:idUser", function(req, res) {
   dbConn.getConnection(function (err, connection) {
     
-    dbConn.query('INSERT INTO ordercontent (amount, price, address) VALUES (?, ?, ?)',
-    [req.body.amount, req.body.price, req.body.address],
+    dbConn.query('INSERT INTO ordercontent (amount, price, address, idUser, restaurant) VALUES (?, ?, ?, ?, ?)',
+    [req.body.amount, req.body.price, req.body.address, req.body.idUser, req.body.restaurant],
      function(error, result) {
       if (error) throw error;
       console.log("Ostos lisätty");
@@ -245,7 +264,7 @@ app.post("/order", function(req, res) {
   });   
 });
 
-
+// 5000 the port that we are listening
  app.listen(5000, () => {
      console.log('check http://localhost:5000/register to see the data.');
 });
