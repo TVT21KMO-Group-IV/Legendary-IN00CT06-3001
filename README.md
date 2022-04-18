@@ -1,4 +1,4 @@
-To run project food4u_database_v1.4.txt holds database information, run(copy-paste) in mysql terminal to get the database running. To run backend go to /backend/src/ npm install and run node routes.js. To get frontend running go to /frontend/ npm install and then npm start. 
+To run project food4u_database_v1.4.txt holds database information, run(copy-paste) in mysql terminal to get the database running. To run backend go to /backend/src/ 'npm install' and run 'node routes.js'. To get frontend running go to /frontend/ 'npm install' and then 'npm start'. 
 
 # Legendary-IN00CT06-3001
 TVT21KMO IN00CT06-3001 Web-ohjelmoinnin sovellusprojekti
