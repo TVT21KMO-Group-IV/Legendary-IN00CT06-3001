@@ -269,5 +269,8 @@ app.get('*', (req, res) => {
 })
 
  app.listen(5000, () => {
-     console.log('check http://localhost:5000/register to see the data.');
+     /*console.log('check http://localhost:5000/register to see the data.');*/
+     console.log('check https://group-4-food4u.herokuapp.com:5000/register to see the data.');
+
+     
 });
