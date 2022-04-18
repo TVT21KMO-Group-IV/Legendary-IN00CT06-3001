@@ -131,6 +131,16 @@ app.get('/menuitem', function (req, res) {
 });
 });
 
+app.get('/delete/:idMenuItem', function (req, res) {
+  dbConn.getConnection(function (err, connection) {
+      dbConn.query('DELETE FROM menuitem where idMenuItem=?',[req.params.idMenuItem], function (error, results) {
+    if (error) throw error;
+    console.log("Annos tuhottu");
+    res.send(results)
+  });
+});
+});
+
 // get all user information
 app.get('/userinfo/:idUser', function (req, res) {
   dbConn.getConnection(function (err, connection) {
@@ -231,7 +241,7 @@ app.post(`/user`, function(req, res) {
 // get all menulist items
 app.get(`/orders/:idUser`, function (req, res) {
   dbConn.getConnection(function (err, connection) {
-      dbConn.query('SELECT price, address, idUser, idRestaurant, date_format(orderTime,"%d.%m.%Y : %H.%i.%s") as orderTime FROM ordercontent where idUser=?', [req.params.idUser], function (error, results) {
+      dbConn.query('SELECT price, address, idUser, restaurant, date_format(orderTime,"%d.%m.%Y : %H.%i.%s") as orderTime FROM ordercontent where idUser=?', [req.params.idUser], function (error, results) {
     if (error) throw error;
     console.log("Menu haettu");
     res.send(results)

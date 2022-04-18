@@ -18,13 +18,23 @@ export default function GetMenu (props) {
     const { userJwt } = props
     var decoded = jwt_decode(userJwt);
     
+    useEffect(async () => {
+      const restaurant = await fetch(`http://localhost:5000/restaurant/${restaurantId}/restaurant`).then((res) =>
+        res.json()
+      )
+      
+      console.log(restaurant)
+      console.log(userJwt)
+      setRestaurants(restaurant)
+    }, []);
+
     const addOrder = () => {
      Axios.post(`http://localhost:5000/order/:idUser`, {
          amount: cartItems.length,        
          price: totalPrice,
          address: address,
          idUser: decoded.idUser,
-         restaurant: restaurants.name
+         restaurant: restaurantId
     }).then(() =>{
       console.log("success");
     });
@@ -43,15 +53,7 @@ export default function GetMenu (props) {
     setMenus(restaurantMenu)
   }, []);
 
-  useEffect(async () => {
-    const restaurant = await fetch(`http://localhost:5000/restaurant/${restaurantId}/restaurant`).then((res) =>
-      res.json()
-    )
-
-    console.log(restaurant)
-    console.log(userJwt)
-    setRestaurants(restaurant)
-  }, []);
+  
 
   const [menuItemFilter, setRest] = useState('');
   const filter = (e) => {
