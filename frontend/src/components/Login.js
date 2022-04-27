@@ -1,9 +1,5 @@
 import React, { useState  } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios';
-import Constants from './Constants.json';
-
-
+import { useNavigate } from 'react-router-dom'
 
 export default function Login(props) {
   
@@ -37,30 +33,14 @@ export default function Login(props) {
          console.log(data)
         })
          
-        //return data;
-        // console.log(result);
-        // console.log(result.data);
-        // setLoginProcessState("success");
-        // setTimeout(() => {
-        //   setLoginProcessState("idle")
-        //   props.setUserJwt(data.token)
-        //   console.log(data)
-        //   console.log(data.setUserJwt)
-        //   navigate("/", { replace: true });
-        // }, 1500);
+        
       } catch (error) {
         console.error(error.message);
         setLoginProcessState("error");
         setTimeout(() => setLoginProcessState("idle"), 1500);
       }
     }
-    //  onSubmit()
-    //    .then((data) => {
-    //      console.log("resolved", data);
-    //    })
-    //    .czatch((err) =>{
-    //      console.log("r3j3ct3d", err.message);
-    //    });
+ 
      
     let loginUIControls = null;
     switch(loginProcessState) {

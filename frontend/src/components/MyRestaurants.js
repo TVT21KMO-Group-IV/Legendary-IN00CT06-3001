@@ -10,25 +10,18 @@ export default function MyRestaurants(props) {
     var decoded = jwt_decode(userJwt);
 
     const [restaurants, setRestaurants] = useState([]);
-  //const [menus, setMenus] =useState([]);
-
-
+  
   useEffect(async () => {
+    
     const allrestaurants = await fetch(`http://localhost:5000/myrestaurants/${decoded.idUser}`).then((res) =>
       res.json()
     )
 
     console.log(allrestaurants)
     setRestaurants(allrestaurants)
-  }, []);
+  },[]);
 
-//   const [rest, setRest] = useState('');
-//   const filter = (e) => {
-//     const keyw = e.target.value; 
-//     setRest(keyw);
-//   };
-//   let filteredRestaurants = restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(rest.toLowerCase()) || restaurant.type.toLowerCase().includes(rest.toLowerCase()))
-  
+
   return (
     <div className="contentWrapper">
      

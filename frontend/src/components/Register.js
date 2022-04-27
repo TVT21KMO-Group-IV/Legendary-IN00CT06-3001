@@ -16,7 +16,7 @@ console.log(userJwt)
   
 let addSubmit = async (e) => {
     e.preventDefault();
-    var isOwner =0;
+    
  try {        
     let res = await fetch(`http://localhost:5000/user` , {
     method: 'POST',
