@@ -1,18 +1,11 @@
 import './App.css';
 import Login from './components/Login';
-import RegisterView from './components/RegisterView';
 import React from 'react';
-import {useState, useEffect} from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import RestaurantView from './components/RestaurantView';
-// View to view all restaurants
+import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Restaurantss from './components/Restaurantss';
-// View for a single restaurant
-import Restaurant from './components/Restaurant';
-import Search from './components/Search';
 import NavBar from './components/NavBar';
 import Register from './components/Register';
-import Menu from './components/Menu';
 import Footer from './components/Footer';
 import GetMenu from './components/GetMenu';
 import AddRestaurant from './components/AddRestaurant';
@@ -36,9 +29,12 @@ function App (props)  {
   
   if(userJwt != null) {
     authRoutes = <Route path="/addrestaurant" element={ <AddRestaurant userJwt={ userJwt } logout={() => setUserJwt(null)} /> }/>
-    
+    authRoutes = <Route path="/restaurant/:restaurantId" element={ <GetMenu userJwt={ userJwt } /> } />
+    //authRoutes = <Route path="/login" element={ <Login/>}/>
+  }else {
+    <Route path="/Login" element={<Login setUserJwt={ setUserJwt } />} />
   }
-  console.log(userJwt)
+  //console.log(userJwt)
 
   return (<div className='pageWrapper'>
      <div>Auth status: { userJwt != null ? "Logged in": "Not logged in" } </div>

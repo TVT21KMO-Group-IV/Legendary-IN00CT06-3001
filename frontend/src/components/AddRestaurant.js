@@ -18,8 +18,8 @@ function AddRestaurant(props) {
 
     let addSubmit = async (e) => {
     e.preventDefault();
-    var type="Casual Dining";
-    var pricerange="€";
+ 
+
     console.log(userJwt);
  try {        
     let res = await fetch(`http://localhost:5000/addrestaurant` , {
@@ -53,8 +53,7 @@ console.log(decoded)
     }
 } catch(err){
   setMessage("Sinulla ei ole oikeuksia luoda uutta ravintolaa!");
-    console.log(err);
-    
+    console.log(err);   
     }
 };
 

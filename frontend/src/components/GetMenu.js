@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, Route } from 'react-router-dom';
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
+import Login from './Login';
 
 export default function GetMenu (props) {
-
-  
 
     const [cartItems, setCartItems] = useState([]);
     const [menus, setMenus] =useState([]);
@@ -16,8 +15,14 @@ export default function GetMenu (props) {
     const totalPrice = itemsPrice + delPrice;
     const [address, setAddress] = useState("");
     const { userJwt } = props
-    var decoded = jwt_decode(userJwt);
     
+  if(userJwt != null) {
+    
+    var decoded = jwt_decode(userJwt);
+}
+
+    
+
     useEffect(async () => {
       const restaurant = await fetch(`http://localhost:5000/restaurant/${restaurantId}/restaurant`).then((res) =>
         res.json()
@@ -27,7 +32,7 @@ export default function GetMenu (props) {
       console.log(userJwt)
       setRestaurants(restaurant)
     }, []);
-
+  
     const addOrder = () => {
      Axios.post(`http://localhost:5000/order/:idUser`, {
          amount: cartItems.length,        
@@ -52,7 +57,7 @@ export default function GetMenu (props) {
     console.log(restaurantMenu)
     setMenus(restaurantMenu)
   }, []);
-
+    
   
 
   const [menuItemFilter, setRest] = useState('');
