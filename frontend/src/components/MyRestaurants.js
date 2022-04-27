@@ -10,21 +10,16 @@ export default function MyRestaurants(props) {
     var decoded = jwt_decode(userJwt);
 
     const [restaurants, setRestaurants] = useState([]);
-    const [setLo] = useState();
-
+  
   useEffect(async () => {
-    if (userJwt!=null){
+    
     const allrestaurants = await fetch(`http://localhost:5000/myrestaurants/${decoded.idUser}`).then((res) =>
       res.json()
     )
 
     console.log(allrestaurants)
     setRestaurants(allrestaurants)
-  }else{ 
-    const login = await fetch(`http://localhost:5000/login`).then((res) =>
-  res.json([]))
-  setLo(login) 
-}});
+  },[]);
 
 
   return (
