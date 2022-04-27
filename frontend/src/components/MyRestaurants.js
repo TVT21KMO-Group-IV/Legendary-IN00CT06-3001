@@ -6,9 +6,9 @@ import jwt_decode from "jwt-decode";
 export default function MyRestaurants(props) {
 
     const { userJwt } = props
-    
+  if(userJwt != null) { 
     var decoded = jwt_decode(userJwt);
-
+}
     const [restaurants, setRestaurants] = useState([]);
   
   useEffect(async () => {
