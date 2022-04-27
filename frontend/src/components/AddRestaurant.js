@@ -6,7 +6,9 @@ import jwt_decode from "jwt-decode";
 function AddRestaurant(props) {
 
   const { userJwt } = props
-  var decoded = jwt_decode(userJwt);
+if(userJwt != null) {
+    var decoded = jwt_decode(userJwt);
+}
   
     const [ name, setName ] = useState('');
     const [ type, setType ] = useState('');
