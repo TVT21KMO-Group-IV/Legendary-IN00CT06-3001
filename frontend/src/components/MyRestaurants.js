@@ -21,7 +21,10 @@ export default function MyRestaurants(props) {
     setRestaurants(allrestaurants)
   },[]);
 
-
+if (userJwt == null){
+    return (
+        <div><h2>Ole hyvä ja kirjaudu ensin sisään.</h2></div>
+    )}
   return (
     <div className="contentWrapper">
      
