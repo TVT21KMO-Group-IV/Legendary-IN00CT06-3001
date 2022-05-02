@@ -14,13 +14,13 @@ Projektin aloitus oli 14.3.2022 ja päättymispäivämäärä 18.4.2022. Pidimme
 •	Asiakkaana on mahdollista selata ravintoloita, ruokalistoja, muokata ostoskoria, selata tilaushistoriaa ja tilata ruokaa.
 
 ![Alotusnäkymä](/Aloitusnäkymä_projekti.jpg)
-KUVA 1. Sovelluksen ravintolanäkymä
+ KUVA 1. Sovelluksen ravintolanäkymä
 
 ## Sovelluksen toteutus 
 Web-sovellus toteutettiin Reactia ja Node.js:ää käyttäen. Sovelluksen kehitysvaiheessa käytimme versiohallinnan tukena GitHubia (KUVA 2). Valmis sovellus toimi Heroku-palvelussa: https://group-4-food4u.herokuapp.com/ .
 
 ![Tiedostonäkymä](/Github-gtiedostorakenne.jpg)
-KUVA 2. Näkymä Projektin tiedostonäkymästä GitHubissa
+ KUVA 2. Näkymä Projektin tiedostonäkymästä GitHubissa
 
 ## Sovelluksen käyttöönotto
 Sovellus vaatii tietokannan taustalle toimiakseen kunnolla. Alla (KUVA 3) kuvassa näkyy käytetyn tietokannan rakenne.
@@ -37,6 +37,6 @@ Jos backend käynnistyi oikein Visual Studio Code:n terminaaliin tulee viesti: c
 •	Jos sovellus käynnistyy oikein terminaaliin tulee teksti: react-scripts start.
 
  
-[Tietokanta](/Tietokanta.jpg)
-KUVA 3. Sovelluksen taustalla käytettävän tietokannan rakenne
+[Tietokantanäkymä](/Tietokanta.jpg)
+ KUVA 3. Sovelluksen taustalla käytettävän tietokannan rakenne
 
