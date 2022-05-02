@@ -18,11 +18,8 @@ Projektin aloitus oli 14.3.2022 ja päättymispäivämäärä 18.4.2022. Pidimme
  KUVA 1. Sovelluksen ravintolanäkymä
 
 ## Sovelluksen toteutus 
-Web-sovellus toteutettiin Reactia ja Node.js:ää käyttäen. Sovelluksen kehitysvaiheessa käytimme versiohallinnan tukena GitHubia (KUVA 2). Valmis sovellus toimi Heroku-palvelussa: https://group-4-food4u.herokuapp.com/ .
+Web-sovellus toteutettiin Reactia ja Node.js:ää käyttäen. Sovelluksen kehitysvaiheessa käytimme versiohallinnan tukena GitHubia. Valmis sovellus toimi Heroku-palvelussa: https://group-4-food4u.herokuapp.com/ .
 
-![Tiedostonäkymä](/Github-gtiedostorakenne.jpg)
-
- KUVA 2. Näkymä Projektin tiedostonäkymästä GitHubissa
 
 ## Sovelluksen käyttöönotto
 Sovellus vaatii tietokannan taustalle toimiakseen kunnolla. Alla (KUVA 3) kuvassa näkyy käytetyn tietokannan rakenne.
