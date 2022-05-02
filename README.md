@@ -9,7 +9,7 @@ Projektin aloitus oli 14.3.2022 ja päättymispäivämäärä 18.4.2022. Pidimme
 
 ## Sovelluksen toiminnankuvaus
 •	Sovelluksella voi selata ravintoloita ja ruokalistoja (KUVA 1). Käyttäjä voi luoda asiakastilin tai ravintolan omistajan tilin.
-•	Sovellukseen voi kirjautua asiakkaana tai ravintolan omistajana, jolloin sovelluksen tarjoamat toiminteet muuttuvat sen mukaan oletko asiakastilillä vai ravintolan omistajan tilillä.
+•	Sovellukseen voi kirjautua asiakkaana tai ravintolan omistajana, jolloin sovelluksen tarjoamat toiminteet muuttuvat sen mukaan oletko asiakastilillä vai ravintolan    omistajan tilillä.
 •	Ravintolan omistajana voit luoda uuden ravintolan ja ruokalistoja. 
 •	Asiakkaana on mahdollista selata ravintoloita, ruokalistoja, muokata ostoskoria, selata tilaushistoriaa ja tilata ruokaa.
 
@@ -23,16 +23,17 @@ Web-sovellus toteutettiin Reactia ja Node.js:ää käyttäen. Sovelluksen kehity
 
 ## Sovelluksen käyttöönotto
 Sovellus vaatii tietokannan taustalle toimiakseen kunnolla. Alla (KUVA 2) kuvassa näkyy käytetyn tietokannan rakenne.
-Halutessasi voit kloonata repositorion omalle koneelle Gitillä.  Käyttäen Gitissä käskyä: git clone https://github.com/TVT21KMO-Group-IV/Legendary-IN00CT06-3001.git.  
+Halutessasi voit kloonata repositorion omalle koneelle Gitillä.  Käyttäen Gitissä käskyä: git clone https://github.com/TVT21KMO-Group-IV/Legendary-IN00CT06-3001.git.
+
 •	Käynnistä yhteys tietokantaan.
 •	Avaa Visual Studio Code:lla kansio Legendary-IN00CT06-3001.
 •	Avaa Visual Studio Code:ssa kaksi terminaalia. Backendille ja frontendille oma terminaali.
 •	Backend täytyy käynnistää ensin.
 •	Backendin käynnistys seuraavilla skripteillä: cd backend, cd src, npm install (tarpeellinen vain sovelluksen ensimmäisellä käynnistyskerralla), node routes.js.
-Jos backend käynnistyi oikein Visual Studio Code:n terminaaliin tulee viesti: check http://localhost:5000/register to see the data. 
+  Jos backend käynnistyi oikein Visual Studio Code:n terminaaliin tulee viesti: check http://localhost:5000/register to see the data. 
 
 •	Seuraavaksi käynnistetään frontend.
-•	Siirry frontendin terminaaliin a syötä seuraavat skriptit: cd frontend, cd src npm install (tarpeellinen vain sovelluksen ensimmäisellä käynnistyskerralla), npm start.
+•	Siirry frontendin terminaaliin a syötä seuraavat skriptit: cd frontend, cd src npm install (tarpeellinen vain sovelluksen ensimmäisellä käynnistyskerralla), npm      start.
 •	Jos sovellus käynnistyy oikein terminaaliin tulee teksti: react-scripts start.
 
  
