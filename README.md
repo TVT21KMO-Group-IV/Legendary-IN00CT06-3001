@@ -22,7 +22,7 @@ Web-sovellus toteutettiin Reactia ja Node.js:ää käyttäen. Sovelluksen kehity
 
 
 ## Sovelluksen käyttöönotto
-Sovellus vaatii tietokannan taustalle toimiakseen kunnolla. Alla (KUVA 3) kuvassa näkyy käytetyn tietokannan rakenne.
+Sovellus vaatii tietokannan taustalle toimiakseen kunnolla. Alla (KUVA 2) kuvassa näkyy käytetyn tietokannan rakenne.
 Halutessasi voit kloonata repositorion omalle koneelle Gitillä.  Käyttäen Gitissä käskyä: git clone https://github.com/TVT21KMO-Group-IV/Legendary-IN00CT06-3001.git.  
 •	Käynnistä yhteys tietokantaan.
 •	Avaa Visual Studio Code:lla kansio Legendary-IN00CT06-3001.
@@ -38,5 +38,5 @@ Jos backend käynnistyi oikein Visual Studio Code:n terminaaliin tulee viesti: c
  
 ![kantanäkymä](/Tietokanta.jpg)
 
- KUVA 3. Sovelluksen taustalla käytettävän tietokannan rakenne
+ KUVA 2. Sovelluksen taustalla käytettävän tietokannan rakenne
 
