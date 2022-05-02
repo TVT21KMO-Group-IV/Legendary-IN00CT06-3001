@@ -8,18 +8,22 @@ Ryhmä 4 Food4U-sovelluksen tekivät Antti Roos, Sampo Vuorento, Juha-Matti Lite
 Projektin aloitus oli 14.3.2022 ja päättymispäivämäärä 18.4.2022. Pidimme päivittäin palavereja, joissa kävimme läpi projektin etenemistä ja ryhmäläisten kohtaamia haasteita sekä ongelmia. Palavereissa myös ruodittiin ongelmia ja ongelmien ratkaisuja. Ongelmiin, joita emme itse osanneet ratkaista, pyysimme apua projektia ohjaavalta opettajalta.
 
 ## Sovelluksen toiminnankuvaus
-•	Sovelluksella voi selata ravintoloita ja ruokalistoja. Käyttäjä voi luoda asiakastilin tai ravintolan omistajan tilin.
+•	Sovelluksella voi selata ravintoloita ja ruokalistoja (KUVA 1). Käyttäjä voi luoda asiakastilin tai ravintolan omistajan tilin.
 •	Sovellukseen voi kirjautua asiakkaana tai ravintolan omistajana, jolloin sovelluksen tarjoamat toiminteet muuttuvat sen mukaan oletko asiakastilillä vai ravintolan omistajan tilillä.
 •	Ravintolan omistajana voit luoda uuden ravintolan ja ruokalistoja. 
 •	Asiakkaana on mahdollista selata ravintoloita, ruokalistoja, muokata ostoskoria, selata tilaushistoriaa ja tilata ruokaa.
 
 ![Alotusnäkymä](/Aloitusnäkymä_projekti.jpg)
+KUVA 1. Sovelluksen ravintolanäkymä
 
 ## Sovelluksen toteutus 
-Web-sovellus toteutettiin Reactia ja Node.js:ää käyttäen. Sovelluksen kehitysvaiheessa käytimme versiohallinnan tukena GitHubia. Valmis sovellus toimi Heroku-palvelussa: https://group-4-food4u.herokuapp.com/ .
+Web-sovellus toteutettiin Reactia ja Node.js:ää käyttäen. Sovelluksen kehitysvaiheessa käytimme versiohallinnan tukena GitHubia (KUVA 2). Valmis sovellus toimi Heroku-palvelussa: https://group-4-food4u.herokuapp.com/ .
+
+![Tiedostonäkymä](/Github-gtiedostorakenne.jpg)
+KUVA 2. Näkymä Projektin tiedostonäkymästä GitHubissa
 
 ## Sovelluksen käyttöönotto
-Sovellus vaatii tietokannan taustalle toimiakseen kunnolla. Tietokannan rakenne löytyy food4u_database_v1.4.txt-tiedostosta.
+Sovellus vaatii tietokannan taustalle toimiakseen kunnolla. Alla (KUVA 3) kuvassa näkyy käytetyn tietokannan rakenne.
 Halutessasi voit kloonata repositorion omalle koneelle Gitillä.  Käyttäen Gitissä käskyä: git clone https://github.com/TVT21KMO-Group-IV/Legendary-IN00CT06-3001.git.  
 •	Käynnistä yhteys tietokantaan.
 •	Avaa Visual Studio Code:lla kansio Legendary-IN00CT06-3001.
@@ -33,4 +37,6 @@ Jos backend käynnistyi oikein Visual Studio Code:n terminaaliin tulee viesti: c
 •	Jos sovellus käynnistyy oikein terminaaliin tulee teksti: react-scripts start.
 
  
+[Tietokanta](/Tietokanta.jpg)
+KUVA 3. Sovelluksen taustalla käytettävän tietokannan rakenne
 
