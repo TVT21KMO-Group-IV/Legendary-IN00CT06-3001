@@ -13,7 +13,7 @@ Projektin aloitus oli 14.3.2022 ja päättymispäivämäärä 18.4.2022. Pidimme
 •	Ravintolan omistajana voit luoda uuden ravintolan ja ruokalistoja. 
 •	Asiakkaana on mahdollista selata ravintoloita, ruokalistoja, muokata ostoskoria, selata tilaushistoriaa ja tilata ruokaa.
 
-!(/Aloitusnäkymä_projekti.jpg)
+![Alotusnäkymä](/Aloitusnäkymä_projekti.jpg)
 
 ## Sovelluksen toteutus 
 Web-sovellus toteutettiin Reactia ja Node.js:ää käyttäen. Sovelluksen kehitysvaiheessa käytimme versiohallinnan tukena GitHubia. Valmis sovellus toimi Heroku-palvelussa: https://group-4-food4u.herokuapp.com/ .
