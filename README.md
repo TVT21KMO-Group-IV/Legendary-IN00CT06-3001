@@ -1,29 +1,23 @@
-Food4U - ruuantilauspalvelu
+# Food4U - ruuantilauspalvelu
 Web-sovellusprojektissa oli tehtävänä tehdä ja suunnitella ruuantilaussovellus. Asiakas luo tilin, jonka kautta hän voi tilata erilaisia herkullisia aterioita paikallisista suosikkiravintoloistaan. Ravintoloitsija voi luoda ravintoloita ja niihin erilaisia ruokalistoja. Ruokatilauksista jää tiedot ravintoloitsijan ja asiakkaan tilaushistoriaan. Sovellus toteutettiin Reactilla ja Node.js:ää käyttäen. Valmis sovellus toimii Heroku-palvelussa. 
 
-Tekijät
+## Tekijät
 Ryhmä 4 Food4U-sovelluksen tekivät Antti Roos, Sampo Vuorento, Juha-Matti Litendahl ja Janne Ahonen. Kukin ryhmän jäsen toteutti sovelluksen osan fullstack-ohjelmoijina. Kaikki ohjelmoivat sovelluksen osan toimimaan frontend- ja backend-puolella. 
 
-Projektin kulku
+### Projektin kulku
 Projektin aloitus oli 14.3.2022 ja päättymispäivämäärä 18.4.2022. Pidimme päivittäin palavereja, joissa kävimme läpi projektin etenemistä ja ryhmäläisten kohtaamia haasteita sekä ongelmia. Palavereissa myös ruodittiin ongelmia ja ongelmien ratkaisuja. Ongelmiin, joita emme itse osanneet ratkaista, pyysimme apua projektia ohjaavalta opettajalta.
 
-Sovelluksen toiminnankuvaus
-•	Sovelluksella voi selata ravintoloita ja ruokalistoja (KUVA 1). Käyttäjä voi luoda asiakastilin tai ravintolan omistajan tilin.
+#### Sovelluksen toiminnankuvaus
+•	Sovelluksella voi selata ravintoloita ja ruokalistoja. Käyttäjä voi luoda asiakastilin tai ravintolan omistajan tilin.
 •	Sovellukseen voi kirjautua asiakkaana tai ravintolan omistajana, jolloin sovelluksen tarjoamat toiminteet muuttuvat sen mukaan oletko asiakastilillä vai ravintolan omistajan tilillä.
 •	Ravintolan omistajana voit luoda uuden ravintolan ja ruokalistoja. 
 •	Asiakkaana on mahdollista selata ravintoloita, ruokalistoja, muokata ostoskoria, selata tilaushistoriaa ja tilata ruokaa.
 
- 
-KUVA 1. Sovelluksen ravintolanäkymä
+##### Sovelluksen toteutus 
+Web-sovellus toteutettiin Reactia ja Node.js:ää käyttäen. Sovelluksen kehitysvaiheessa käytimme versiohallinnan tukena GitHubia. Valmis sovellus toimi Heroku-palvelussa: https://group-4-food4u.herokuapp.com/ .
 
-Sovelluksen toteutus 
-Web-sovellus toteutettiin Reactia ja Node.js:ää käyttäen. Sovelluksen kehitysvaiheessa käytimme versiohallinnan tukena GitHubia (KUVA 2). Valmis sovellus toimi Heroku-palvelussa: Food4U Heroku-palvelussa.
-
- 
-KUVA 2. Näkymä Projektin tiedostonäkymästä GitHubissa
-
-Sovelluksen käyttöönotto
-Sovellus vaatii tietokannan taustalle toimiakseen kunnolla. Alla (KUVA 3) kuvassa näkyy käytetyn tietokannan rakenne.
+###### Sovelluksen käyttöönotto
+Sovellus vaatii tietokannan taustalle toimiakseen kunnolla. Tietokannan rakenne löytyy food4u_database_v1.4.txt-tiedostosta.
 Halutessasi voit kloonata repositorion omalle koneelle Gitillä.  Käyttäen Gitissä käskyä: git clone https://github.com/TVT21KMO-Group-IV/Legendary-IN00CT06-3001.git.  
 •	Käynnistä yhteys tietokantaan.
 •	Avaa Visual Studio Code:lla kansio Legendary-IN00CT06-3001.
@@ -37,4 +31,4 @@ Jos backend käynnistyi oikein Visual Studio Code:n terminaaliin tulee viesti: c
 •	Jos sovellus käynnistyy oikein terminaaliin tulee teksti: react-scripts start.
 
  
-KUVA 3. Sovelluksen taustalla käytettävän tietokannan rakenne
+
