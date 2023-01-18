@@ -22,7 +22,7 @@ export default function GetMenu (props) {
 }
 
     
-
+// eslint-disable-next-line
     useEffect(async () => {
       const restaurant = await fetch(`http://localhost:5000/restaurant/${restaurantId}/restaurant`).then((res) =>
         res.json()
@@ -48,7 +48,7 @@ export default function GetMenu (props) {
       
    console.log(restaurantId);
 
-    
+    // eslint-disable-next-line
   useEffect(async() => {
     const restaurantMenu = await fetch(`http://localhost:5000/restaurant/${restaurantId}/menu`).then((res)=>
     res.json()
@@ -57,6 +57,7 @@ export default function GetMenu (props) {
 
     console.log(restaurantMenu)
     setMenus(restaurantMenu)
+    // eslint-disable-next-line
   }, []);
     
   

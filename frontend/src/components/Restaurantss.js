@@ -9,7 +9,7 @@ export default function Restaurantss() {
   const [restaurants, setRestaurants] = useState([]);
   //const [menus, setMenus] =useState([]);
 
-
+// eslint-disable-next-line
   useEffect(async () => {
     const allrestaurants = await fetch('http://localhost:5000/restaurant').then((res) =>
       res.json()
@@ -51,7 +51,7 @@ export default function Restaurantss() {
       <div className="marginTop">
         <div className="paddingTop">
           {filteredRestaurants.length ? filteredRestaurants.map((restaurants) => (
-            <div key={restaurants.idRestaurant} className='restaurantHome'><img src={restaurants.restaurantImg} className='restaurantImg' />
+            <div key={restaurants.idRestaurant} className='restaurantHome'><img src={restaurants.restaurantImg} alt="Restaurant" className='restaurantImg' />
               <div className='restaurantHomeText' >{restaurants.name} <div className='restaurantHomeAddress'>{restaurants.address}</div>
 
                 <div><Link to={`/restaurant/${restaurants.idRestaurant}`}><button className='homeMenuButton' >Avaa ravintolan ruokalista</button></Link></div></div></div>

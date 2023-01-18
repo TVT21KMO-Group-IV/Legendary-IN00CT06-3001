@@ -50,6 +50,7 @@ function AddMenu() {
 
     }
   };
+  // eslint-disable-next-line
   useEffect(async () => {
     const restaurant = await fetch(`http://localhost:5000/restaurant/${restaurantId}/restaurant`).then((res) =>
       res.json()
@@ -59,6 +60,7 @@ function AddMenu() {
     setRestaurants(restaurant)
     // eslint-disable-next-line
   }, []);
+  // eslint-disable-next-line
   useEffect(async() => {
     const restaurantMenu = await fetch(`http://localhost:5000/restaurant/${restaurantId}/menu`).then((res)=>
     res.json()
@@ -75,7 +77,7 @@ function AddMenu() {
     <div className="contentWrapper">
       <div className="paddingTop">
           {restaurants.map((restaurants) => (
-            <div key={restaurants.idRestaurant} className='restaurantHome'><img src={restaurants.restaurantImg} className='restaurantImg' alt="Restaurant image"/>
+            <div key={restaurants.idRestaurant} className='restaurantHome'><img src={restaurants.restaurantImg} className='restaurantImg' alt="Restaurant"/>
               <div className='restaurantHomeText' >{restaurants.name}
                 </div></div>
           )) }

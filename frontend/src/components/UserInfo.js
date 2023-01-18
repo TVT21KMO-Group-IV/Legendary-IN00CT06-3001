@@ -13,6 +13,7 @@ export default function UserInfo(props) {
     var decoded = jwt_decode(userJwt)
   }
     
+  // eslint-disable-next-line
   useEffect(async () => {
     const user = await fetch(`http://localhost:5000/userinfo/${decoded.idUser}`).then((res) =>
       res.json()
@@ -21,7 +22,7 @@ export default function UserInfo(props) {
     console.log(user)
 // eslint-disable-next-line
   }, []);
-
+// eslint-disable-next-line
   useEffect(async () => {
     const orders = await fetch(`http://localhost:5000/orders/${decoded.idUser}`).then((res) =>
       res.json()
