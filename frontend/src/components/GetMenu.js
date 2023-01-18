@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, Route } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
-import Login from './Login';
+
 
 export default function GetMenu (props) {
 
@@ -31,6 +31,7 @@ export default function GetMenu (props) {
       console.log(restaurant)
       console.log(userJwt)
       setRestaurants(restaurant)
+      // eslint-disable-next-line
     }, []);
   
     const addOrder = () => {

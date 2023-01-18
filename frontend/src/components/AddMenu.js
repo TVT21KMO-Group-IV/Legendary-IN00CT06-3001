@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import '../App.css';
 
-function AddMenu(props) {
-  const { userJwt } = props
+function AddMenu() {
+  
   const [menus, setMenus] = useState([]);
   const [dish, setDish] = useState('');
   const [name, setName] = useState('');
@@ -11,7 +11,6 @@ function AddMenu(props) {
   const [price, setPrice] = useState('');
   const [menuItemImg, setMenuItemImg] = useState('');
   const [restaurants, setRestaurants] = useState([]);
-  const [del, setDel] = useState([]);
   const { restaurantId } = useParams('');
   const [message, setMessage] = useState();  // to store success or error message
 
@@ -58,6 +57,7 @@ function AddMenu(props) {
 
     console.log(restaurant)
     setRestaurants(restaurant)
+    // eslint-disable-next-line
   }, []);
   useEffect(async() => {
     const restaurantMenu = await fetch(`http://localhost:5000/restaurant/${restaurantId}/menu`).then((res)=>
@@ -67,6 +67,7 @@ function AddMenu(props) {
 
     console.log(restaurantMenu)
     setMenus(restaurantMenu)
+    // eslint-disable-next-line
   }, []);
 
 
@@ -74,7 +75,7 @@ function AddMenu(props) {
     <div className="contentWrapper">
       <div className="paddingTop">
           {restaurants.map((restaurants) => (
-            <div key={restaurants.idRestaurant} className='restaurantHome'><img src={restaurants.restaurantImg} className='restaurantImg' />
+            <div key={restaurants.idRestaurant} className='restaurantHome'><img src={restaurants.restaurantImg} className='restaurantImg' alt="Restaurant image"/>
               <div className='restaurantHomeText' >{restaurants.name}
                 </div></div>
           )) }
@@ -131,7 +132,7 @@ function AddMenu(props) {
       <div>
         {menus.map(menu =>
 
-          <div key={restaurantId.idRestaurant} className='addMenu'><img src={menu.menuItemImg} className='addMenuItemImg' />{menu.name}  <div>Annoksen kuvaus: {menu.description}, Hinta: {menu.price}€
+          <div key={restaurantId.idRestaurant} className='addMenu'><img src={menu.menuItemImg} alt="Menu" className='addMenuItemImg' />{menu.name}  <div>Annoksen kuvaus: {menu.description}, Hinta: {menu.price}€
           </div></div>
         )
         }

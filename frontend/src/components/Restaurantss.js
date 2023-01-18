@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 
-export default function Restaurantss(props) {
+export default function Restaurantss() {
 
-  const { userJwt } = props
+
   const [restaurants, setRestaurants] = useState([]);
   //const [menus, setMenus] =useState([]);
 

@@ -13,12 +13,14 @@ export default function MyRestaurants(props) {
   
   useEffect(async () => {
     
-    const allrestaurants = await fetch(`http://localhost:5000/myrestaurants/${decoded.idUser}`).then((res) =>
+    const allrestaurants = await fetch(`http://localhost:5000/myrestaurants/${decoded.idUser}`)
+    .then((res) =>
       res.json()
     )
 
     console.log(allrestaurants)
     setRestaurants(allrestaurants)
+    // eslint-disable-next-line
   },[]);
 
 if (userJwt == null){
@@ -32,7 +34,7 @@ if (userJwt == null){
         <div className="paddingTop">
         <div className='addBox3'><Link to="/addrestaurant"><button className='createRestaurantButton'type='submit'> Luo Uusi Ravintola</button></Link></div>
           {restaurants.map((restaurants) => (
-            <div key={restaurants.idRestaurant} className='restaurantHome'><img src={restaurants.restaurantImg} className='restaurantImg' />
+            <div key={restaurants.idRestaurant} className='restaurantHome'><img src={restaurants.restaurantImg} alt="Restaurant image" className='restaurantImg' />
               <div className='restaurantHomeText' >{restaurants.name} {restaurants.address}
 
                 <div><Link to={`/addmenu/${restaurants.idRestaurant}`}><button className='homeMenuButton' >Muokkaa ravintolan ruokalistaa</button></Link></div></div></div>

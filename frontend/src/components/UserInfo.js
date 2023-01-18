@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import jwt_decode from "jwt-decode";
-import { Route } from 'react-router-dom';
-import Login from './Login';
+
 
 
 export default function UserInfo(props) {
@@ -20,7 +19,7 @@ export default function UserInfo(props) {
     )
     setUserInfo(user)
     console.log(user)
-
+// eslint-disable-next-line
   }, []);
 
   useEffect(async () => {
@@ -29,6 +28,7 @@ export default function UserInfo(props) {
     )
     console.log(orders)
     setHistory(orders)
+    // eslint-disable-next-line
   }, []);
   
   if (userJwt == null){

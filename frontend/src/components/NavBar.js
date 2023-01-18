@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import siteLogo from './food4u_logo_001_vaalea_100px.png';
 
-export default function NavBar(props) {
-  const {cartItems} =  props;
+export default function NavBar() {
+ 
 
 
 

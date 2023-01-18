@@ -17,24 +17,12 @@ import UserInfo from './components/UserInfo';
 
 const jwtFromStorage = window.localStorage.getItem('appAuthData');
 
-function App (props)  {
+function App ()  {
 
   const [ userJwt, setUserJwt ] = useState(jwtFromStorage);
-  let authRoutes = <>
-  <Route path="/login" element = { <Login login={(token) => {
-                    window.localStorage.setItem('appAuthData', token);
-                    setUserJwt(token);
-                  }} /> } />                 
-  </>
   
-  if(userJwt != null) {
-    authRoutes = <Route path="/addrestaurant" element={ <AddRestaurant userJwt={ userJwt } logout={() => setUserJwt(null)} /> }/>
-    authRoutes = <Route path="/restaurant/:restaurantId" element={ <GetMenu userJwt={ userJwt } /> } />
-    //authRoutes = <Route path="/login" element={ <Login/>}/>
-  }else {
-    <Route path="/Login" element={<Login setUserJwt={ setUserJwt } />} />
-  }
-  //console.log(userJwt)
+  
+ 
 
   return (<div className='pageWrapper'>
      <div>Auth status: { userJwt != null ? "Logged in": "Not logged in" } </div>
